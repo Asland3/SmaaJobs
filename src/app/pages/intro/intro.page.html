@@ -1,11 +1,9 @@
 <ion-content>
-  <swiper-container
-  [pagination]="true"
-  >
+  <swiper-container #swiper (afterinit)="swiperReady()" [pagination]="true">
     <swiper-slide class="slide-one">
       <div class="container">
         <div class="top-content">
-          <ion-button class="skip">Skip</ion-button>
+          <ion-button class="skip" (click)="start()">Skip</ion-button>
           <ion-img
             src="../../../assets/svg/kid-pole.svg"
             alt="Illustration"
@@ -27,14 +25,14 @@
             ønsker at hjælpe. Nemt, hurtigt og lokalt.
           </p>
         </div>
-        <ion-button class="næste">Næste</ion-button>
+        <ion-button class="næste" (click)="next()">Næste</ion-button>
       </div>
     </swiper-slide>
 
     <swiper-slide class="slide-two">
       <div class="container">
         <div class="top-content">
-          <ion-button class="skip">Skip</ion-button>
+          <ion-button class="skip" (click)="start()">Skip</ion-button>
           <ion-img
             src="../../../assets/svg/man-phone.svg"
             alt="Illustration"
@@ -50,7 +48,7 @@
             ekstra, er der noget for alle.
           </p>
         </div>
-        <ion-button class="næste">Næste</ion-button>
+        <ion-button class="næste" (click)="next()">Næste</ion-button>
       </div>
     </swiper-slide>
 
@@ -71,10 +69,11 @@
             Udfør opgaver, opbyg din profil og nyd frugterne af dit arbejde med
             sikker betaling.
           </p>
-          <ion-button class="getStarted" expand="block">Kom i gang</ion-button>
+          <ion-button class="getStarted" expand="block" (click)="start()"
+            >Kom i gang</ion-button
+          >
         </div>
       </div>
-      
     </swiper-slide>
   </swiper-container>
 </ion-content>
