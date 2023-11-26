@@ -1,0 +1,53 @@
+.background {   
+    background: url('../../../assets/svg/backgrounds/start.svg') no-repeat center center / cover;
+    min-height: 100vh;
+}
+
+.container {
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.logo {
+    transform: scale(0.6);
+}
+
+.back-arrow {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+}
+
+ion-grid {
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+h1 {
+    font-size: 35px;
+}
+
+ion-input[fill="outline"] {
+    --border-radius: 10px;
+    --border-color: black;
+    --border-style: solid;
+    --border-width: 1px;
+    --highlight-color-focused: rgba(0, 0, 0, 0.70);
+    --placeholder-color: black;
+    width: 285px;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.spacer {
+    padding: 20px;
+}
+
+.login-button {
+    --background: var(--ion-color-secondary);
+}
+

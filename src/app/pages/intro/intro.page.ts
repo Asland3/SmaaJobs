@@ -29,7 +29,7 @@ export class IntroPage {
   }
 
   start() {
-    this.navCtrl.navigateRoot('/', { animationDirection: 'forward' });
+    this.navCtrl.navigateRoot('/start', { animationDirection: 'forward' });
   }
 
 }
