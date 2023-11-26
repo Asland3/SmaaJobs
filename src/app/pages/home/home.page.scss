@@ -1,0 +1,24 @@
+.top-container {
+  background: url("../../../assets/svg/backgrounds/home.svg") no-repeat center
+    center / cover;
+  min-height: 37vh;
+  max-height: 37vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ion-searchbar {
+    margin-top: 33.5vh;
+    --background: #ffffff;
+    --placeholder-color: #000000;
+    --color: #000000;
+    --border-radius: 10px;
+    --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    --placeholder-font-size: 14px;
+    width: 290px;
+    height: 40px;
+  }
+}
