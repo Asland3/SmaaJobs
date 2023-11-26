@@ -1,14 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-burgermenu',
-  templateUrl: './burgermenu.component.html',
-  styleUrls: ['./burgermenu.component.scss'],
+  templateUrl: 'burgermenu.component.html',
+  styleUrls: ['burgermenu.component.scss'],
 })
-export class BurgermenuComponent  implements OnInit {
 
-  constructor() { }
+export class BurgermenuComponent {
+  isOpen = false;
 
-  ngOnInit() {}
+  constructor() {}
 
+  toggleMenu() {
+    this.isOpen = !this.isOpen;
+  }
+
+  logout() {
+    console.log('logout');
+  }
 }
