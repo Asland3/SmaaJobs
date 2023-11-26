@@ -1,4 +1,7 @@
 <ion-content>
+  <div class="background">
+
+
   <div class="container">
     <div class="top-spacer"></div>
     <ion-img
@@ -8,13 +11,17 @@
     >
     </ion-img>
 
+    <div class="button-group">
+      <h2 class="ion-text-center">login eller opret din konto</h2>
 
+      <ion-button (click)="navigateToRegister()" class="main-button">Ny bruger</ion-button>
 
+      <ion-button (click)="navigateToLogin()" class="main-button">Login</ion-button>
 
-    
+      <h1 class="ion-text-center ion-no-margin">eller</h1>
 
-    <h2 class="ion-text-center">login eller opret din konto</h2>
-
-    <ion-button>Ny Bruger</ion-button>
+      <ion-button (click)="navigateToHome()" class="main-button look-around-button">Kig rundt</ion-button>
+    </div>
   </div>
+</div>
 </ion-content>
