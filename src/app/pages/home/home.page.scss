@@ -1,8 +1,14 @@
+ion-content {
+  --background: #e6e6e6;
+}
 .top-container {
   background: url("../../../assets/svg/backgrounds/home.svg") no-repeat center
     center / cover;
   min-height: 37vh;
   max-height: 37vh;
+}
+.placering {
+  padding-top: 25px;
 }
 
 .container {
@@ -11,7 +17,7 @@
   align-items: center;
 
   ion-searchbar {
-    margin-top: 33.5vh;
+    margin-top: 19.5vh;
     --background: #ffffff;
     --placeholder-color: #000000;
     --color: #000000;
@@ -21,4 +27,50 @@
     width: 290px;
     height: 40px;
   }
+}
+
+.right-button {
+  float: right;
+  margin-top: 10px;
+}
+
+ion-button {
+  --border-radius: 10px;
+  font-size: 16px;
+  --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+}
+
+ion-card {
+  --border-radius: 10px;
+  --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 350px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  box-sizing: border-box;
+  color: black;
+}
+
+ion-card img {
+  margin: 5px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
+}
+
+ion-fab {
+  position: fixed;
+  right: 50%;
+  bottom: 15px;
+  transform: translateX(50%);
+  z-index: 1000;
+}
+ion-fab-button {
+  --color: #ffffff;
 }
