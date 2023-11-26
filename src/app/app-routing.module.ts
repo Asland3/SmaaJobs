@@ -28,10 +28,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
   {
+    path: 'start',
+    loadChildren: () => import('./pages/start/start.module').then( m => m.StartPageModule)
+  },
+  {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
-
 ];
 
 @NgModule({
