@@ -23,11 +23,10 @@
         position: absolute;
         top: 20px;
         right: 20px;
-        --padding-start: 10px;
-        --padding-end: 10px;
-        --border-radius: 10px;
         --background: #FFF;
         font-size: 0.8rem;
+        width: 35px;
+        height: 30px;
     }
 
     .bottom-content {
@@ -140,11 +139,18 @@
         position: absolute;
         top: 20px;
         right: 20px;
-        --padding-start: 10px;
-        --padding-end: 10px;
-        --border-radius: 10px;
+        --padding-start: 10px !important;
+        --padding-end: 10px !important;
+        --border-radius: 10px !important;
         --background: #FFF;
         font-size: 0.8rem;
+
+     
+        
+        width: 150px !important;
+        height: 63px !important;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .bottom-content {
