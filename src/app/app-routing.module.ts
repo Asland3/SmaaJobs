@@ -20,10 +20,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  },
-  {
     path: 'forgot-password',
     loadChildren: () => import('./pages/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
@@ -35,6 +31,16 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
+  {
+    path: 'email-password',
+    loadChildren: () => import('./pages/register/email-password/email-password.module').then( m => m.EmailPasswordPageModule)
+  },
+  {
+    path: 'name-picture',
+    loadChildren: () => import('./pages/register/name-picture/name-picture.module').then( m => m.NamePicturePageModule)
+  },
+
+
 ];
 
 @NgModule({

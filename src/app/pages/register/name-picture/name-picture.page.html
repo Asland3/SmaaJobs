@@ -4,7 +4,7 @@
       <ion-row>
         <ion-col size-s="2" class="ion-align-self-center">
           <ion-button
-            (click)="navigateTologin()"
+            (click)="navigateToStart()"
             fill="clear"
             class="back-arrow"
           >
@@ -23,34 +23,40 @@
             class="logo"
           ></ion-img>
         </ion-col>
-
         <ion-col size-s="2" class="ion-align-self-center ion-text-end">
+          <p class="cancel" (click)="navigateToStart()">Fortryd</p>
         </ion-col>
       </ion-row>
     </ion-grid>
+    <h1 class="container">Vis dig frem!</h1>
 
-    <div style="padding: 20px"></div>
+    <h2 class="ion-text-center container">
+      Skab tilid og indsæt et billede
+    </h2>
 
-    <div class="container">
-      <h1 class="ion-text-center ion-no-margin">Glemt adgangskode?</h1>
+    <div style="padding: 5px"></div>
 
-      <h2 class="ion-text-center">
-        Har du glemt din adgangskode? Indtast din Email, så vil du få sendt et
-        nyt
-      </h2>
+    <ion-input
+      label="Fornavn"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Fornavn"
+      mode="md"
+    ></ion-input>
 
-      <div style="padding: 20px"></div>
+    <div style="padding: 15px"></div>
 
-      <ion-input
-        label="Email"
-        label-placement="floating"
-        fill="outline"
-        placeholder="Skriv email"
-        mode="md"
-      ></ion-input>
+    <ion-input
+      label="Efternavn"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Efternavn"
+      mode="md"
+    ></ion-input>
 
-      <div class="spacer"></div>
-      <ion-button class="main-button send-button">Send mail</ion-button>
-    </div>
+
+    <div class="spacer"></div>
+
+    <ion-button class="main-button next-button">Næste</ion-button>
   </div>
 </ion-content>
