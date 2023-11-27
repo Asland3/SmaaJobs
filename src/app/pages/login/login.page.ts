@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertController, LoadingController, NavController } from '@ionic/angular';
+import {
+  AlertController,
+  LoadingController,
+  NavController,
+} from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 
 @Component({
@@ -16,7 +20,6 @@ export class LoginPage implements OnInit {
     private authService: AuthService,
     private alertController: AlertController,
     private loadingController: LoadingController
-    
   ) {}
 
   ngOnInit() {
@@ -32,27 +35,31 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
-    const loading = await this.loadingController.create({
-      message: 'logger ind...',
-    });
-    await loading.present();
+    if (this.credentials.valid) {
+      const loading = await this.loadingController.create({
+        message: 'logger ind...',
+      });
+      await loading.present();
 
-    this.authService.login(this.credentials.value).then(
-      async () => {
-        await loading.dismiss();
-        this.navCtrl.navigateForward('/home');
-      },
-      async (err: any) => {
-        await loading.dismiss();
-        const alert = await this.alertController.create({
-          header: 'Login fejlede',
-          message: err.message,
-          buttons: ['OK'],
-        });
+      this.authService.login(this.credentials.value).then(
+        async () => {
+          await loading.dismiss();
+          this.navCtrl.navigateForward('/home');
+        },
+        async (err: any) => {
+          await loading.dismiss();
+          const alert = await this.alertController.create({
+            header: 'Login fejlede',
+            message: err.message,
+            buttons: ['OK'],
+          });
 
-        await alert.present();
-      }
-    );
+          await alert.present();
+        }
+      );
+    } else {
+      this.credentials.markAllAsTouched();
+    }
   }
 
   validators() {

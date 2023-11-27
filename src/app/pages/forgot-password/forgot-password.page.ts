@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertController, LoadingController, ModalController, NavController } from '@ionic/angular';
+import {
+  AlertController,
+  LoadingController,
+  ModalController,
+  NavController,
+} from '@ionic/angular';
 import { ForgotPasswordModalPage } from 'src/app/modals/forgot-password-modal/forgot-password-modal.page';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 
@@ -11,7 +16,7 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
 })
 export class ForgotPasswordPage implements OnInit {
   credentials: FormGroup | any;
-  
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -26,8 +31,9 @@ export class ForgotPasswordPage implements OnInit {
   }
 
   async forgotPassword() {
+    if (this.credentials.valid) {
     const loading = await this.loadingController.create({
-      message: 'Loading...',
+      message: 'Loader...',
     });
     await loading.present();
 
@@ -54,6 +60,9 @@ export class ForgotPasswordPage implements OnInit {
         await alert.present();
       }
     );
+  } else {
+    this.credentials.markAllAsTouched();
+  }
   }
 
   get email() {
