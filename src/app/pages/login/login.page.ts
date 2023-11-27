@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
   }
 
   navigateToForgotPassword() {
-    this.navCtrl.navigateForward('/forgot-password');
+    this.navCtrl.navigateForward('/auth/forgot-password');
   }
 
   navigateToStart() {

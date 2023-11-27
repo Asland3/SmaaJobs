@@ -14,7 +14,7 @@ export class ForgotPasswordPage implements OnInit {
   }
 
   navigateTologin() {
-    this.navCtrl.navigateBack('/login');
+    this.navCtrl.navigateBack('/auth/login');
   }
 
 }

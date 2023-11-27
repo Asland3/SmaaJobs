@@ -3,38 +3,43 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
   },
   {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
+  },
+  {
     path: 'intro',
-    loadChildren: () => import('./pages/intro/intro.module').then( m => m.IntroPageModule)
+    loadChildren: () => import('./pages/intro/intro.module').then(m => m.IntroPageModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
-  },
-  {
-    path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  },
-  {
-    path: 'forgot-password',
-    loadChildren: () => import('./pages/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+    path: 'auth',
+    children: [
+      {
+        path: 'login',
+        loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
+      },
+      {
+        path: 'register',
+        loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
+      },
+      {
+        path: 'forgot-password',
+        loadChildren: () => import('./pages/forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule)
+      }
+    ]
   },
   {
     path: 'start',
-    loadChildren: () => import('./pages/start/start.module').then( m => m.StartPageModule)
+    loadChildren: () => import('./pages/start/start.module').then(m => m.StartPageModule)
   },
   {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
+    path: '**',
+    loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundPageModule) // 404 page
+  }
 ];
 
 @NgModule({
