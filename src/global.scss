@@ -74,3 +74,9 @@ ion-button {
 swiper-container {
     --swiper-pagination-color: var(--ion-color-secondary, #3880ff);
   }
+
+  .small-center-modal::part(content) {
+    width: 80%;
+    --border-radius: 10px;
+    --height: 35%;
+}
