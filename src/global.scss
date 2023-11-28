@@ -84,12 +84,31 @@ ion-button {
   margin-right: auto;
 }
 
-swiper-container {
-    --swiper-pagination-color: var(--ion-color-secondary, #3880ff);
-  }
+//Burgermenu
+.menu-button-container {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 1000;
+}
 
-  .small-center-modal::part(content) {
-    width: 80%;
-    --border-radius: 10px;
-    --height: 50%;
+ion-menu-button {
+  color: black; 
+}
+
+// Highlight for det aktive menu-element
+ion-item.active {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-primary-contrast);
+}
+//Burgermenu slut
+
+swiper-container {
+  --swiper-pagination-color: var(--ion-color-secondary, #3880ff);
+}
+
+.small-center-modal::part(content) {
+  width: 80%;
+  --border-radius: 10px;
+  --height: 50%;
 }
