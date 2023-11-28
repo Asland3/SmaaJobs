@@ -1,9 +1,20 @@
 <div class="top-container">
-  <h5 class="placering ion-text-center ion-no-margin">Placering</h5>
-  <h5 class="ion-text-center ion-no-margin">2630 Taastrup</h5>
+  <div class="header-flex">
+    <div class="spacer"></div>
+    <!-- Usynlig spacer -->
+    <div>
+      <h5 class="placering ion-text-center ion-no-margin">Placering</h5>
+      <h5 class="ion-text-center ion-no-margin">2630 Taastrup</h5>
+    </div>
+    <ion-img
+      (click)="openMenu()"
+      id="main-content"
+      [src]="'assets/svg/icons/burgermenu.svg'"
+    ></ion-img>
+  </div>
+
   <h1 class="ion-text-center">Hej Mikkel</h1>
 
-  
   <div class="container">
     <ion-searchbar placeholder="Hvad søger du?"></ion-searchbar>
   </div>
@@ -16,20 +27,6 @@
 ></ion-icon>
 
 <app-burgermenu></app-burgermenu>
-
-<ion-button (click)="openMenu()" id="main-content">
-  Click me
-</ion-button>
-
-
-<!-- <div class="ion-page" id="main-content">
-  <ion-content class="ion-padding">
-    <ion-menu-toggle>
-      <ion-button>Click to open the menu</ion-button>
-    </ion-menu-toggle>
-  </ion-content>
-</div> -->
-
 
 <ion-card>
   <div class="card-content">

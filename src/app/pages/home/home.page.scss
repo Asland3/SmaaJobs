@@ -59,8 +59,8 @@ ion-card {
 }
 
 ion-card img {
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
   margin-right: 12px;
   padding-top: 8px;
   border-radius: 50%;
@@ -93,3 +93,26 @@ ion-fab {
 ion-fab-button {
   --color: #ffffff;
 }
+
+
+#main-content {
+  width: 20px;
+  height: 20px;
+  margin-top: 30px; /* Tilføjer margin kun til toppen */
+  align-self: flex-start; /* Tillader individuel vertikal alignment */
+  margin-right: 20px;
+}
+
+.header-flex {
+  display: flex;
+  align-items: center; /* Centrerer alle børnelementer vertikalt */
+  justify-content: space-between;
+  width: 100%;
+}
+
+.spacer {
+  width: 35px; /* Samme bredde som ion-img */
+  height: 20px; /* Samme højde som ion-img, juster efter behov */
+  visibility: hidden; /* Gør spaceren usynlig */
+}
+

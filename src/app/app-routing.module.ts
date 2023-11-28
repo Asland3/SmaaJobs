@@ -13,10 +13,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/start/start.module').then(m => m.StartPageModule)
   },
   {
-    path: 'start',
-    loadChildren: () => import('./pages/start/start.module').then(m => m.StartPageModule)
-  },
-  {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule),
     canLoad: [IntroGuard]
@@ -25,10 +21,6 @@ const routes: Routes = [
     path: 'intro',
     loadChildren: () =>
       import('./pages/intro/intro.module').then((m) => m.IntroPageModule),
-  },
-  {
-    path: 'chat',
-    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
   },
   {
     path: 'chat',
