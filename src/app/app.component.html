@@ -10,7 +10,7 @@
         </div>
         <ion-list lines="none">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
-            <ion-item [routerLink]="p.url" [class.active]="isActive(p.url)">
+            <ion-item (click)="navigateToPage(p)" [class.active]="isActive(p.url)">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
                 {{ p.title }}
