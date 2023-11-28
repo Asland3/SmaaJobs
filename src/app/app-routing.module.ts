@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { IntroGuard } from './guards/intro.guard';
 
 const routes: Routes = [
   {
@@ -8,12 +9,21 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'start',
+    loadChildren: () => import('./pages/start/start.module').then(m => m.StartPageModule)
+  },
+  {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule),
+    canLoad: [IntroGuard]
   },
   {
     path: 'intro',
     loadChildren: () => import('./pages/intro/intro.module').then(m => m.IntroPageModule)
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
   },
   {
     path: 'auth',
@@ -33,10 +43,6 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'start',
-    loadChildren: () => import('./pages/start/start.module').then(m => m.StartPageModule)
-  },
-  {
     path: '**',
     loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundPageModule) // 404 page
   },
@@ -48,7 +54,6 @@ const routes: Routes = [
     path: 'filtermodal',
     loadChildren: () => import('./pages/filtermodal/filtermodal.module').then( m => m.FiltermodalPageModule)
   },
-
 ];
 
 @NgModule({
