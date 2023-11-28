@@ -1,28 +1,27 @@
 <ion-menu contentId="main-content" menuId="first-menu" side="end">
   <ion-content>
-    <div class="menu-header">
-      <div class="user-profile-image">
-        <img src="assets/svg/profile/profile-picture.svg" />
+    <div class="content">
+      <div class="menu-header">
+        <div class="user-profile-image">
+          <img src="assets/svg/profile/profile-picture.svg" />
+        </div>
+        <h1>Mikkel Hansen Henriksen Nielsen</h1>
       </div>
-      <h1>Mikkel Hansen Henriksen Nielsen</h1>
-    </div>
-    <ion-list>
-      <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
-        <ion-item
-          [routerLink]="p.url"
-          [class.active]="isActive(p.url)"
+      <ion-list>
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
+          <ion-item [routerLink]="p.url" [class.active]="isActive(p.url)">
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-label>
+              {{ p.title }}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+      <div class="logout-button-container">
+        <ion-button expand="block" (click)="logout()"
+          ><ion-icon name="log-out"></ion-icon>Log ud</ion-button
         >
-          <ion-icon slot="start" [name]="p.icon"></ion-icon>
-          <ion-label>
-            {{ p.title }}
-          </ion-label>
-        </ion-item>
-      </ion-menu-toggle>
-    </ion-list>
-    <div class="logout-button-container">
-      <ion-button expand="block" (click)="logout()"
-        ><ion-icon name="log-out"></ion-icon>Log ud</ion-button
-      >
+      </div>
     </div>
   </ion-content>
 </ion-menu>

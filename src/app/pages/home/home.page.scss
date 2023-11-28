@@ -17,7 +17,7 @@ ion-content {
   align-items: center;
 
   ion-searchbar {
-    margin-top: 19.5vh;
+    margin-top: 17vh;
     --background: #ffffff;
     --placeholder-color: #000000;
     --color: #000000;
@@ -94,25 +94,28 @@ ion-fab-button {
   --color: #ffffff;
 }
 
+ion-row {
+  .left {
+      ion-img {
+          width: 25px;
+          height: 25px;
+      }
+  }
 
-#main-content {
-  width: 20px;
-  height: 20px;
-  margin-top: 30px; /* Tilføjer margin kun til toppen */
-  align-self: flex-start; /* Tillader individuel vertikal alignment */
-  margin-right: 20px;
+  .middle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      ion-img {
+          width: 25px;
+          height: 25px;
+      }
+  }
 }
-
-.header-flex {
-  display: flex;
-  align-items: center; /* Centrerer alle børnelementer vertikalt */
-  justify-content: space-between;
-  width: 100%;
-}
-
-.spacer {
-  width: 35px; /* Samme bredde som ion-img */
-  height: 20px; /* Samme højde som ion-img, juster efter behov */
-  visibility: hidden; /* Gør spaceren usynlig */
-}
-

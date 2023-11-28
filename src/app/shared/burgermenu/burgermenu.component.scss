@@ -2,7 +2,11 @@ ion-menu {
   --ion-background-color: white;
 
   ion-content {
-    --background: url("/assets/svg/backgrounds/start.svg") no-repeat center center / cover;
+   
+  }
+
+  .content {
+ --background: url("/assets/svg/backgrounds/start.svg") no-repeat center center / cover;
     display: flex;
     flex-direction: column;
     height: 100%;

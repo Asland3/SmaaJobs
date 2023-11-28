@@ -1,31 +1,31 @@
 <ion-content>
-
   <div class="top-container">
     <ion-row>
-      <ion-col size-s="2" class="ion-align-self-center">
-        <ion-button fill="clear" class="back-arrow-button">
+      <ion-col size-s="2">
+        <ion-button fill="clear" class="left">
           <ion-img
             src="../../../assets/svg/icons/back-arrow.svg"
             alt="back-arrow"
-            class="back-arrow-img"
           ></ion-img>
         </ion-button>
       </ion-col>
-  
+
       <ion-col size-s="8">
-        <h1 class="ion-text-center">Chats</h1>
+        <h1 class="middle">Chats</h1>
       </ion-col>
-  
-      <ion-col size-s="2" class="ion-align-self-center ion-text-end">
-        <ion-button fill="clear" class="back-arrow">
+      <ion-col size-s="2" class="right">
+        <ion-button fill="clear">
           <ion-img
+            (click)="openMenu()"
+          id="main-content"
             src="../../../assets/svg/icons/burgermenu.svg"
-            alt="back-arrow"
-            class="back-arrow"
+            alt="burgermenu"
           ></ion-img>
         </ion-button>
       </ion-col>
     </ion-row>
+
+    <app-burgermenu></app-burgermenu>
 
     <div class="spacer"></div>
     <div class="container">
