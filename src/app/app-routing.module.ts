@@ -39,10 +39,15 @@ const routes: Routes = [
   {
     path: '**',
     loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundPageModule) // 404 page
-  },  {
+  },
+  {
     path: 'forgot-password-modal',
     loadChildren: () => import('./modals/forgot-password-modal/forgot-password-modal.module').then( m => m.ForgotPasswordModalPageModule)
-  }
+  },
+  {
+    path: 'filtermodal',
+    loadChildren: () => import('./pages/filtermodal/filtermodal.module').then( m => m.FiltermodalPageModule)
+  },
 
 ];
 

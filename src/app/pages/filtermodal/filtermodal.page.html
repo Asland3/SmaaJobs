@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <h2>Filtrer efter kategori</h2>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()"
+        ><ion-icon name="close"></ion-icon
+      ></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item
+      *ngFor="let category of categories"
+      (click)="toggleCategory(category)"
+    >
+      <h4>{{ category.name }}</h4>
+      <ion-checkbox
+        slot="end"
+        [(ngModel)]="category.selected"
+        (click)="$event.stopPropagation()"
+      >
+      </ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" (click)="applyFilters()">Søg</ion-button>
+</ion-content>
