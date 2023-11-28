@@ -1,0 +1,37 @@
+ion-content {
+    --background: #e6e6e6;
+}
+
+.top-container {
+    background: url("../../../assets/svg/backgrounds/chat.svg") no-repeat center center / cover;
+    min-height: 18vh;
+    max-height: 18vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ion-searchbar {
+        margin-top: -6vh;
+        --background: #ffffff;
+        --placeholder-color: #000000;
+        --color: #000000;
+        --border-radius: 10px;
+        --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        --placeholder-font-size: 14px;
+        width: 290px;
+        height: 40px;
+    }
+}
+
+.back-arrow-button {
+    padding-top: 7vh;
+    padding-bottom: 5vh;
+}
+
+.back-arrow-img {
+    width: 30px;
+    height: 30px;
+}
