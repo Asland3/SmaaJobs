@@ -8,9 +8,12 @@ import { FiltermodalPage } from '../../modals/filtermodal/filtermodal.page';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  constructor(private modalController: ModalController, private menu: MenuController ) {}
+  constructor(
+    private modalController: ModalController,
+  ) {}
 
   ngOnInit() {}
+
   async presentFilterModal() {
     const modal = await this.modalController.create({
       component: FiltermodalPage,
@@ -23,9 +26,5 @@ export class HomePage implements OnInit {
     const { data } = await modal.onDidDismiss();
     if (data) {
     }
-  }
-
-  openMenu() {
-    this.menu.open('first-menu');
   }
 }

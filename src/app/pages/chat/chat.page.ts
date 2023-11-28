@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
-
 
 @Component({
   selector: 'app-chat',
@@ -8,15 +6,7 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./chat.page.scss'],
 })
 export class ChatPage implements OnInit {
+  constructor() {}
 
-  constructor(private menu: MenuController) { }
-
-  ngOnInit() {
-  }
-
-  
-  openMenu() {
-    this.menu.open('first-menu');
-  }
-
+  ngOnInit() {}
 }
