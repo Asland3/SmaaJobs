@@ -14,25 +14,23 @@
       <div class="profile-image">
         <img src="assets/svg/profile/profile-picture.svg"/>
       </div>
-      <div class="profile-info">
-        <h1>Mikkel Hansen</h1>
-      </div>
+      <h1>Mikkel Hansen</h1>
     </div>
 
     <ul>
-      <li>
+      <li [class.active]="isActive('/home')">
         <ion-icon name="home"></ion-icon>
-        <h1 href="#">Hjem</h1>
+        <h1 routerLink="/home">Hjem</h1>
       </li>
-      <li>
+      <li [class.active]="isActive('/profile')">
         <ion-icon name="person"></ion-icon>
-        <h1 href="#">Profil</h1>
+        <h1 routerLink="/profile">Profile</h1>
       </li>
-      <li>
+      <li [class.active]="isActive('/chat')">
         <ion-icon name="chatbubble"></ion-icon>
         <h1 href="#">Chat</h1>
       </li>
-      <li>
+      <li [class.active]="isActive('/privacy-policy')">
         <ion-icon name="document"></ion-icon>
         <h1 href="#">Privacy Policy</h1>
       </li>

@@ -1,7 +1,7 @@
 .burger-icon {
   position: fixed;
-  top: 30px;
-  right: 30px;
+  top: 40px;
+  right: 40px;
   z-index: 1001;
 }
 
@@ -30,7 +30,8 @@
   right: 0;
   width: 300px;
   height: 100%;
-  background: url("../../../assets/svg/backgrounds/start.svg") no-repeat center center / cover;
+  background: url("../../../assets/svg/backgrounds/start.svg") no-repeat center
+    center / cover;
   background-color: white;
   padding-top: 60px;
   transform: translateX(100%);
@@ -44,6 +45,7 @@
 
 .menu-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
   padding: 16px;
 }
@@ -54,7 +56,6 @@
   height: 100px;
   border-radius: 50%;
   overflow: hidden;
-  margin-right: 16px;
 }
 
 .profile-image img {
@@ -74,6 +75,18 @@
   display: flex;
   align-items: center;
   padding: 20px;
+}
+
+.menu-content li:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.menu-content li.active h1 {
+  color: var(--ion-color-primary);
+  font-weight: bold;
+}
+.menu-content li.active ion-icon {
+  color: var(--ion-color-primary);
 }
 
 .menu-content ion-icon {

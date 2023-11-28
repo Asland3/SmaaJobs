@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-burgermenu',
   templateUrl: 'burgermenu.component.html',
   styleUrls: ['burgermenu.component.scss'],
 })
-
 export class BurgermenuComponent {
   isOpen = false;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
@@ -17,5 +17,9 @@ export class BurgermenuComponent {
 
   logout() {
     console.log('logout');
+  }
+
+  isActive(url: string): boolean {
+    return this.router.url === url;
   }
 }
