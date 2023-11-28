@@ -1,19 +1,35 @@
 <ion-content>
+
   <div class="top-container">
-    <h1 class="ion-text-center">Hej Mikkel</h1>
-    <app-burgermenu></app-burgermenu>
-    <ion-button fill="clear" class="back-arrow-button">
-      <ion-img
-        src="../../../assets/svg/icons/back-arrow.svg"
-        alt="back-arrow"
-        class="back-arrow-img"
-      ></ion-img>
-    </ion-button>
+    <ion-row>
+      <ion-col size-s="2" class="ion-align-self-center">
+        <ion-button fill="clear" class="back-arrow-button">
+          <ion-img
+            src="../../../assets/svg/icons/back-arrow.svg"
+            alt="back-arrow"
+            class="back-arrow-img"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+  
+      <ion-col size-s="8">
+        <h1 class="ion-text-center">Chats</h1>
+      </ion-col>
+  
+      <ion-col size-s="2" class="ion-align-self-center ion-text-end">
+        <ion-button fill="clear" class="back-arrow">
+          <ion-img
+            src="../../../assets/svg/icons/burgermenu.svg"
+            alt="back-arrow"
+            class="back-arrow"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <div class="spacer"></div>
     <div class="container">
       <ion-searchbar placeholder="Hvad søger du?"></ion-searchbar>
     </div>
   </div>
 </ion-content>
-
-
-
