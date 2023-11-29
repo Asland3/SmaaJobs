@@ -2,8 +2,6 @@ ion-content {
     --background: #e6e6e6;
 }
 
-
-
 .top-container {
     background: url("../../../assets/svg/backgrounds/chat.svg") no-repeat center center / cover;
     min-height: 18vh;
@@ -32,3 +30,55 @@ ion-content {
     }
 }
 
+
+
+ion-card {
+    margin-top: 0px !important;
+    margin-bottom: 10px !important;
+    --border-radius: 10px;
+    --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 350px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px;
+    box-sizing: border-box;
+    color: black;
+    background-color: #ffffff;
+  }
+  
+  ion-card ion-img {
+    width: 90px;
+    height: 90px;
+    margin-right: 12px;
+    padding-top: 8px;
+    border-radius: 50%;
+  }
+  
+  .card-content {
+    flex-grow: 1;
+    padding: 5px 0;
+  }
+  
+  .card-content h2 {
+    margin: 8px 0;
+  }
+  
+  .card-content h4 {
+    margin: 12px 0;
+  }
+  
+  .card-content h5 {
+    margin: 8px 0;
+  }
+  
+  ion-fab {
+    position: fixed;
+    right: 50%;
+    bottom: 15px;
+    transform: translateX(50%);
+    z-index: 989;
+  }
+  ion-fab-button {
+    --color: #ffffff;
+  }

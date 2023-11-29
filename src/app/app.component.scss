@@ -1,5 +1,9 @@
 ion-menu {
 
+    ion-button {
+        min-height: 0;
+    }
+
     .close-button {
         padding-top: 15px;
         display: flex;
