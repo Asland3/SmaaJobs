@@ -1,5 +1,12 @@
 ion-menu {
 
+    .close-button {
+        padding-top: 15px;
+        display: flex;
+        justify-content: flex-end;
+        align-self: flex-end;
+    }
+
     .content {
         background: url("/assets/svg/backgrounds/start.svg") no-repeat center center / cover;
         display: flex;
@@ -9,7 +16,6 @@ ion-menu {
 
     .menu-header {
         text-align: center;
-        padding-top: 80px;
         padding-bottom: 30px;
     }
 
@@ -20,7 +26,7 @@ ion-menu {
         border-radius: 50%;
         overflow: hidden;
 
-        img {
+        ion-img {
             width: 100%;
             height: auto;
         }

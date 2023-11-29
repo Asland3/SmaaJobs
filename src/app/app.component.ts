@@ -37,4 +37,8 @@ export class AppComponent {
   isActive(url: string): boolean {
     return this.router.url === url;
   }
+
+  closeMenu() {
+    this.menu.close();
+  }
 }

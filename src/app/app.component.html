@@ -2,15 +2,21 @@
   <ion-menu contentId="main-content" side="end">
     <ion-content>
       <div class="content">
+        <ion-button (click)="closeMenu()" fill="clear" class="close-button">
+          <ion-icon name="close-outline" size="large" slot="end"></ion-icon>
+        </ion-button>
         <div class="menu-header">
           <div class="user-profile-image">
-            <img src="assets/svg/profile/profile-picture.svg" />
+            <ion-img src="assets/svg/profile/profile-picture.svg" />
           </div>
           <h1>Mikkel Hansen Henriksen Nielsen</h1>
         </div>
         <ion-list lines="none">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
-            <ion-item (click)="navigateToPage(p)" [class.active]="isActive(p.url)">
+            <ion-item
+              (click)="navigateToPage(p)"
+              [class.active]="isActive(p.url)"
+            >
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
                 {{ p.title }}
@@ -24,7 +30,6 @@
             <ion-icon name="log-out"> </ion-icon>Log ud</ion-button
           >
         </div>
-        
       </div>
     </ion-content>
   </ion-menu>
