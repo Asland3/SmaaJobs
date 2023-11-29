@@ -91,6 +91,7 @@ small {
 ion-button {
   --border-radius: 10px;
   font-size: 20px;
+  min-height: 0;
 }
 
 .main-button {
@@ -99,6 +100,7 @@ ion-button {
   display: block;
   width: 282px;
   height: 63px;
+  min-height: 0;
   margin-left: auto;
   margin-right: auto;
 }
