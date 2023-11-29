@@ -10,12 +10,14 @@ const routes: Routes = [
   },
   {
     path: 'start',
-    loadChildren: () => import('./pages/start/start.module').then(m => m.StartPageModule)
+    loadChildren: () =>
+      import('./pages/start/start.module').then((m) => m.StartPageModule),
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule),
-    canLoad: [IntroGuard]
+    loadChildren: () =>
+      import('./pages/home/home.module').then((m) => m.HomePageModule),
+    canLoad: [IntroGuard],
   },
   {
     path: 'intro',
@@ -24,7 +26,15 @@ const routes: Routes = [
   },
   {
     path: 'chat',
-    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
+    loadChildren: () =>
+      import('./pages/chat/chat.module').then((m) => m.ChatPageModule),
+  },
+  {
+    path: 'active-chat',
+    loadChildren: () =>
+      import('./pages/active-chat/active-chat.module').then(
+        (m) => m.ActiveChatPageModule
+      ),
   },
   {
     path: 'auth',
