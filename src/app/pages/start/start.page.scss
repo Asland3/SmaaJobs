@@ -1,36 +1,40 @@
-.background {   
-    background: url('../../../assets/svg/backgrounds/start.svg') no-repeat center center / cover;
-    min-height: 100vh;
+.background {
+  background: url("../../../assets/svg/backgrounds/start.svg") no-repeat center
+    center / cover;
+  min-height: 100vh;
+}
+
+main {
+  padding: 0;
 }
 
 .container {
-    padding: 20px;
+  padding: 20px;
 }
 
 .top-spacer {
-    height: 20vh;
+  height: 20vh;
 }
 
 .logo-slogan {
-    transform: scale(0.8);
+  transform: scale(0.8);
 }
 
 h1 {
-    font-size: 30px;
+  font-size: 30px;
 }
 
-ion-button{
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+ion-button {
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .button-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .look-around-button {
-    --background: var(--ion-color-secondary);
+  --background: var(--ion-color-secondary);
 }

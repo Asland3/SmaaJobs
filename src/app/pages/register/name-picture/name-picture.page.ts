@@ -14,4 +14,12 @@ export class NamePicturePage implements OnInit {
   navigateToStart() {
     this.navCtrl.navigateBack('/start');
   }
+
+  goBack(){
+    this.navCtrl.navigateBack('/email-password');
+  }
+
+  goToAboutYou() {
+    this.navCtrl.navigateForward('/about-you');
+  }
 }

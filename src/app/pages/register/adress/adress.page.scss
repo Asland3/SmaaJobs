@@ -11,7 +11,12 @@ main{
 .container {
   padding-right: 50px;
   padding-left: 50px;
-  margin: 0;
+}
+
+.move-right{
+margin-left: 14vw;
+margin-bottom: 5px;
+font-weight: bold;
 }
 
 .logo {
@@ -40,8 +45,8 @@ ion-grid {
 }
 
 h1 {
-  color: rgb(0, 0, 0);
-  font-family: 'Times New Roman', Times, serif;
+  color: #000;
+  font-family: Stylish;
   font-size: 35px;
   font-style: normal;
   font-weight: 400;
@@ -81,23 +86,6 @@ ion-input[fill="outline"] {
   font-family: Stylish;
   font-size: 20px;
   font-style: normal;
-  font-weight: 400;   
+  font-weight: 400;
   line-height: normal;
-}
-
-.img-grid{
-  padding: 10px 10px 40px;
-}
-
-.onSelected{
-  border: none;
-}
-.onSelected:active {
-border: 2px solid black;
-border-radius: 60px;
-}
-
-.onSelected:focus{
-  border: 2px solid black;
-  border-radius: 60px;
 }

@@ -3,11 +3,7 @@
     <ion-grid class="ion-no-padding ion-no-border ion-no-margin">
       <ion-row>
         <ion-col size-s="2" class="ion-align-self-center">
-          <ion-button
-            (click)="navigateToStart()"
-            fill="clear"
-            class="back-arrow"
-          >
+          <ion-button (click)="goBack()" fill="clear" class="back-arrow">
             <ion-img
               src="../../../assets/svg/icons/back-arrow.svg"
               alt="back-arrow"
@@ -28,13 +24,40 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <h1 style="margin-top: 0;" class="container">Din Konto</h1>
+    <h1 style="margin-top: 0;" class="container">Næsten på plads</h1>
 
-    <h2 class="ion-text-center container">
-      Indtast den email og adgangskode du gerne vil bruge til at logge ind
-    </h2>
+    <h4 class="move-right">Om Lokation:</h4>
 
-    <div style="padding: 5px"></div>
+    <ion-input
+      label="By"
+      label-placement="floating"
+      fill="outline"
+      placeholder="By"
+      mode="md"
+    ></ion-input>
+
+    <div style="padding: 10px"></div>
+
+    <ion-input
+      label="Postnummer"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Postnummer"
+      mode="md"
+    ></ion-input>
+
+    <div style="padding: 15px"></div>
+
+    <h4 class="move-right">Så du kan kontaktes:</h4>
+    <ion-input
+      label="Telefon"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Telefon"
+      mode="md"
+    ></ion-input>
+
+    <div style="padding: 10px"></div>
 
     <ion-input
       label="Email"
@@ -44,28 +67,10 @@
       mode="md"
     ></ion-input>
 
-    <div style="padding: 15px"></div>
-
-    <ion-input
-      label="Adgangskode"
-      label-placement="floating"
-      fill="outline"
-      placeholder="Adgangskode"
-      mode="md"
-    ></ion-input>
-
-    <div style="padding: 15px"></div>
-
-    <ion-input
-      label="Gentag Adgangskode"
-      label-placement="floating"
-      fill="outline"
-      placeholder="Gentag Adgangskode"
-      mode="md"
-    ></ion-input>
-
     <div class="spacer"></div>
 
-    <ion-button class="main-button next-button" (click)="goToNamePicture()">Næste</ion-button>
+    <ion-button class="main-button next-button" (click)="Register()"
+      >Næste</ion-button
+    >
   </div>
 </ion-content>

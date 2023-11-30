@@ -38,7 +38,15 @@ const routes: Routes = [
   {
     path: 'name-picture',
     loadChildren: () => import('./pages/register/name-picture/name-picture.module').then( m => m.NamePicturePageModule)
+  },  {
+    path: 'about-you',
+    loadChildren: () => import('./pages/register/about-you/about-you.module').then( m => m.AboutYouPageModule)
   },
+  {
+    path: 'adress',
+    loadChildren: () => import('./pages/register/adress/adress.module').then( m => m.AdressPageModule)
+  },
+
 
 
 ];
