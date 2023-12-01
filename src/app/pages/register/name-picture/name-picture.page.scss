@@ -1,0 +1,87 @@
+.background {
+  background: url("../../../../assets/svg/backgrounds/start.svg") no-repeat
+    center center / cover;
+  min-height: 100vh;
+}
+
+.container {
+  padding-right: 50px;
+  padding-left: 50px;
+  margin: 0;
+}
+
+.logo {
+  transform: scale(0.6);
+}
+
+.cancel {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.back-arrow {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+}
+
+ion-grid {
+  padding-top: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+h1 {
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
+ion-input[fill="outline"] {
+  --border-radius: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  --border-color: black;
+  --border-style: solid;
+  --border-width: 1px;
+  --highlight-color-focused: rgba(0, 0, 0, 0.7);
+  --placeholder-color: black;
+  width: 285px;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.spacer {
+  padding: 20px;
+}
+
+.next-button {
+  --background: var(--ion-color-secondary);
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.text {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;   
+  line-height: normal;
+}
+
+.img-grid{
+  padding: 10px 10px 40px;
+}
+
+.onSelected:active {
+border: 2px solid black;
+border-radius: 60px;
+}
+
+

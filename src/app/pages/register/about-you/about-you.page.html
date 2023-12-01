@@ -1,0 +1,57 @@
+<ion-content>
+  <div class="background">
+    <ion-grid class="ion-no-padding ion-no-border ion-no-margin">
+      <ion-row>
+        <ion-col size-s="2" class="ion-align-self-center">
+          <ion-button (click)="goBack()" fill="clear" class="back-arrow">
+            <ion-img
+              src="../../../assets/svg/icons/back-arrow.svg"
+              alt="back-arrow"
+              class="back-arrow"
+            ></ion-img>
+          </ion-button>
+        </ion-col>
+
+        <ion-col size-s="8">
+          <ion-img
+            src="../../../assets/svg/icons/logo.svg"
+            alt="logo"
+            class="logo"
+          ></ion-img>
+        </ion-col>
+        <ion-col size-s="2" class="ion-align-self-center ion-text-end">
+          <p class="cancel" (click)="navigateToStart()">Fortryd</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <h1 class="container">Lidt om dig</h1>
+    <div class="spacer"></div>
+
+    <ion-input
+      label="Alder"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Alder"
+      mode="md"
+      [clearInput]="true"
+    ></ion-input>
+
+    <div style="padding: 15px"></div>
+
+    <ion-textarea
+      class="description-text"
+      fill="outline"
+      mode="md"
+      value="Skriv om dig selv, og hvis du har nogle
+informationer man bør vise hensyn til."
+      [clearOnEdit]="true"
+      [counter]="true"
+      maxlength="500"
+      [autoGrow]="true"
+    ></ion-textarea>
+
+    <div class="spacer"></div>
+
+    <ion-button (click)="goToNext()" class="main-button next-button">Næste</ion-button>
+  </div>
+</ion-content>

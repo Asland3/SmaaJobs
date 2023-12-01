@@ -1,0 +1,70 @@
+<ion-content>
+  <div class="background">
+    <ion-grid class="ion-no-padding ion-no-border ion-no-margin">
+      <ion-row>
+        <ion-col size-s="2" class="ion-align-self-center">
+          <ion-button
+            (click)="goBack()"
+            fill="clear"
+            class="back-arrow"
+          >
+            <ion-img
+              src="../../../assets/svg/icons/back-arrow.svg"
+              alt="back-arrow"
+              class="back-arrow"
+            ></ion-img>
+          </ion-button>
+        </ion-col>
+
+        <ion-col size-s="8">
+          <ion-img
+            src="../../../assets/svg/icons/logo.svg"
+            alt="logo"
+            class="logo"
+          ></ion-img>
+        </ion-col>
+        <ion-col size-s="2" class="ion-align-self-center ion-text-end">
+          <p class="cancel" (click)="navigateToStart()">Fortryd</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <h1 class="container">Vis dig frem!</h1>
+    <div style="padding: 6px;"></div>
+    <h2 class="ion-text-center container">
+      Skab tilid og indsæt et<br> billede
+    </h2>
+
+    
+    <ion-grid class="img-grid">
+      <ion-row>
+        <ion-col><ion-img class="onSelected" src="../../../../assets/svg/profile/boy.svg"></ion-img></ion-col>
+        <ion-col><ion-img src="../../../../assets/svg/icons/camera.svg"></ion-img></ion-col>
+        <ion-col><ion-img class="onSelected" src="../../../../assets/svg/profile/girl.svg"></ion-img></ion-col>
+      </ion-row>
+    </ion-grid>
+    
+
+    <ion-input
+      label="Fornavn"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Fornavn"
+      mode="md"
+    ></ion-input>
+
+    <div style="padding: 15px"></div>
+
+    <ion-input
+      label="Efternavn"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Efternavn"
+      mode="md"
+    ></ion-input>
+
+
+    <div class="spacer"></div>
+
+    <ion-button (click)="goToAboutYou()" class="main-button next-button">Næste</ion-button>
+  </div>
+</ion-content>
