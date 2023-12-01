@@ -2,18 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-not-found',
-  templateUrl: './not-found.page.html',
-  styleUrls: ['./not-found.page.scss'],
+  selector: 'app-privacy-policy',
+  templateUrl: './privacy-policy.page.html',
+  styleUrls: ['./privacy-policy.page.scss'],
 })
-export class NotFoundPage implements OnInit {
+export class PrivacyPolicyPage implements OnInit {
 
   constructor(private navControl: NavController) { }
 
   backToLastPage(){
     this.navControl.back()
   }
-
   ngOnInit() {
   }
 
