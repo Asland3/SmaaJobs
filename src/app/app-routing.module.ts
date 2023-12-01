@@ -37,35 +37,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'email-password',
-    loadChildren: () =>
-      import('./pages/register/email-password/email-password.module').then(
-        (m) => m.EmailPasswordPageModule
-      ),
-  },
-  {
-    path: 'name-picture',
-    loadChildren: () =>
-      import('./pages/register/name-picture/name-picture.module').then(
-        (m) => m.NamePicturePageModule
-      ),
-  },
-  {
-    path: 'about-you',
-    loadChildren: () =>
-      import('./pages/register/about-you/about-you.module').then(
-        (m) => m.AboutYouPageModule
-      ),
-  },
-  {
-    path: 'address',
-    loadChildren: () =>
-      import('./pages/register/address/address.module').then(
-        (m) => m.addressPageModule
-      ),
-  },
-
-  {
     path: 'auth',
     children: [
       {
@@ -73,18 +44,39 @@ const routes: Routes = [
         loadChildren: () =>
           import('./pages/login/login.module').then((m) => m.LoginPageModule),
       },
-      //{
-      //   path: 'register',
-      //   loadChildren: () =>
-      //     import('./pages/register/register.module').then(
-      //       (m) => m.RegisterPageModule
-      //     ),
-      // },
       {
         path: 'forgot-password',
         loadChildren: () =>
           import('./pages/forgot-password/forgot-password.module').then(
             (m) => m.ForgotPasswordPageModule
+          ),
+      },
+      {
+        path: 'email-password',
+        loadChildren: () =>
+          import('./pages/register/email-password/email-password.module').then(
+            (m) => m.EmailPasswordPageModule
+          ),
+      },
+      {
+        path: 'name-picture',
+        loadChildren: () =>
+          import('./pages/register/name-picture/name-picture.module').then(
+            (m) => m.NamePicturePageModule
+          ),
+      },
+      {
+        path: 'about-you',
+        loadChildren: () =>
+          import('./pages/register/about-you/about-you.module').then(
+            (m) => m.AboutYouPageModule
+          ),
+      },
+      {
+        path: 'address',
+        loadChildren: () =>
+          import('./pages/register/address/address.module').then(
+            (m) => m.addressPageModule
           ),
       },
     ],

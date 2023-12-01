@@ -16,10 +16,10 @@ export class NamePicturePage implements OnInit {
   }
 
   goBack(){
-    this.navCtrl.navigateBack('/email-password');
+    this.navCtrl.navigateBack('auth/email-password');
   }
 
   goToAboutYou() {
-    this.navCtrl.navigateForward('/about-you');
+    this.navCtrl.navigateForward('auth/about-you');
   }
 }

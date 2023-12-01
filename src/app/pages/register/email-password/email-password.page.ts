@@ -12,7 +12,7 @@ export class EmailPasswordPage implements OnInit {
   ngOnInit() {}
 
   goToNamePicture() {
-    this.navCtrl.navigateForward('/name-picture');
+    this.navCtrl.navigateForward('auth/name-picture');
   }
 
   navigateToStart() {

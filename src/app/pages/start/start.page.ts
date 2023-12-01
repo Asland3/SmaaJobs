@@ -15,7 +15,7 @@ export class StartPage implements OnInit {
 
 
   navigateToRegister() {
-    this.navCtrl.navigateForward('/auth/register');
+    this.navCtrl.navigateForward('/auth/email-password');
   }
 
   navigateToLogin() {

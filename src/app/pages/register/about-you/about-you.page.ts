@@ -15,10 +15,10 @@ export class AboutYouPage implements OnInit {
     this.navCtrl.navigateBack('/start');
   }
   goBack() {
-    this.navCtrl.navigateBack('/name-picture');
+    this.navCtrl.navigateBack('auth/name-picture');
   }
 
   goToNext() {
-    this.navCtrl.navigateForward('/address');
+    this.navCtrl.navigateForward('auth/address');
   }
 }
