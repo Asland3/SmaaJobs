@@ -37,6 +37,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/start/start.module').then(m => m.StartPageModule)
   },
   {
+    path: 'privacy-policy',
+    loadChildren: () => import('./pages/privacy-policy/privacy-policy.module').then( m => m.PrivacyPolicyPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundPageModule) // 404 page
   },
@@ -48,6 +52,7 @@ const routes: Routes = [
     path: 'filtermodal',
     loadChildren: () => import('./pages/filtermodal/filtermodal.module').then( m => m.FiltermodalPageModule)
   },
+
 
 ];
 

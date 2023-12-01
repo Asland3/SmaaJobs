@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-not-found',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotFoundPage implements OnInit {
 
-  constructor() { }
+  constructor(private navControl: NavController) { }
+
+  backToLastPage(){
+    this.navControl.back()
+  }
 
   ngOnInit() {
   }

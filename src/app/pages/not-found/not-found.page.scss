@@ -1,0 +1,42 @@
+.background {   
+    background: url('../../../assets/svg/backgrounds/start.svg') no-repeat center center / cover;
+    min-height: 100vh;
+}
+
+.container {
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.logo {
+    transform: scale(0.6);
+}
+
+.back-arrow {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+}
+
+ion-grid {
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.illustration-404{
+    margin-top: 40px;
+    transform: scale(0.7);
+}
+
+h1{
+    font-size: 38px;
+    text-align: center;
+    margin-top: 0;
+}
+
+h2{
+    text-align: center;
+    width: 50%;
+    margin-left: auto; margin-right: auto; margin-top: 0;
+}
