@@ -86,6 +86,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/privacy-policy/privacy-policy.module').then( m => m.PrivacyPolicyPageModule)
   },
   {
+    path: 'registration',
+    loadChildren: () => import('./pages/registration/registration.module').then( m => m.RegistrationPageModule)
+  },
+  {
     path: '**',
     loadChildren: () =>
       import('./pages/not-found/not-found.module').then(
@@ -106,6 +110,8 @@ const routes: Routes = [
         (m) => m.FiltermodalPageModule
       ),
   },
+
+
 
 
 ];

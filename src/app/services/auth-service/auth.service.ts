@@ -14,6 +14,7 @@ import {
   updatePassword,
 } from '@angular/fire/auth';
 import { getFirestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
+import { getDownloadURL, getStorage, ref, uploadBytes } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root',
@@ -37,13 +38,21 @@ export class AuthService {
   }
 
   async register({
-    name,
+    firstName,
+    lastName,
     email,
     password,
+    age,
+    description,
+    profilePic // Assume this is a File object
   }: {
-    name: string;
-    email: string;
-    password: string;
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string,
+    age: number,
+    description: string,
+    profilePic: File
   }) {
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -52,12 +61,22 @@ export class AuthService {
         password
       );
       const user = userCredential.user;
+  
       if (user) {
+        const storage = getStorage();
+        const profilePicRef = ref(storage, `profilePics/${user.uid}`);
+        await uploadBytes(profilePicRef, profilePic);
+        const profilePicUrl = await getDownloadURL(profilePicRef);
+  
         const db = getFirestore();
         await setDoc(doc(db, 'users', user.uid), {
           uid: user.uid,
-          name: name,
-          email: email,
+          firstName,
+          lastName,
+          email,
+          age,
+          description,
+          profilePic: profilePicUrl
         });
       }
       return user;
