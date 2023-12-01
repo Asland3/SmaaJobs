@@ -90,6 +90,10 @@ const routes: Routes = [
     ],
   },
   {
+    path: 'privacy-policy',
+    loadChildren: () => import('./pages/privacy-policy/privacy-policy.module').then( m => m.PrivacyPolicyPageModule)
+  },
+  {
     path: '**',
     loadChildren: () =>
       import('./pages/not-found/not-found.module').then(
@@ -110,6 +114,8 @@ const routes: Routes = [
         (m) => m.FiltermodalPageModule
       ),
   },
+
+
 ];
 
 @NgModule({
