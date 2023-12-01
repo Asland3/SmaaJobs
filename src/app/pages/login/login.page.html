@@ -1,6 +1,6 @@
 <ion-content>
   <div class="background">
-    <ion-button
+    <!-- <ion-button
       (click)="navigateToStart()"
       fill="clear"
       class="back-arrow-button"
@@ -10,7 +10,21 @@
         src="../../../assets/svg/icons/back-arrow.svg"
         alt="back-arrow"
       ></ion-img>
-    </ion-button>
+    </ion-button> -->
+
+    <ion-row class="top-row">
+      <ion-col size-s="2" class="left">
+        <ion-button (click)="navigateToStart()" fill="clear">
+          <ion-img
+            src="../../../assets/svg/icons/back-arrow.svg"
+            alt="back-arrow"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+
+      <ion-col size-s="8" class="middle"> </ion-col>
+      <ion-col size-s="2" class="right"></ion-col>
+    </ion-row>
     <div class="container">
       <ion-img
         src="../../../assets/svg/logo-slogan.svg"

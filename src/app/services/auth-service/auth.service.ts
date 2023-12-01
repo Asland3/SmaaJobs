@@ -14,17 +14,21 @@ import {
   updatePassword,
 } from '@angular/fire/auth';
 import { getFirestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
-import { getDownloadURL, getStorage, ref, uploadBytes } from '@angular/fire/storage';
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytes,
+} from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-
   public currentUser: BehaviorSubject<any> = new BehaviorSubject(null);
 
   constructor(private auth: Auth) {
-   onAuthStateChanged(this.auth, (user) => {
+    onAuthStateChanged(this.auth, (user) => {
       if (user) {
         // User is signed in, fetch their data
         this.getUser(user.uid).then((userData) => {
@@ -44,15 +48,21 @@ export class AuthService {
     password,
     age,
     description,
-    profilePic // Assume this is a File object
+    town,
+    postalCode,
+    phone,
+    profilePic, // Assume this is a File object
   }: {
-    firstName: string,
-    lastName: string,
-    email: string,
-    password: string,
-    age: number,
-    description: string,
-    profilePic: File
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    age: number;
+    description: string;
+    town: string;
+    postalCode: string;
+    phone: string;
+    profilePic: File;
   }) {
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -61,13 +71,13 @@ export class AuthService {
         password
       );
       const user = userCredential.user;
-  
+
       if (user) {
         const storage = getStorage();
         const profilePicRef = ref(storage, `profilePics/${user.uid}`);
         await uploadBytes(profilePicRef, profilePic);
         const profilePicUrl = await getDownloadURL(profilePicRef);
-  
+
         const db = getFirestore();
         await setDoc(doc(db, 'users', user.uid), {
           uid: user.uid,
@@ -76,7 +86,10 @@ export class AuthService {
           email,
           age,
           description,
-          profilePic: profilePicUrl
+          town,
+          postalCode,
+          phone,
+          profilePic: profilePicUrl,
         });
       }
       return user;
@@ -126,20 +139,22 @@ export class AuthService {
       if (user) {
         const { displayName: name, email, photoURL } = user;
         const db = getFirestore();
-        await setDoc(doc(db, 'users', user.uid), {
-          uid: user.uid,
-          name: name,
-          email: email,
-          photoURL: photoURL,
-        }, 
-        { merge: true });
+        await setDoc(
+          doc(db, 'users', user.uid),
+          {
+            uid: user.uid,
+            name: name,
+            email: email,
+            photoURL: photoURL,
+          },
+          { merge: true }
+        );
       }
       return user;
     } catch (error) {
       console.log('Error during Google login: ', error); // Log the error
       throw new Error('Google login failed. Please try again.');
     }
-    
   }
 
   async forgotPassword({ email }: { email: string }) {
@@ -226,7 +241,6 @@ export class AuthService {
       throw new Error(
         'An error occurred while updating the name. Please try again.'
       );
-      
     }
     return null;
   }
@@ -237,5 +251,4 @@ export class AuthService {
       this.currentUser.next(userData);
     }
   }
-  
 }

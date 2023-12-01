@@ -125,7 +125,14 @@ swiper-container {
 }
 
 .top-row {
+  padding-top: 70px;
+  padding-left: 20px;
+  padding-right: 20px;
+
   .left {
+    ion-button {
+      --padding-start: 0px;
+    }
     ion-img {
       width: 25px;
       height: 25px;

@@ -1,31 +1,30 @@
 <ion-content>
-  <swiper-container>
+  <swiper-container #swiper (afterinit)="swiperReady()" [allowTouchMove]="true">
     <swiper-slide class="slide-one">
       <div class="background">
-        <ion-grid class="ion-no-padding ion-no-border ion-no-margin">
-          <ion-row>
-            <ion-col size-s="2" class="ion-align-self-center">
-              <ion-button fill="clear" class="back-arrow">
+        
+          <ion-row class="top-row">
+            <ion-col size-s="2" class="left">
+              <ion-button fill="clear">
                 <ion-img
                   src="../../../assets/svg/icons/back-arrow.svg"
                   alt="back-arrow"
-                  class="back-arrow"
                 ></ion-img>
               </ion-button>
             </ion-col>
 
-            <ion-col size-s="8">
+            <ion-col size-s="8" class="middle">
               <ion-img
                 src="../../../assets/svg/icons/logo.svg"
                 alt="logo"
                 class="logo"
               ></ion-img>
             </ion-col>
-            <ion-col size-s="2" class="ion-align-self-center ion-text-end">
-              <p class="cancel">Fortryd</p>
-            </ion-col>
+            <ion-col size-s="2" class="right"
+              ><p class="cancel">Fortryd</p></ion-col
+            >
           </ion-row>
-        </ion-grid>
+    
         <h1 style="margin-top: 0" class="container">Din Konto</h1>
 
         <h2 class="ion-text-center container">
@@ -64,35 +63,32 @@
 
         <div class="spacer"></div>
 
-        <ion-button class="main-button next-button">Næste</ion-button>
+        <ion-button (click)="swipeNext()" class="main-button next-button"
+          >Næste</ion-button
+        >
       </div>
     </swiper-slide>
     <swiper-slide class="slide-two">
       <div class="background">
-        <ion-grid class="ion-no-padding ion-no-border ion-no-margin">
-          <ion-row>
-            <ion-col size-s="2" class="ion-align-self-center">
-              <ion-button fill="clear" class="back-arrow">
-                <ion-img
-                  src="../../../assets/svg/icons/back-arrow.svg"
-                  alt="back-arrow"
-                  class="back-arrow"
-                ></ion-img>
-              </ion-button>
-            </ion-col>
-
-            <ion-col size-s="8">
+        <ion-row class="top-row">
+          <ion-col size-s="2" class="left">
+            <ion-button fill="clear">
               <ion-img
-                src="../../../assets/svg/icons/logo.svg"
-                alt="logo"
-                class="logo"
+                src="../../../assets/svg/icons/back-arrow.svg"
+                alt="back-arrow"
               ></ion-img>
-            </ion-col>
-            <ion-col size-s="2" class="ion-align-self-center ion-text-end">
-              <p class="cancel">Fortryd</p>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+            </ion-button>
+          </ion-col>
+
+          <ion-col size-s="8" class="middle">
+            <ion-img
+              src="../../../assets/svg/icons/logo.svg"
+              alt="logo"
+              class="logo"
+            ></ion-img>
+          </ion-col>
+          <ion-col size-s="2" class="right"></ion-col>
+        </ion-row>
         <h1 class="container">Vis dig frem!</h1>
         <div style="padding: 6px"></div>
         <h2 class="ion-text-center container">
@@ -146,30 +142,25 @@
 
     <swiper-slide class="slide-three">
       <div class="background">
-        <ion-grid class="ion-no-padding ion-no-border ion-no-margin">
-          <ion-row>
-            <ion-col size-s="2" class="ion-align-self-center">
-              <ion-button fill="clear" class="back-arrow">
-                <ion-img
-                  src="../../../assets/svg/icons/back-arrow.svg"
-                  alt="back-arrow"
-                  class="back-arrow"
-                ></ion-img>
-              </ion-button>
-            </ion-col>
-
-            <ion-col size-s="8">
+        <ion-row class="top-row">
+          <ion-col size-s="2" class="left">
+            <ion-button fill="clear">
               <ion-img
-                src="../../../assets/svg/icons/logo.svg"
-                alt="logo"
-                class="logo"
+                src="../../../assets/svg/icons/back-arrow.svg"
+                alt="back-arrow"
               ></ion-img>
-            </ion-col>
-            <ion-col size-s="2" class="ion-align-self-center ion-text-end">
-              <p class="cancel">Fortryd</p>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+            </ion-button>
+          </ion-col>
+
+          <ion-col size-s="8" class="middle">
+            <ion-img
+              src="../../../assets/svg/icons/logo.svg"
+              alt="logo"
+              class="logo"
+            ></ion-img>
+          </ion-col>
+          <ion-col size-s="2" class="right"></ion-col>
+        </ion-row>
         <h1 class="container">Lidt om dig</h1>
         <div class="spacer"></div>
 
@@ -204,30 +195,25 @@
 
     <swiper-slide class="slide-four">
       <div class="background">
-        <ion-grid class="ion-no-padding ion-no-border ion-no-margin">
-          <ion-row>
-            <ion-col size-s="2" class="ion-align-self-center">
-              <ion-button fill="clear" class="back-arrow">
-                <ion-img
-                  src="../../../assets/svg/icons/back-arrow.svg"
-                  alt="back-arrow"
-                  class="back-arrow"
-                ></ion-img>
-              </ion-button>
-            </ion-col>
-
-            <ion-col size-s="8">
+        <ion-row class="top-row">
+          <ion-col size-s="2" class="left">
+            <ion-button fill="clear">
               <ion-img
-                src="../../../assets/svg/icons/logo.svg"
-                alt="logo"
-                class="logo"
+                src="../../../assets/svg/icons/back-arrow.svg"
+                alt="back-arrow"
               ></ion-img>
-            </ion-col>
-            <ion-col size-s="2" class="ion-align-self-center ion-text-end">
-              <p class="cancel">Fortryd</p>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+            </ion-button>
+          </ion-col>
+
+          <ion-col size-s="8" class="middle">
+            <ion-img
+              src="../../../assets/svg/icons/logo.svg"
+              alt="logo"
+              class="logo"
+            ></ion-img>
+          </ion-col>
+          <ion-col size-s="2" class="right"></ion-col>
+        </ion-row>
         <h1 style="margin-top: 0" class="container">Næsten på plads</h1>
 
         <h4 class="move-right">Om Lokation:</h4>
