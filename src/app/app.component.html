@@ -1,3 +1,37 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu contentId="main-content" side="end">
+    <ion-content>
+      <div class="content">
+        <ion-button (click)="closeMenu()" fill="clear" class="close-button">
+          <ion-icon name="close-outline" size="large" slot="end"></ion-icon>
+        </ion-button>
+        <div class="menu-header">
+          <div class="user-profile-image">
+            <ion-img src="assets/svg/profile/profile-picture.svg" />
+          </div>
+          <h1>Mikkel Hansen Henriksen Nielsen</h1>
+        </div>
+        <ion-list lines="none">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
+            <ion-item
+              (click)="navigateToPage(p)"
+              [class.active]="isActive(p.url)"
+            >
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{ p.title }}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+        <ion-img class="logo" src="../assets/svg/icons/logo.svg"> </ion-img>
+        <div class="logout-button-container">
+          <ion-button expand="block" (click)="logout()">
+            <ion-icon name="log-out"> </ion-icon>Log ud</ion-button
+          >
+        </div>
+      </div>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
 </ion-app>

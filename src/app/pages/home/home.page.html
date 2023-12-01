@@ -1,17 +1,33 @@
 <ion-content>
   <div class="top-container">
-    <h5 class="placering ion-text-center ion-no-margin">Placering</h5>
-    <h5 class="ion-text-center ion-no-margin">2630 Taastrup</h5>
+    <ion-row>
+      <ion-col size-s="2"> </ion-col>
+
+      <ion-col size-s="8">
+        <h5 class="middle">Placering</h5>
+        <h5 class="middle ion-no-margin" style="margin-top: -10px">
+          2630 Taastrup
+        </h5>
+      </ion-col>
+
+      <ion-col size-s="2" class="right">
+        <ion-menu-button></ion-menu-button>
+      </ion-col>
+    </ion-row>
+
     <h1 class="ion-text-center">Hej Mikkel</h1>
-    <app-burgermenu></app-burgermenu>
+
     <div class="container">
       <ion-searchbar placeholder="Hvad søger du?"></ion-searchbar>
     </div>
   </div>
 
-  <ion-icon class="right-button" name="filter-circle" (click)="presentFilterModal()"></ion-icon>
+  <ion-icon
+    class="right-button"
+    name="filter-circle"
+    (click)="presentFilterModal()"
+  ></ion-icon>
 
-  <!-- skal være scrollable -->
   <ion-card>
     <div class="card-content">
       <h2 class="ion-no-margin">Gå tur med Fido</h2>

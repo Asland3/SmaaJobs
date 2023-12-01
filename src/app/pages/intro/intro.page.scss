@@ -27,6 +27,7 @@
         font-size: 0.8rem;
         width: 35px;
         height: 30px;
+        min-height: 0;
     }
 
     .bottom-content {
@@ -34,7 +35,7 @@
         flex: 1;
     }
 
-    .logo {
+    .logo-text {
         transform: scale(0.8);
     }
 
@@ -84,15 +85,12 @@
         font-size: 0.8rem;
         width: 35px;
         height: 30px;
+        min-height: 0;
     }
 
     .bottom-content {
         padding: 20px;
         flex: 1;
-    }
-
-    .logo {
-        transform: scale(0.8);
     }
 
     h1 {
