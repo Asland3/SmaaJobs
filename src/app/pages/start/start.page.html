@@ -1,27 +1,34 @@
 <ion-content>
   <div class="background">
+    
+    <div class="container">
+      <div class="top-spacer"></div>
+      <ion-img
+        src="../../../assets/svg/logo-slogan.svg"
+        alt="logo-slogan"
+        class="logo-slogan"
+      >
+      </ion-img>
 
+      <div class="button-group">
+        <h2 class="ion-text-center">login eller opret din konto</h2>
 
-  <div class="container">
-    <div class="top-spacer"></div>
-    <ion-img
-      src="../../../assets/svg/logo-slogan.svg"
-      alt="logo-slogan"
-      class="logo-slogan"
-    >
-    </ion-img>
+        <ion-button (click)="navigateToRegister()" class="main-button"
+          >Ny bruger</ion-button
+        >
 
-    <div class="button-group">
-      <h2 class="ion-text-center">login eller opret din konto</h2>
+        <ion-button (click)="navigateToLogin()" class="main-button"
+          >Login</ion-button
+        >
 
-      <ion-button (click)="navigateToRegister()" class="main-button">Ny bruger</ion-button>
+        <h1 class="ion-text-center ion-no-margin">eller</h1>
 
-      <ion-button (click)="navigateToLogin()" class="main-button">Login</ion-button>
-
-      <h1 class="ion-text-center ion-no-margin">eller</h1>
-
-      <ion-button (click)="navigateToHome()" class="main-button look-around-button">Kig rundt</ion-button>
+        <ion-button
+          (click)="navigateToHome()"
+          class="main-button look-around-button"
+          >Kig rundt</ion-button
+        >
+      </div>
     </div>
   </div>
-</div>
 </ion-content>

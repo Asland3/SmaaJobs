@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
+import { FiltermodalPage } from '../../modals/filtermodal/filtermodal.page';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +8,23 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  constructor(private menu: MenuController) {}
+  constructor(
+    private modalController: ModalController,
+  ) {}
 
   ngOnInit() {}
 
+  async presentFilterModal() {
+    const modal = await this.modalController.create({
+      component: FiltermodalPage,
+      breakpoints: [0, 0.3, 0.52, 0.6],
+      initialBreakpoint: 0.52,
+      presentingElement: await this.modalController.getTop(),
+    });
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+    if (data) {
+    }
+  }
 }

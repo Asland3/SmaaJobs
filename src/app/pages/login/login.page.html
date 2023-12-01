@@ -20,30 +20,40 @@
       </ion-img>
 
       <div class="spacer"></div>
-      <div class="input-container">
-        <ion-input
-          label="Email"
-          label-placement="floating"
-          fill="outline"
-          placeholder="Skriv email"
-          mode="md"
-        ></ion-input>
+      <form (ngSubmit)="login()" [formGroup]="credentials">
+        <div class="input-container">
+          <ion-input
+            label="Email"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Skriv email"
+            mode="md"
+            clearInput="true"
+            errorText="Ugyldig e-mailadresse"
+            formControlName="email"
+          ></ion-input>
 
-        <ion-input
-          label="Adgangskode"
-          label-placement="floating"
-          fill="outline"
-          placeholder="Skriv adgangskode"
-          mode="md"
-        ></ion-input>
-      </div>
+          <ion-input
+            label="Adgangskode"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Skriv adgangskode"
+            mode="md"
+            type="password"
+            clearInput="true"
+            required="true"
+            errorText="Din adgangskode lever ikke op til kravene"
+            formControlName="password"
+          ></ion-input>
+        </div>
 
-      <h3 (click)="navigateToForgotPassword()" class="ion-text-center">
-        Glemt adgangskode?
-      </h3>
+        <h3 (click)="navigateToForgotPassword()" class="ion-text-center">
+          Glemt adgangskode?
+        </h3>
 
-      <div class="spacer"></div>
-      <ion-button class="main-button login-button">Login</ion-button>
+        <div class="spacer"></div>
+        <ion-button  type="submit" class="main-button login-button">Login</ion-button>
+      </form>
     </div>
   </div>
 </ion-content>

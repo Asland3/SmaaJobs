@@ -1,5 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Preferences } from '@capacitor/preferences';
 import { NavController } from '@ionic/angular';
+import { INTRO_KEY } from 'src/app/guards/intro.guard';
 import Swiper from 'swiper';
 
 
@@ -28,7 +30,8 @@ export class IntroPage {
     this.swiper?.slideNext();
   }
 
-  start() {
+  async start() {
+    await Preferences.set({ key: INTRO_KEY, value: 'true' });
     this.navCtrl.navigateRoot('/start', { animationDirection: 'forward' });
   }
 

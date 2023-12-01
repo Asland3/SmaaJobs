@@ -15,11 +15,11 @@ export class StartPage implements OnInit {
 
 
   navigateToRegister() {
-    this.navCtrl.navigateForward('/email-password');
+    this.navCtrl.navigateForward('/auth/register');
   }
 
   navigateToLogin() {
-    this.navCtrl.navigateForward('/login');
+    this.navCtrl.navigateForward('/auth/login');
   }
 
   navigateToHome() {

@@ -25,52 +25,132 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-@import url('https://fonts.googleapis.com/css?family=Stylish:700|Stylish:400');
+@import url("https://fonts.googleapis.com/css?family=Stylish:700|Stylish:400");
 
 * {
-    font-family: 'Stylish', sans-serif;
-    // font-weight: 400;
+  font-family: "Stylish", sans-serif;
+  // font-weight: 400;
 }
+
+:root,
+:root[mode="ios"],
+:root[mode="md"] {
+  --ion-font-family: 'Stylish', sans-serif !important;
+  font-family: 'Stylish', sans-serif !important;
+}
+
 
 h1,
 h2,
 h3,
 h4,
 h5 {
-    font-family: 'Stylish', sans-serif;
-    // font-weight: 700;
+  font-family: "Stylish", sans-serif;
+  // font-weight: 700;
 }
 
-html {font-size: 100%;}
+html {
+  font-size: 100%;
+}
 
-p { font-size: 1rem; /* 16px */}
-h1 { font-size: 1.5rem; /* 24px */}
-h2 { font-size: 1.25rem; /* 20px */}
-h3 { font-size: 1.125rem; /* 18px */}
-h4 { font-size: 1rem; /* 16px */}
-h5 { font-size: 0.875rem; /* 14px */}
-small { font-size: 0.75rem; /* 12px */}
+p {
+  font-size: 1rem;
+  /* 16px */
+}
 
+h1 {
+  font-size: 1.5rem;
+  /* 24px */
+}
 
+h2 {
+  font-size: 1.25rem;
+  /* 20px */
+}
 
+h3 {
+  font-size: 1.125rem;
+  /* 18px */
+}
+
+h4 {
+  font-size: 1rem;
+  /* 16px */
+}
+
+h5 {
+  font-size: 0.875rem;
+  /* 14px */
+}
+
+small {
+  font-size: 0.75rem;
+  /* 12px */
+}
 
 ion-button {
-    --border-radius: 10px;
-    font-size: 20px;
-    //Not sure about shadow on buttons yet
-    // --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  --border-radius: 10px;
+  font-size: 20px;
+  min-height: 0;
 }
 
 .main-button {
-    --border-radius: 10px;
-    font-size: 20px;
-    display: block;
-    width: 282px;
-    height: 63px;
-    margin-left: auto;
-    margin-right: auto;
+  --border-radius: 10px;
+  font-size: 20px;
+  display: block;
+  width: 282px;
+  height: 63px;
+  min-height: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ion-menu-button {
+  color: black;
+}
+
+ion-item.active {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-primary-contrast);
 }
 
 swiper-container {
-    --swiper-pagination-color: var(--ion-color-secondary, #3880ff);
+  --swiper-pagination-color: var(--ion-color-secondary, #3880ff);
+}
+
+.small-center-modal::part(content) {
+  width: 80%;
+  --border-radius: 10px;
+  --height: 50%;
+}
+
+.top-row {
+  .left {
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
   }
+
+  .middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+.logo {
+  width: 115px;
+  height: 80px;
+}
