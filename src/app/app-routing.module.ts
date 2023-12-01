@@ -37,6 +37,35 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'email-password',
+    loadChildren: () =>
+      import('./pages/register/email-password/email-password.module').then(
+        (m) => m.EmailPasswordPageModule
+      ),
+  },
+  {
+    path: 'name-picture',
+    loadChildren: () =>
+      import('./pages/register/name-picture/name-picture.module').then(
+        (m) => m.NamePicturePageModule
+      ),
+  },
+  {
+    path: 'about-you',
+    loadChildren: () =>
+      import('./pages/register/about-you/about-you.module').then(
+        (m) => m.AboutYouPageModule
+      ),
+  },
+  {
+    path: 'address',
+    loadChildren: () =>
+      import('./pages/register/address/address.module').then(
+        (m) => m.addressPageModule
+      ),
+  },
+
+  {
     path: 'auth',
     children: [
       {
@@ -81,25 +110,6 @@ const routes: Routes = [
         (m) => m.FiltermodalPageModule
       ),
   },
-  {
-    path: 'email-password',
-    loadChildren: () => import('./pages/register/email-password/email-password.module').then( m => m.EmailPasswordPageModule)
-  },
-  {
-    path: 'name-picture',
-    loadChildren: () => import('./pages/register/name-picture/name-picture.module').then( m => m.NamePicturePageModule)
-  },
-  {
-    path: 'about-you',
-    loadChildren: () => import('./pages/register/about-you/about-you.module').then( m => m.AboutYouPageModule)
-  },
-  {
-    path: 'adress',
-    loadChildren: () => import('./pages/register/adress/adress.module').then( m => m.AdressPageModule)
-  },
-
-
-
 ];
 
 @NgModule({

@@ -4,10 +4,6 @@
   min-height: 100vh;
 }
 
-main{
-    padding: 0;
-}
-
 .container {
   padding-right: 50px;
   padding-left: 50px;
@@ -20,7 +16,6 @@ main{
 
 .cancel {
   color: rgba(0, 0, 0, 0.5);
-  font-family: Stylish;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -40,8 +35,6 @@ ion-grid {
 }
 
 h1 {
-  color: rgb(0, 0, 0);
-  font-family: 'Times New Roman', Times, serif;
   font-size: 35px;
   font-style: normal;
   font-weight: 400;
@@ -76,9 +69,6 @@ ion-input[fill="outline"] {
 }
 
 .text {
-  color: #000;
-  text-align: center;
-  font-family: Stylish;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;   
@@ -89,15 +79,9 @@ ion-input[fill="outline"] {
   padding: 10px 10px 40px;
 }
 
-.onSelected{
-  border: none;
-}
 .onSelected:active {
 border: 2px solid black;
 border-radius: 60px;
 }
 
-.onSelected:focus{
-  border: 2px solid black;
-  border-radius: 60px;
-}
+
