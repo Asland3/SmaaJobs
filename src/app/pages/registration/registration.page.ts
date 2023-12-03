@@ -49,7 +49,7 @@ export class RegistrationPage implements OnInit {
   swipeNext() {
     if (this.credentials.valid) {
       this.swiper?.slideNext();
-    }else{
+    } else {
       this.credentials.markAllAsTouched();
     }
   }
@@ -83,22 +83,19 @@ export class RegistrationPage implements OnInit {
     return pass === confirmPass ? null : { notSame: true };
   }
 
-
-
   async register() {
     const loading = await this.loadingController.create({
       message: 'Creating account...',
     });
     await loading.present();
-
+    console.log(this.credentials.value);
     try {
       const user = await this.authService.register(this.credentials.value);
 
-      console.log(user);
       await loading.dismiss();
 
       if (user) {
-        this.navCtrl.navigateBack('login', { replaceUrl: true });
+        this.navCtrl.navigateForward('home', { replaceUrl: true });
       }
     } catch (error: any) {
       await loading.dismiss();
@@ -119,11 +116,6 @@ export class RegistrationPage implements OnInit {
       resultType: CameraResultType.DataUrl,
       source: CameraSource.Photos,
     });
-  
-    if (image.dataUrl) {
-      // Directly assign the base64 string to this.recipe.image
-      this.recipe.image = image.dataUrl;
-    }
   }
 
   get email() {
