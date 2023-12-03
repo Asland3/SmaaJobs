@@ -2,29 +2,28 @@
   <swiper-container #swiper (afterinit)="swiperReady()" [allowTouchMove]="true">
     <swiper-slide class="slide-one">
       <div class="background">
-        
-          <ion-row class="top-row">
-            <ion-col size-s="2" class="left">
-              <ion-button fill="clear">
-                <ion-img
-                  src="../../../assets/svg/icons/back-arrow.svg"
-                  alt="back-arrow"
-                ></ion-img>
-              </ion-button>
-            </ion-col>
-
-            <ion-col size-s="8" class="middle">
+        <ion-row class="top-row">
+          <ion-col size-s="2" class="left">
+            <ion-button fill="clear">
               <ion-img
-                src="../../../assets/svg/icons/logo.svg"
-                alt="logo"
-                class="logo"
+                src="../../../assets/svg/icons/back-arrow.svg"
+                alt="back-arrow"
               ></ion-img>
-            </ion-col>
-            <ion-col size-s="2" class="right"
-              ><p class="cancel">Fortryd</p></ion-col
-            >
-          </ion-row>
-    
+            </ion-button>
+          </ion-col>
+
+          <ion-col size-s="8" class="middle">
+            <ion-img
+              src="../../../assets/svg/icons/logo.svg"
+              alt="logo"
+              class="logo"
+            ></ion-img>
+          </ion-col>
+          <ion-col size-s="2" class="right"
+            ><p class="cancel">Fortryd</p></ion-col
+          >
+        </ion-row>
+
         <h1 style="margin-top: 0" class="container">Din Konto</h1>
 
         <h2 class="ion-text-center container">
@@ -33,39 +32,56 @@
 
         <div style="padding: 5px"></div>
 
-        <ion-input
-          label="Email"
-          label-placement="floating"
-          fill="outline"
-          placeholder="Email"
-          mode="md"
-        ></ion-input>
+        <form [formGroup]="credentials">
+          <div>
+            <ion-input
+              label="Email"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Skriv email"
+              mode="md"
+              clearInput="true"
+              errorText="Ugyldig e-mailaddresse"
+              formControlName="email"
+            ></ion-input>
+          </div>
 
-        <div style="padding: 15px"></div>
+          <div style="padding: 15px"></div>
 
-        <ion-input
-          label="Adgangskode"
-          label-placement="floating"
-          fill="outline"
-          placeholder="Adgangskode"
-          mode="md"
-        ></ion-input>
+          <ion-input
+            label="Adgangskode"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Skriv adgangskode"
+            mode="md"
+            type="password"
+            clearInput="true"
+            required="true"
+            errorText="Din adgangskode lever ikke op til kravene"
+            formControlName="password"
+          ></ion-input>
 
-        <div style="padding: 15px"></div>
+          <div style="padding: 15px"></div>
 
-        <ion-input
-          label="Gentag Adgangskode"
-          label-placement="floating"
-          fill="outline"
-          placeholder="Gentag Adgangskode"
-          mode="md"
-        ></ion-input>
+          <ion-input
+            label="Gentag adgangskode"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Gentag adgangskode"
+            mode="md"
+            type="password"
+            clearInput="true"
+            required="true"
+            errorText="Din adgangskode lever ikke op til kravene"
+            formControlName="rePassword"
+          ></ion-input>
 
-        <div class="spacer"></div>
+          <div class="spacer"></div>
 
-        <ion-button (click)="swipeNext()" class="main-button next-button"
-          >Næste</ion-button
-        >
+          <ion-button (click)="swipeNext()" class="main-button next-button"
+            >Næste</ion-button
+          >
+        </form>
       </div>
     </swiper-slide>
     <swiper-slide class="slide-two">
@@ -116,27 +132,39 @@
           </ion-row>
         </ion-grid>
 
-        <ion-input
-          label="Fornavn"
-          label-placement="floating"
-          fill="outline"
-          placeholder="Fornavn"
-          mode="md"
-        ></ion-input>
+        <form [formGroup]="credentials">
+          <ion-input
+            label="Fornavn"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Fornavn"
+            mode="md"
+            clearInput="true"
+            required="true"
+            errorText="Du mangler at udfylde dit fornavn"
+            formControlName="firstName"
+          ></ion-input>
 
-        <div style="padding: 15px"></div>
+          <div style="padding: 15px"></div>
 
-        <ion-input
-          label="Efternavn"
-          label-placement="floating"
-          fill="outline"
-          placeholder="Efternavn"
-          mode="md"
-        ></ion-input>
+          <ion-input
+            label="Efternavn"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Efternavn"
+            mode="md"
+            clearInput="true"
+            required="true"
+            errorText="Du mangler at udfylde dit efternavn"
+            formControlName="lastName"
+          ></ion-input>
+        </form>
 
         <div class="spacer"></div>
 
-        <ion-button class="main-button next-button">Næste</ion-button>
+        <ion-button (click)="swipeNext()" class="main-button next-button"
+          >Næste</ion-button
+        >
       </div>
     </swiper-slide>
 
@@ -164,32 +192,40 @@
         <h1 class="container">Lidt om dig</h1>
         <div class="spacer"></div>
 
-        <ion-input
-          label="Alder"
-          label-placement="floating"
-          fill="outline"
-          placeholder="Alder"
-          mode="md"
-          [clearInput]="true"
-        ></ion-input>
+        <form [formGroup]="credentials">
+          <ion-input
+            label="Alder"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Alder"
+            mode="md"
+            clearInput="true"
+            required="true"
+            errorText="Du mangler at udfylde din alder"
+            formControlName="age"
+          ></ion-input>
 
-        <div style="padding: 15px"></div>
+          <div style="padding: 15px"></div>
 
-        <ion-textarea
-          class="description-text"
-          fill="outline"
-          mode="md"
-          value="Skriv om dig selv, og hvis du har nogle
-      informationer man bør vise hensyn til."
-          [clearOnEdit]="true"
-          [counter]="true"
-          maxlength="500"
-          [autoGrow]="true"
-        ></ion-textarea>
-
+          <ion-textarea
+            label="Beskriv dig selv"
+            label-placement="floating"
+            class="description-text"
+            fill="outline"
+            mode="md"
+            placeholder="Skriv om dig selv, og hvis du har nogle informationer man bør vise hensyn til"
+            counter="true"
+            maxlength="500"
+            autoGrow="true"
+            errorText="Du mangler at lave en beskrivelse af dig selv"
+            formControlName="description"
+          ></ion-textarea>
+        </form>
         <div class="spacer"></div>
 
-        <ion-button class="main-button next-button">Næste</ion-button>
+        <ion-button (click)="swipeNext()" class="main-button next-button"
+          >Næste</ion-button
+        >
       </div>
     </swiper-slide>
 
@@ -217,49 +253,66 @@
         <h1 style="margin-top: 0" class="container">Næsten på plads</h1>
 
         <h4 class="move-right">Om Lokation:</h4>
+        <form [formGroup]="credentials">
+          <ion-input
+            label="By"
+            label-placement="floating"
+            fill="outline"
+            placeholder="By"
+            mode="md"
+            clearInput="true"
+            required="true"
+            errorText="Du mangler at udfylde din by"
+            formControlName="town"
+          ></ion-input>
 
-        <ion-input
-          label="By"
-          label-placement="floating"
-          fill="outline"
-          placeholder="By"
-          mode="md"
-        ></ion-input>
+          <div style="padding: 10px"></div>
 
-        <div style="padding: 10px"></div>
+          <ion-input
+            label="Postnummer"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Postnummer"
+            mode="md"
+            clearInput="true"
+            required="true"
+            errorText="Du mangler at udfylde dit postnummer"
+            formControlName="postalCode"
+          ></ion-input>
 
-        <ion-input
-          label="Postnummer"
-          label-placement="floating"
-          fill="outline"
-          placeholder="Postnummer"
-          mode="md"
-        ></ion-input>
+          <div style="padding: 15px"></div>
 
-        <div style="padding: 15px"></div>
+          <h4 class="move-right">Så du kan kontaktes:</h4>
+          <ion-input
+            label="Telefon"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Telefon"
+            mode="md"
+            clearInput="true"
+            required="true"
+            errorText="Du mangler at udfylde dit telefonnummer"
+            formControlName="phone"
+          ></ion-input>
 
-        <h4 class="move-right">Så du kan kontaktes:</h4>
-        <ion-input
-          label="Telefon"
-          label-placement="floating"
-          fill="outline"
-          placeholder="Telefon"
-          mode="md"
-        ></ion-input>
+          <div style="padding: 10px"></div>
 
-        <div style="padding: 10px"></div>
-
-        <ion-input
-          label="Email"
-          label-placement="floating"
-          fill="outline"
-          placeholder="Email"
-          mode="md"
-        ></ion-input>
+          <ion-input
+            label="Email"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Email"
+            mode="md"
+            clearInput="true"
+            required="true"
+            errorText="Du mangler at udfylde din email"
+            formControlName="email"
+          ></ion-input>
+        </form>
 
         <div class="spacer"></div>
 
-        <ion-button class="main-button next-button">Færdiggør</ion-button>
+        <ion-button (click)="register()" class="main-button next-button">Færdiggør</ion-button>
       </div>
     </swiper-slide>
   </swiper-container>
