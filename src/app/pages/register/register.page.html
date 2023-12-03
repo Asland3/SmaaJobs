@@ -4,12 +4,7 @@
       <div class="background">
         <ion-row class="top-row">
           <ion-col size-s="2" class="left">
-            <ion-button fill="clear">
-              <ion-img
-                src="../../../assets/svg/icons/back-arrow.svg"
-                alt="back-arrow"
-              ></ion-img>
-            </ion-button>
+            
           </ion-col>
 
           <ion-col size-s="8" class="middle">
@@ -20,7 +15,7 @@
             ></ion-img>
           </ion-col>
           <ion-col size-s="2" class="right"
-            ><p class="cancel">Fortryd</p></ion-col
+            ><p (click)="cancel()" class="cancel">Fortryd</p></ion-col
           >
         </ion-row>
 
@@ -88,7 +83,7 @@
       <div class="background">
         <ion-row class="top-row">
           <ion-col size-s="2" class="left">
-            <ion-button fill="clear">
+            <ion-button (click)="swipeBack()" fill="clear">
               <ion-img
                 src="../../../assets/svg/icons/back-arrow.svg"
                 alt="back-arrow"
@@ -103,7 +98,7 @@
               class="logo"
             ></ion-img>
           </ion-col>
-          <ion-col size-s="2" class="right"></ion-col>
+          <ion-col size-s="2" class="right"><p (click)="cancel()" class="cancel">Fortryd</p></ion-col>
         </ion-row>
         <h1 class="container">Vis dig frem!</h1>
         <div style="padding: 6px"></div>
@@ -172,7 +167,7 @@
       <div class="background">
         <ion-row class="top-row">
           <ion-col size-s="2" class="left">
-            <ion-button fill="clear">
+            <ion-button (click)="swipeBack()" fill="clear">
               <ion-img
                 src="../../../assets/svg/icons/back-arrow.svg"
                 alt="back-arrow"
@@ -187,7 +182,7 @@
               class="logo"
             ></ion-img>
           </ion-col>
-          <ion-col size-s="2" class="right"></ion-col>
+          <ion-col size-s="2" class="right"><p (click)="cancel()" class="cancel">Fortryd</p></ion-col>
         </ion-row>
         <h1 class="container">Lidt om dig</h1>
         <div class="spacer"></div>
@@ -233,7 +228,7 @@
       <div class="background">
         <ion-row class="top-row">
           <ion-col size-s="2" class="left">
-            <ion-button fill="clear">
+            <ion-button (click)="swipeBack()" fill="clear">
               <ion-img
                 src="../../../assets/svg/icons/back-arrow.svg"
                 alt="back-arrow"
@@ -248,7 +243,7 @@
               class="logo"
             ></ion-img>
           </ion-col>
-          <ion-col size-s="2" class="right"></ion-col>
+          <ion-col size-s="2" class="right"><p (click)="cancel()" class="cancel">Fortryd</p></ion-col>
         </ion-row>
         <h1 style="margin-top: 0" class="container">Næsten på plads</h1>
 

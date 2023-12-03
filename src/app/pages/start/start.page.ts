@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -6,16 +6,12 @@ import { NavController } from '@ionic/angular';
   templateUrl: './start.page.html',
   styleUrls: ['./start.page.scss'],
 })
-export class StartPage implements OnInit {
+export class StartPage {
 
   constructor(private navCtrl: NavController) { }
 
-  ngOnInit() {
-  }
-
-
   navigateToRegister() {
-    this.navCtrl.navigateForward('/auth/email-password');
+    this.navCtrl.navigateForward('/auth/register');
   }
 
   navigateToLogin() {

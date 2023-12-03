@@ -16,11 +16,12 @@ import Swiper from 'swiper';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.page.html',
-  styleUrls: ['./registration.page.scss'],
+  selector: 'app-register',
+  templateUrl: './register.page.html',
+  styleUrls: ['./register.page.scss'],
 })
-export class RegistrationPage implements OnInit {
+export class RegisterPage implements OnInit {
+
   credentials: FormGroup | any;
 
   @ViewChild('swiper')
@@ -58,6 +59,10 @@ export class RegistrationPage implements OnInit {
     this.swiper?.slidePrev();
   }
 
+  cancel() {
+    this.navCtrl.navigateBack('/start');
+  }
+
   validators() {
     this.credentials = this.fb.group(
       {
@@ -88,14 +93,13 @@ export class RegistrationPage implements OnInit {
       message: 'Creating account...',
     });
     await loading.present();
-    console.log(this.credentials.value);
     try {
       const user = await this.authService.register(this.credentials.value);
 
       await loading.dismiss();
 
       if (user) {
-        this.navCtrl.navigateForward('home', { replaceUrl: true });
+        this.navCtrl.navigateForward('/home');
       }
     } catch (error: any) {
       await loading.dismiss();

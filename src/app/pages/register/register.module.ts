@@ -1,19 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
-import { RegistrationPageRoutingModule } from './registration-routing.module';
-import { RegistrationPage } from './registration.page';
+
+import { RegisterPageRoutingModule } from './register-routing.module';
+
+import { RegisterPage } from './register.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RegistrationPageRoutingModule,
+    RegisterPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [RegistrationPage],
+  declarations: [RegisterPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class RegistrationPageModule {}
+export class RegisterPageModule {}
