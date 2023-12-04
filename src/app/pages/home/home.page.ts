@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, ModalController } from '@ionic/angular';
+import { MenuController, ModalController, NavController } from '@ionic/angular';
 import { FiltermodalPage } from '../../modals/filtermodal/filtermodal.page';
 
 @Component({
@@ -10,6 +10,7 @@ import { FiltermodalPage } from '../../modals/filtermodal/filtermodal.page';
 export class HomePage implements OnInit {
   constructor(
     private modalController: ModalController,
+    private navCtrl: NavController
   ) {}
 
   ngOnInit() {}
@@ -17,8 +18,8 @@ export class HomePage implements OnInit {
   async presentFilterModal() {
     const modal = await this.modalController.create({
       component: FiltermodalPage,
-      breakpoints: [0, 0.3, 0.52, 0.6],
-      initialBreakpoint: 0.52,
+      breakpoints: [0, 0.3, 0.55, 0.7],
+      initialBreakpoint: 0.55,
       presentingElement: await this.modalController.getTop(),
     });
     await modal.present();
@@ -26,5 +27,9 @@ export class HomePage implements OnInit {
     const { data } = await modal.onDidDismiss();
     if (data) {
     }
+  }
+
+  addNew(){
+    this.navCtrl.navigateForward('/add-new-job');
   }
 }

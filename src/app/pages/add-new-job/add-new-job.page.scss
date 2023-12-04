@@ -1,0 +1,159 @@
+ion-content {
+  --background: #e6e6e6;
+}
+.top-container {
+  background: url("../../../assets/svg/backgrounds/add-new-job.svg") no-repeat
+    center center / cover;
+  min-height: 36vh;
+  max-height: 36vh;
+}
+
+ion-row {
+  .left {
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+.background {
+  background-color: rgba(75, 43, 18, 0.2);
+  width: 350px;
+  height: 150px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.card-wrapper {
+  flex: 0 0 auto;
+  margin: 0 5px;
+}
+
+.inner-card {
+  position: relative;
+  background-color: white;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 !important;
+  overflow: hidden;
+}
+
+.inner-card ion-icon {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 20px;
+  color: black;
+}
+
+.add-camera {
+  width: 80px;
+  height: auto;
+}
+
+.selected-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bottom-container {
+  padding: 20px;
+}
+
+ion-input[fill="outline"] {
+  --border-radius: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  --border-color: black;
+  --border-style: solid;
+  --border-width: 1px;
+  --highlight-color-focused: rgba(0, 0, 0, 0.7);
+  --placeholder-color: black;
+  width: 100%;
+  margin-bottom: 10px;
+  --background: white;
+}
+
+ion-item {
+  --border-radius: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  --border-color: black;
+  --border-style: solid;
+  --border-width: 1px;
+  --highlight-background: rgba(0, 0, 0, 0.7);
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-end: 0;
+  --inner-border-width: 0;
+  width: 100%;
+  height: 56px;
+  margin-bottom: 10px;
+}
+ion-select {
+  --placeholder-color: black;
+  --placeholder-opacity: 1;
+  --padding-bottom: 5px;
+  --padding-top: 5px;
+  --padding-start: 6px;
+}
+
+ion-item {
+  --padding-bottom: 5px;
+  --padding-top: 5px;
+  --padding-start: 6px;
+}
+ion-textarea[fill="outline"] {
+  --border-radius: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  --border-color: black;
+  --border-style: solid;
+  --border-width: 1px;
+  --highlight-color-focused: rgba(0, 0, 0, 0.7);
+  --placeholder-color: black;
+  width: 100%;
+  margin-bottom: 25px;
+  --background: white;
+}
+.description-text {
+  height: 150px;
+  text-align: left;
+  padding: 0;
+}
+.add-job-button {
+  --background: var(--ion-color-secondary);
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  margin-top: 10px;
+}

@@ -1,0 +1,110 @@
+<ion-content>
+  <div class="top-container">
+    <ion-row>
+      <ion-col size-s="2" class="left">
+        <ion-button fill="clear" (click)="navigateToHome()">
+          <ion-img
+            src="../../../assets/svg/icons/back-arrow.svg"
+            alt="back-arrow"
+          ></ion-img> </ion-button
+      ></ion-col>
+
+      <ion-col size-s="8">
+        <h5 class="middle">Placering</h5>
+        <h5 class="middle ion-no-margin" style="margin-top: -10px">
+          2630 Taastrup
+        </h5>
+      </ion-col>
+
+      <ion-col size-s="2" class="right">
+        <ion-menu-button></ion-menu-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-card class="background">
+      <div class="card-container">
+        <div
+          class="card-wrapper"
+          *ngFor="let imageURI of imageURIs; let i = index"
+        >
+          <ion-card class="inner-card">
+            <ion-img
+              *ngIf="!imageURI; else existingImage"
+              class="add-camera"
+              src="../../../assets/svg/icons/camera-add-new.svg"
+              alt="add-camera"
+              (click)="openCamera(i)"
+            >
+            </ion-img>
+            <ng-template #existingImage>
+              <ion-icon (click)="removePhoto(i)" name="close"></ion-icon>
+              <ion-img
+                class="selected-image"
+                [src]="imageURI"
+                alt="selected-image"
+              >
+              </ion-img>
+            </ng-template>
+          </ion-card>
+        </div>
+      </div>
+    </ion-card>
+
+    <h4 class="ion-text-center">{{countSelectedImages()}}/3 billeder valgt</h4>
+  </div>
+  <div class="bottom-container">
+    <!-- Titel -->
+    <ion-input
+      label="Titel"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Titel"
+      mode="md"
+    ></ion-input>
+
+    <!-- Undertitel -->
+    <ion-input
+      label="Undertitel"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Undertitel"
+      mode="md"
+    ></ion-input>
+
+    <!-- Kategori -->
+    <ion-item>
+      <ion-select placeholder="Kategori" [(ngModel)]="selectedCategoryId">
+        <ion-select-option
+          *ngFor="let category of categories"
+          [value]="category.id"
+        >
+          {{ category.name }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Beskrivelse -->
+    <ion-textarea
+      label="Beskrivelse"
+      label-placement="floating"
+      class="description-text"
+      placeholder="Beskrivelse"
+      fill="outline"
+      mode="md"
+      counter="true"
+      maxlength="500"
+    >
+    </ion-textarea>
+
+    <!-- Løn -->
+    <ion-input
+      label="Løn"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Løn"
+      mode="md"
+      type="number"
+    ></ion-input>
+    <ion-button class="add-job-button">Opret Job</ion-button>
+  </div>
+</ion-content>

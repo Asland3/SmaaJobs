@@ -90,6 +90,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/registration/registration.module').then( m => m.RegistrationPageModule)
   },
   {
+    path: 'add-new-job',
+    loadChildren: () => import('./pages/add-new-job/add-new-job.module').then( m => m.AddNewJobPageModule)
+  },
+  {
     path: '**',
     loadChildren: () =>
       import('./pages/not-found/not-found.module').then(
@@ -110,10 +114,6 @@ const routes: Routes = [
         (m) => m.FiltermodalPageModule
       ),
   },
-
-
-
-
 ];
 
 @NgModule({
