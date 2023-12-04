@@ -1,0 +1,332 @@
+<ion-content>
+  <swiper-container #swiper (afterinit)="swiperReady()" [allowTouchMove]="false">
+    <swiper-slide class="slide-one">
+      <div class="background">
+        <ion-row class="top-row">
+          <ion-col size-s="2" class="left"> </ion-col>
+
+          <ion-col size-s="8" class="middle">
+            <ion-img
+              src="../../../assets/svg/icons/logo.svg"
+              alt="logo"
+              class="logo"
+            ></ion-img>
+          </ion-col>
+          <ion-col size-s="2" class="right"
+            ><p (click)="cancel()" class="cancel">Fortryd</p></ion-col
+          >
+        </ion-row>
+
+        <h1 style="margin-top: 0" class="container">Din Konto</h1>
+
+        <h2 class="ion-text-center container">
+          Indtast den email og adgangskode du gerne vil bruge til at logge ind
+        </h2>
+
+        <div style="padding: 5px"></div>
+
+        <form [formGroup]="credentials.get('slide1')">
+          <div>
+            <ion-input
+              label="Email"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Skriv email"
+              mode="md"
+              clearInput="true"
+              errorText="Ugyldig e-mailaddresse"
+              formControlName="email"
+            ></ion-input>
+          </div>
+
+          <div style="padding: 15px"></div>
+
+          <ion-input
+            label="Adgangskode"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Skriv adgangskode"
+            mode="md"
+            type="password"
+            clearInput="true"
+            required="true"
+            errorText="Din adgangskode lever ikke op til kravene"
+            formControlName="password"
+          ></ion-input>
+
+          <div style="padding: 15px"></div>
+
+          <ion-input
+            label="Gentag adgangskode"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Gentag adgangskode"
+            mode="md"
+            type="password"
+            clearInput="true"
+            required="true"
+            errorText="Din adgangskode lever ikke op til kravene"
+            formControlName="rePassword"
+          ></ion-input>
+
+          <div class="spacer"></div>
+
+          <ion-button (click)="swipeNext()" class="main-button next-button"
+            >Næste</ion-button
+          >
+        </form>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="slide-two">
+      <div class="background">
+        <ion-row class="top-row">
+          <ion-col size-s="2" class="left">
+            <ion-button (click)="swipeBack()" fill="clear">
+              <ion-img
+                src="../../../assets/svg/icons/back-arrow.svg"
+                alt="back-arrow"
+              ></ion-img>
+            </ion-button>
+          </ion-col>
+
+          <ion-col size-s="8" class="middle">
+            <ion-img
+              src="../../../assets/svg/icons/logo.svg"
+              alt="logo"
+              class="logo"
+            ></ion-img>
+          </ion-col>
+          <ion-col size-s="2" class="right"
+            ><p (click)="cancel()" class="cancel">Fortryd</p></ion-col
+          >
+        </ion-row>
+        <h1 class="container">Vis dig frem!</h1>
+        <div style="padding: 6px"></div>
+        <h2 class="ion-text-center container">
+          Skab tilid og indsæt et<br />
+          billede
+        </h2>
+
+        <ion-grid class="img-grid">
+          <ion-row>
+            <ion-col
+              (click)="selectProfileImage('../../../../assets/svg/profile/boy.png')"
+            >
+              <ion-img
+                class="avatarImage"
+                [class.selectedAvatar]="selectedProfileImage === '../../../../assets/svg/profile/boy.png'"
+                src="../../../../assets/svg/profile/boy.png"
+              >
+              </ion-img>
+            </ion-col>
+            <ion-col>
+              <ion-img
+                [src]="selectedProfileImage ? selectedProfileImage : '../../../../assets/svg/icons/camera.svg'"
+                (click)="openGallery()"
+              >
+              </ion-img>
+            </ion-col>
+            <ion-col
+              (click)="selectProfileImage('../../../../assets/svg/profile/girl.png')"
+            >
+              <ion-img
+                class="avatarImage"
+                [class.selectedAvatar]="selectedProfileImage === '../../../../assets/svg/profile/girl.png'"
+                src="../../../../assets/svg/profile/girl.png"
+              >
+              </ion-img>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <form [formGroup]="credentials.get('slide2')">
+          <ion-input
+            label="Fornavn"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Fornavn"
+            mode="md"
+            clearInput="true"
+            required="true"
+            errorText="Du mangler at udfylde dit fornavn"
+            formControlName="firstName"
+          ></ion-input>
+
+          <div style="padding: 15px"></div>
+
+          <ion-input
+            label="Efternavn"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Efternavn"
+            mode="md"
+            clearInput="true"
+            required="true"
+            errorText="Du mangler at udfylde dit efternavn"
+            formControlName="lastName"
+          ></ion-input>
+        </form>
+
+        <div class="spacer"></div>
+
+        <ion-button (click)="swipeNext()" class="main-button next-button"
+          >Næste</ion-button
+        >
+      </div>
+    </swiper-slide>
+
+    <swiper-slide class="slide-three">
+      <div class="background">
+        <ion-row class="top-row">
+          <ion-col size-s="2" class="left">
+            <ion-button (click)="swipeBack()" fill="clear">
+              <ion-img
+                src="../../../assets/svg/icons/back-arrow.svg"
+                alt="back-arrow"
+              ></ion-img>
+            </ion-button>
+          </ion-col>
+
+          <ion-col size-s="8" class="middle">
+            <ion-img
+              src="../../../assets/svg/icons/logo.svg"
+              alt="logo"
+              class="logo"
+            ></ion-img>
+          </ion-col>
+          <ion-col size-s="2" class="right"
+            ><p (click)="cancel()" class="cancel">Fortryd</p></ion-col
+          >
+        </ion-row>
+        <h1 class="container">Lidt om dig</h1>
+        <div class="spacer"></div>
+
+        <form [formGroup]="credentials.get('slide3')">
+          <ion-input
+            label="Alder"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Alder"
+            mode="md"
+            clearInput="true"
+            required="true"
+            errorText="Du mangler at udfylde din alder"
+            formControlName="age"
+          ></ion-input>
+
+          <div style="padding: 15px"></div>
+
+          <ion-textarea
+            label="Beskriv dig selv"
+            label-placement="floating"
+            class="description-text"
+            fill="outline"
+            mode="md"
+            placeholder="Skriv om dig selv, og hvis du har nogle informationer man bør vise hensyn til"
+            counter="true"
+            maxlength="500"
+            autoGrow="true"
+            errorText="Du mangler at lave en beskrivelse af dig selv"
+            formControlName="description"
+          ></ion-textarea>
+        </form>
+        <div class="spacer"></div>
+
+        <ion-button (click)="swipeNext()" class="main-button next-button"
+          >Næste</ion-button
+        >
+      </div>
+    </swiper-slide>
+
+    <swiper-slide class="slide-four">
+      <div class="background">
+        <ion-row class="top-row">
+          <ion-col size-s="2" class="left">
+            <ion-button (click)="swipeBack()" fill="clear">
+              <ion-img
+                src="../../../assets/svg/icons/back-arrow.svg"
+                alt="back-arrow"
+              ></ion-img>
+            </ion-button>
+          </ion-col>
+
+          <ion-col size-s="8" class="middle">
+            <ion-img
+              src="../../../assets/svg/icons/logo.svg"
+              alt="logo"
+              class="logo"
+            ></ion-img>
+          </ion-col>
+          <ion-col size-s="2" class="right"
+            ><p (click)="cancel()" class="cancel">Fortryd</p></ion-col
+          >
+        </ion-row>
+        <h1 style="margin-top: 0" class="container">Næsten på plads</h1>
+
+        <h4 class="move-right">Om Lokation:</h4>
+        <form [formGroup]="credentials.get('slide4')">
+          <ion-input
+            label="By"
+            label-placement="floating"
+            fill="outline"
+            placeholder="By"
+            mode="md"
+            clearInput="true"
+            required="true"
+            errorText="Du mangler at udfylde din by"
+            formControlName="town"
+          ></ion-input>
+
+          <div style="padding: 10px"></div>
+
+          <ion-input
+            label="Postnummer"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Postnummer"
+            mode="md"
+            clearInput="true"
+            required="true"
+            errorText="Du mangler at udfylde dit postnummer"
+            formControlName="postalCode"
+          ></ion-input>
+
+          <div style="padding: 15px"></div>
+
+          <h4 class="move-right">Så du kan kontaktes:</h4>
+          <ion-input
+            label="Telefon"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Telefon"
+            mode="md"
+            clearInput="true"
+            required="true"
+            errorText="Du mangler at udfylde dit telefonnummer"
+            formControlName="phone"
+          ></ion-input>
+
+          <div style="padding: 10px"></div>
+
+          <!-- <ion-input
+            label="Email"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Email"
+            mode="md"
+            clearInput="true"
+            required="true"
+            errorText="Du mangler at udfylde din email"
+            formControlName="email"
+          ></ion-input> -->
+        </form>
+
+        <div class="spacer"></div>
+
+        <ion-button (click)="register()" class="main-button next-button"
+          >Færdiggør</ion-button
+        >
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</ion-content>

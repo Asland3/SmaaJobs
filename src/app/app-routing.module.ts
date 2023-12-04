@@ -52,43 +52,22 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'email-password',
+        path: 'register',
         loadChildren: () =>
-          import('./pages/register/email-password/email-password.module').then(
-            (m) => m.EmailPasswordPageModule
+          import('./pages/register/register.module').then(
+            (m) => m.RegisterPageModule
           ),
-      },
-      {
-        path: 'name-picture',
-        loadChildren: () =>
-          import('./pages/register/name-picture/name-picture.module').then(
-            (m) => m.NamePicturePageModule
-          ),
-      },
-      {
-        path: 'about-you',
-        loadChildren: () =>
-          import('./pages/register/about-you/about-you.module').then(
-            (m) => m.AboutYouPageModule
-          ),
-      },
-      {
-        path: 'address',
-        loadChildren: () =>
-          import('./pages/register/address/address.module').then(
-            (m) => m.addressPageModule
-          ),
-      },
+      }
     ],
   },
   {
     path: 'privacy-policy',
-    loadChildren: () => import('./pages/privacy-policy/privacy-policy.module').then( m => m.PrivacyPolicyPageModule)
+    loadChildren: () =>
+      import('./pages/privacy-policy/privacy-policy.module').then(
+        (m) => m.PrivacyPolicyPageModule
+      ),
   },
-  {
-    path: 'registration',
-    loadChildren: () => import('./pages/registration/registration.module').then( m => m.RegistrationPageModule)
-  },
+
   {
     path: 'add-new-job',
     loadChildren: () => import('./pages/add-new-job/add-new-job.module').then( m => m.AddNewJobPageModule)
