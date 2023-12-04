@@ -88,7 +88,11 @@ const routes: Routes = [
       import('./modals/filtermodal/filtermodal.module').then(
         (m) => m.FiltermodalPageModule
       ),
+  },  {
+    path: 'logout-modal',
+    loadChildren: () => import('./modals/logout-modal/logout-modal.module').then( m => m.LogoutModalPageModule)
   },
+
 ];
 
 @NgModule({

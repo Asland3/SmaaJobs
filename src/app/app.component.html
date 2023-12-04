@@ -9,7 +9,7 @@
           <div class="user-profile-image">
             <ion-img src="assets/svg/profile/profile-picture.svg" />
           </div>
-          <h1>Mikkel Hansen Henriksen Nielsen</h1>
+          <h1>{{user.firstName}} {{user.lastName}}</h1>
         </div>
         <ion-list lines="none">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
@@ -26,9 +26,10 @@
         </ion-list>
         <ion-img class="logo" src="../assets/svg/icons/logo.svg"> </ion-img>
         <div class="logout-button-container">
+          <div *ngIf="user">
           <ion-button class="logout" expand="block" (click)="logout()">
             <ion-icon name="log-out"> </ion-icon>Log ud</ion-button
-          >
+          ></div>
         </div>
       </div>
     </ion-content>

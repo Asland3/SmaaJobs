@@ -6,7 +6,7 @@
       <ion-col size-s="8">
         <h5 class="middle">Placering</h5>
         <h5 class="middle ion-no-margin" style="margin-top: -10px">
-          2630 Taastrup
+         {{user?.postalCode}} - {{user?.town}}
         </h5>
       </ion-col>
 
@@ -14,8 +14,8 @@
         <ion-menu-button></ion-menu-button>
       </ion-col>
     </ion-row>
-
-    <h1 class="ion-text-center">Hej Mikkel</h1>
+    
+    <h1 class="ion-text-center">Hej {{user?.firstName}}</h1>
 
     <div class="container">
       <ion-searchbar placeholder="Hvad søger du?"></ion-searchbar>

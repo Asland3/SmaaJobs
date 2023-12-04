@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, ModalController } from '@ionic/angular';
 import { FiltermodalPage } from '../../modals/filtermodal/filtermodal.page';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { User } from 'src/app/models/user-model';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +10,18 @@ import { FiltermodalPage } from '../../modals/filtermodal/filtermodal.page';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  user!: User;
+
   constructor(
     private modalController: ModalController,
+    private authService: AuthService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() { 
+    this.authService.currentUser.subscribe((userData) => {
+      this.user = userData;
+    });
+  }
 
   async presentFilterModal() {
     const modal = await this.modalController.create({
