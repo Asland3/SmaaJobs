@@ -22,8 +22,8 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 })
 export class RegisterPage implements OnInit {
   credentials: FormGroup | any;
-  profilePicBlob: Blob | null = null;
-  selectedProfileImage: string | null = null;
+  profilePicBlob!: Blob
+  selectedProfileImage!: string 
 
 
   @ViewChild('swiper')
@@ -129,9 +129,17 @@ export class RegisterPage implements OnInit {
       source: CameraSource.Prompt,
     });
 
+    if (image.dataUrl) {
+      this.selectedProfileImage = image.dataUrl;
+    }
+
     // Convert the image to Blob for Firebase Storage
     const response = await fetch(image.dataUrl!);
     this.profilePicBlob = await response.blob();
+  }
+
+  selectProfileImage(imageUri: string) {
+    this.selectedProfileImage = imageUri;
   }
 
   get email() {

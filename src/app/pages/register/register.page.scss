@@ -143,7 +143,12 @@ ion-textarea[fill="outline"] {
         padding: 10px 10px 40px;
     }
 
-    .onSelected:active {
+    .avatarImage {
+      scale: 0.7;
+    }
+
+
+    .selectedAvatar {
         border: 2px solid black;
         border-radius: 60px;
     }
