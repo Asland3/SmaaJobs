@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController, NavController } from '@ionic/angular';
 import { register } from 'swiper/element/bundle';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
 register();
 
@@ -18,7 +19,9 @@ export class AppComponent {
     { title: 'Fortrolighedspolitik', url: '/privacy-policy', icon: 'document', direction: 'forward' },
   ];
 
-  constructor(private router: Router, private menu: MenuController, private navCtrl: NavController) {}
+  constructor(private router: Router, private menu: MenuController, private navCtrl: NavController) {
+    defineCustomElements(window);
+  }
 
   logout() {
     this.navCtrl.navigateBack('/start'); 

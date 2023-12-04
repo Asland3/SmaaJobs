@@ -21,8 +21,10 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-
   credentials: FormGroup | any;
+  profilePicBlob: Blob | null = null;
+  selectedProfileImage: string | null = null;
+
 
   @ViewChild('swiper')
   swiperRef: ElementRef | undefined;
@@ -90,17 +92,23 @@ export class RegisterPage implements OnInit {
 
   async register() {
     const loading = await this.loadingController.create({
-      message: 'Creating account...',
+        message: 'Creating account...',
     });
     await loading.present();
+
     try {
-      const user = await this.authService.register(this.credentials.value);
+        const registrationData = {
+            ...this.credentials.value,
+            profilePic: this.profilePicBlob
+        };
 
-      await loading.dismiss();
+        const user = await this.authService.register(registrationData);
 
-      if (user) {
-        this.navCtrl.navigateForward('/home');
-      }
+        await loading.dismiss();
+
+        if (user) {
+            this.navCtrl.navigateForward('/home');
+        }
     } catch (error: any) {
       await loading.dismiss();
       const alert = await this.alertController.create({
@@ -118,8 +126,12 @@ export class RegisterPage implements OnInit {
       quality: 90,
       allowEditing: false,
       resultType: CameraResultType.DataUrl,
-      source: CameraSource.Photos,
+      source: CameraSource.Prompt,
     });
+
+    // Convert the image to Blob for Firebase Storage
+    const response = await fetch(image.dataUrl!);
+    this.profilePicBlob = await response.blob();
   }
 
   get email() {

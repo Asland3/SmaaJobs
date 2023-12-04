@@ -32,37 +32,38 @@ export class ForgotPasswordPage implements OnInit {
 
   async forgotPassword() {
     if (this.credentials.valid) {
-    const loading = await this.loadingController.create({
-      message: 'Loader...',
-    });
-    await loading.present();
-
-    this.authService.forgotPassword(this.credentials.value).then(
-      async () => {
-        await loading.dismiss();
-        const modal = await this.modalCtrl.create({
-          component: ForgotPasswordModalPage,
-          cssClass: 'small-center-modal',
-        });
-        modal.onDidDismiss().then(() => {
-          this.navCtrl.navigateBack('/auth/login');
-        });
-        await modal.present();
-      },
-      async (err: any) => {
-        await loading.dismiss();
-        const alert = await this.alertController.create({
-          header: 'Reset password failed',
-          message: err.message,
-          buttons: [{ text: 'OK', role: 'ok' }],
-        });
-
-        await alert.present();
-      }
-    );
-  } else {
-    this.credentials.markAllAsTouched();
-  }
+      const loading = await this.loadingController.create({
+        message: 'Loader...',
+      });
+      await loading.present();
+  
+      this.authService.forgotPassword(this.credentials.value).then(
+        async () => {
+          await loading.dismiss();
+          const modal = await this.modalCtrl.create({
+            component: ForgotPasswordModalPage,
+            cssClass: 'small-center-modal',
+            backdropDismiss: true, // Allow modal to be closed by clicking the backdrop
+          });
+          modal.onDidDismiss().then(() => {
+            this.navCtrl.navigateBack('/auth/login');
+          });
+          await modal.present();
+        },
+        async (err: any) => {
+          await loading.dismiss();
+          const alert = await this.alertController.create({
+            header: 'Reset password failed',
+            message: err.message,
+            buttons: [{ text: 'OK', role: 'ok' }],
+          });
+  
+          await alert.present();
+        }
+      );
+    } else {
+      this.credentials.markAllAsTouched();
+    }
   }
 
   get email() {
