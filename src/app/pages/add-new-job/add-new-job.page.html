@@ -52,59 +52,78 @@
 
     <h4 class="ion-text-center">{{countSelectedImages()}}/3 billeder valgt</h4>
   </div>
-  <div class="bottom-container">
-    <!-- Titel -->
-    <ion-input
-      label="Titel"
-      label-placement="floating"
-      fill="outline"
-      placeholder="Titel"
-      mode="md"
-    ></ion-input>
+  <form [formGroup]="credentials">
+    <div class="bottom-container">
+      <!-- Titel -->
+      <ion-input
+        label="Titel"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Titel"
+        mode="md"
+        formControlName="title"
+        errorText="Titel er påkrævet"
+      ></ion-input>
 
-    <!-- Undertitel -->
-    <ion-input
-      label="Undertitel"
-      label-placement="floating"
-      fill="outline"
-      placeholder="Undertitel"
-      mode="md"
-    ></ion-input>
+      <!-- Undertitel -->
+      <ion-input
+        label="Undertitel"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Undertitel"
+        mode="md"
+        formControlName="subline"
+        errorText="Undertitel er påkrævet"
+      ></ion-input>
 
-    <!-- Kategori -->
-    <ion-item>
-      <ion-select placeholder="Kategori" [(ngModel)]="selectedCategoryId">
-        <ion-select-option
-          *ngFor="let category of categories"
-          [value]="category.id"
+      <!-- Kategori -->
+      <ion-item>
+        <ion-select
+          placeholder="Kategori"
+          formControlName="category"
+          errorText="Kategori er påkrævet"
         >
-          {{ category.name }}
-        </ion-select-option>
-      </ion-select>
-    </ion-item>
+          <ion-select-option
+            *ngFor="let category of categories"
+            [value]="category.name"
+          >
+            {{ category.name }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-text color="danger" *ngIf="category.invalid && (category.dirty || category.touched)">
+        Kategori er påkrævet
+      </ion-text>
 
-    <!-- Beskrivelse -->
-    <ion-textarea
-      label="Beskrivelse"
-      label-placement="floating"
-      class="description-text"
-      placeholder="Beskrivelse"
-      fill="outline"
-      mode="md"
-      counter="true"
-      maxlength="500"
-    >
-    </ion-textarea>
+      <!-- Beskrivelse -->
+      <ion-textarea
+        label="Beskrivelse"
+        label-placement="floating"
+        class="description-text"
+        placeholder="Beskrivelse"
+        fill="outline"
+        mode="md"
+        counter="true"
+        maxlength="500"
+        formControlName="description"
+        errorText="Beskrivelse er påkrævet"
+      >
+      </ion-textarea>
 
-    <!-- Løn -->
-    <ion-input
-      label="Løn"
-      label-placement="floating"
-      fill="outline"
-      placeholder="Løn"
-      mode="md"
-      type="number"
-    ></ion-input>
-    <ion-button class="add-job-button">Opret Job</ion-button>
-  </div>
+      <!-- Løn -->
+      <ion-input
+        label="Løn"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Løn"
+        mode="md"
+        type="number"
+        formControlName="payment"
+        errorText="Løn er påkrævet"
+      ></ion-input>
+      <ion-button class="add-job-button" (click)="createJob()"
+        >Opret Job</ion-button
+      >
+    </div>
+  </form>
 </ion-content>

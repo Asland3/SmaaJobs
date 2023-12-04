@@ -18,4 +18,5 @@ export const CATEGORIES: Category[] = [
   new Category(5, 'Børnepasning'),
   new Category(6, 'Fodre kat'),
   new Category(7, 'Handle ind'),
+  new Category(8, 'Andet'),
 ];
