@@ -161,3 +161,20 @@ swiper-container {
   width: 115px;
   height: 80px;
 }
+
+
+// Hvis vi vil have fjernet all scrolling i appen
+
+// ::-webkit-scrollbar, *::-webkit-scrollbar {
+//   display: hidden;
+//   overflow: hidden;
+// }
+
+// ion-content {
+//   overflow: hidden;
+//   --overflow: hidden;
+// }
+
+// .scroll-content {
+//   overflow: hidden;
+// }

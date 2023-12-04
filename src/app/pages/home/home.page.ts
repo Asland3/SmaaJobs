@@ -32,4 +32,8 @@ export class HomePage implements OnInit {
   addNew(){
     this.navCtrl.navigateForward('/add-new-job');
   }
+
+  jobDetails(){
+    this.navCtrl.navigateForward('/job-details');
+  }
 }

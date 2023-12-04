@@ -11,6 +11,13 @@ ion-content {
   padding-top: 25px;
 }
 
+.scroll-element {
+  height: 450px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+
 .container {
   display: flex;
   justify-content: center;

@@ -1,0 +1,36 @@
+ion-content {
+    --background: #e6e6e6;
+  }
+  .top-container {
+    background: url("../../../assets/svg/backgrounds/add-new-job.svg") no-repeat
+      center center / cover;
+    min-height: 36vh;
+    max-height: 36vh;
+  }
+  
+  ion-row {
+    .left {
+      ion-img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  
+    .middle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+  
+      ion-img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+  
