@@ -77,12 +77,10 @@
       ></ion-input>
 
       <!-- Kategori -->
-      <ion-item>
-        <ion-select
-          placeholder="Kategori"
-          formControlName="category"
-          errorText="Kategori er påkrævet"
-        >
+      <ion-item
+        [class.item-has-error]="credentials.get('category').invalid && (credentials.get('category').dirty || credentials.get('category').touched)"
+      >
+        <ion-select placeholder="Kategori" formControlName="category">
           <ion-select-option
             *ngFor="let category of categories"
             [value]="category.name"
@@ -91,7 +89,11 @@
           </ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-text color="danger" *ngIf="category.invalid && (category.dirty || category.touched)">
+      <ion-text
+        color="danger"
+        class="error-message"
+        *ngIf="credentials.get('category').invalid && (credentials.get('category').dirty || credentials.get('category').touched)"
+      >
         Kategori er påkrævet
       </ion-text>
 

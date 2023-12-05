@@ -10,6 +10,8 @@ import {
   doc,
   updateDoc,
   deleteDoc,
+  onSnapshot,
+  getDoc,
 } from '@angular/fire/firestore';
 import {
   getDownloadURL,
@@ -17,6 +19,7 @@ import {
   ref,
   uploadBytes,
 } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -36,10 +39,14 @@ export class JobService {
     const storage = getStorage();
 
     if (this.auth.currentUser) {
-      // Initialize an array to store the URLs of uploaded photos
-      const photoURLs = [];
+      // Hent brugerens data for at få profilbillede URL
+      const userDocRef = doc(db, 'users', this.auth.currentUser.uid);
+      const userDocSnap = await getDoc(userDocRef);
+      const userProfilePicUrl = userDocSnap.exists() ? userDocSnap.data()['profilePic'] : null;
+
   
-      // Loop through each photo Blob and upload it
+      // Upload fotos til storage og få deres URL'er
+      const photoURLs = [];
       for (const photo of jobData.photos) {
         const photoRef = ref(
           storage,
@@ -50,28 +57,39 @@ export class JobService {
         photoURLs.push(photoURL);
       }
 
-      // Add job data to Firestore
       await addDoc(collection(db, 'jobs'), {
         title: jobData.title,
         subline: jobData.subline,
         category: jobData.category,
         description: jobData.description,
         payment: jobData.payment,
-        photo: photoURLs,
-        userId: this.auth.currentUser.uid, // Associate job with the user's UID
+        photos: photoURLs,
+        userId: this.auth.currentUser.uid,
+        userProfilePicUrl: userProfilePicUrl, // Tilføj denne linje
       });
     }
   }
 
-  async getAllJobs() {
+  getAllJobs(): Observable<any[]> {
     const db = getFirestore();
-    const q = query(collection(db, 'jobs'));
-    const querySnapshot = await getDocs(q);
-    return querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+    const jobsCollectionRef = collection(db, 'jobs');
+
+    return new Observable((observer) => {
+      const unsubscribe = onSnapshot(jobsCollectionRef, (querySnapshot) => {
+        const jobs = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        observer.next(jobs);
+      }, (error: any) => {
+        observer.error(error);
+      });
+
+      // Returner en afmeldingsfunktion
+      return { unsubscribe };
+    });
   }
+
 
   async getJobsForUser() {
     const db = getFirestore();

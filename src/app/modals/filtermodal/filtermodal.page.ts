@@ -25,7 +25,7 @@ export class FiltermodalPage implements OnInit {
       .filter((c) => c.selected)
       .map((c) => c.name);
     this.modalController.dismiss(selectedCategories);
-  }
+  }  
 
   // Function to close the modal without applying filters
   close(): void {

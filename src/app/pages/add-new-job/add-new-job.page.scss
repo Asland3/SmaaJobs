@@ -153,3 +153,35 @@ ion-textarea[fill="outline"] {
   width: 100%;
   margin-top: 10px;
 }
+
+.item-has-error {
+  --border-color: var(--ion-color-danger);
+  --highlight-background: var(--ion-color-danger-tint);
+}
+
+.item-has-error::part(native) {
+  border-color: var(--ion-color-danger);
+}
+
+.item-has-error ion-label {
+  color: var(--ion-color-danger);
+}
+
+.item-has-error ion-select::part(placeholder),
+.item-has-error ion-select::part(text) {
+  color: var(--ion-color-danger);
+}
+
+.item-has-error ion-text {
+  font-size: 0.8em;
+  margin-left: 15px;
+  padding-left: 5px;
+}
+
+.error-message {
+  font-size: 0.8em;
+  margin-left: 15px;
+  padding-left: 5px;
+  display: block;
+}
+
