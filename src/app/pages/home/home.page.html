@@ -27,12 +27,13 @@
   </div>
 
   <ion-button class="right-button" (click)="presentFilterModal()"
-    >Filtrere på kategori</ion-button
+    ><ion-icon name="filter"></ion-icon>
+    Filtrer</ion-button
   >
 
   <div class="scroll-element">
-    <ion-card *ngFor="let job of filteredJobs">
-      <div class="card-content" (click)="jobDetails()">
+    <ion-card *ngFor="let job of filteredJobs" (click)="jobDetails()">
+      <div class="card-content">
         <h2 class="ion-no-margin">{{ job.title }}</h2>
         <h4 class="ion-no-margin">{{ job.subline }}</h4>
         <h5 class="ion-no-margin">{{ job.payment }} kr.</h5>

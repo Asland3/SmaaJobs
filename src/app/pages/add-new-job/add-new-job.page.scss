@@ -118,15 +118,14 @@ ion-item {
 ion-select {
   --placeholder-color: black;
   --placeholder-opacity: 1;
-  --padding-bottom: 5px;
   --padding-top: 5px;
   --padding-start: 6px;
 }
 
 ion-item {
-  --padding-bottom: 5px;
   --padding-top: 5px;
   --padding-start: 6px;
+  margin-bottom: 0;
 }
 ion-textarea[fill="outline"] {
   --border-radius: 10px;

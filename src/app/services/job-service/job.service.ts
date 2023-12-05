@@ -115,4 +115,26 @@ export class JobService {
     const jobRef = doc(db, 'jobs', jobId);
     await deleteDoc(jobRef);
   }
+
+  getJob(jobId: string): Observable<any> {
+    const db = getFirestore();
+    const jobDocRef = doc(db, 'jobs', jobId);
+    
+    return new Observable((observer) => {
+      getDoc(jobDocRef)
+        .then(docSnapshot => {
+          if (docSnapshot.exists()) {
+            observer.next({
+              id: docSnapshot.id,
+              ...docSnapshot.data()
+            });
+          } else {
+            observer.error(new Error('Job not found'));
+          }
+        })
+        .catch(error => {
+          observer.error(error);
+        });
+    });
+  }
 }

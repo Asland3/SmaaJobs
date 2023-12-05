@@ -15,5 +15,34 @@
         <ion-menu-button></ion-menu-button>
       </ion-col>
     </ion-row>
+    <!-- <ion-card *ngIf="jobPhotos.length > 0">
+    <ion-slides pager="true">
+      <ion-slide *ngFor="let photo of jobPhotos">
+        <img [src]="photo" />
+      </ion-slide>
+    </ion-slides>
+  </ion-card> -->
+
+  <swiper-container>
+    <swiper-slide>
+<h1> Slide 1</h1>
+    </swiper-slide>
+
+    <swiper-slide>
+<h1> slide 2 </h1>
+    </swiper-slide>
+    
+  </swiper-container>
   </div>
+  <ion-card class="job-card" *ngIf="job">
+    <h1>{{ job.title }}</h1>
+    <h4>{{ job.description }}</h4>
+    <h4>{{ job.payment }} kr.</h4>
+  </ion-card>
+
+  <ion-card class="person-card" *ngIf="job">
+    <h1>{{ job.firstName }} {{ job.lastName }}</h1>
+    <ion-button class="contact-button" (click)="startChat()">Kontakt</ion-button>
+    <ion-img [src]="job.userProfilePicUrl || 'assets/svg/profile/profile-picture.svg'"></ion-img>
+  </ion-card>
 </ion-content>

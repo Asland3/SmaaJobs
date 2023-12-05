@@ -12,11 +12,10 @@ ion-content {
 }
 
 .scroll-element {
-  height: 400px;
+  height: 410px;
   width: 100%;
   overflow-y: auto;
 }
-
 
 .container {
   display: flex;
@@ -38,15 +37,20 @@ ion-content {
 
 .right-button {
   float: right;
-  font-size: 16px;
+  font-size: 14px;
   padding-right: 20px;
-  padding-top: 30px;
+  padding-top: 35px;
   padding-bottom: 10px;
-  transition: transform 0.3s ease;
+  width: 110px;
+  height: 70px;
 }
 
 .right-button:active {
   transform: scale(0.9);
+}
+ion-button,
+ion-icon {
+  padding-right: 5px;
 }
 
 ion-card {
@@ -101,26 +105,26 @@ ion-fab-button {
 
 ion-row {
   .left {
-      ion-img {
-          width: 25px;
-          height: 25px;
-      }
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
   }
 
   .middle {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .right {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
-      ion-img {
-          width: 25px;
-          height: 25px;
-      }
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
   }
 }
