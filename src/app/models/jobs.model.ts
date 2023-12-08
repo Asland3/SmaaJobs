@@ -1,4 +1,5 @@
 export class Jobs {
+    id?: string;
     category?: string;
     description?: string;
     title?: string;

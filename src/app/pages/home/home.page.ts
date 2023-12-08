@@ -28,6 +28,7 @@ export class HomePage implements OnInit {
     this.jobService.getAllJobs().subscribe(
       (jobs) => {
         this.jobs = jobs;
+        console.log(jobs);
         this.applyFilters();
       }
     );
@@ -77,7 +78,8 @@ export class HomePage implements OnInit {
     this.navCtrl.navigateForward('/add-new-job');
   }
 
-  jobDetails() {
-    this.navCtrl.navigateForward('/job-details');
+  jobDetails(jobId: string) {
+    this.navCtrl.navigateForward(`/job-details/${jobId}`);
   }
+  
 }

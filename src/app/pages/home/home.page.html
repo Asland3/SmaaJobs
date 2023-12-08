@@ -33,7 +33,7 @@
   <div style="padding: 20px;"></div>
 
   <div class="scroll-element">
-    <ion-card *ngFor="let job of filteredJobs" (click)="jobDetails()">
+    <ion-card *ngFor="let job of filteredJobs" [routerLink]="[job.id]">
       <div class="card-content">
         <h2 class="ion-no-margin">{{ job.title}}</h2>
         <h4 class="ion-no-margin">{{ job.subline }}</h4>

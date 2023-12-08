@@ -15,13 +15,14 @@
         <ion-menu-button></ion-menu-button>
       </ion-col>
     </ion-row>
-    <!-- <ion-card *ngIf="jobPhotos.length > 0">
-    <ion-slides pager="true">
-      <ion-slide *ngFor="let photo of jobPhotos">
-        <img [src]="photo" />
-      </ion-slide>
-    </ion-slides>
-  </ion-card> -->
+
+
+    <!-- <swiper-container *ngIf="job?.photos?.length">
+      <swiper-slide *ngFor="let photo of job.photos">
+        <img [src]="photo" alt="Job photo">
+      </swiper-slide>
+    </swiper-container> -->
+  
 
   <swiper-container>
     <swiper-slide>
@@ -33,6 +34,7 @@
     </swiper-slide>
     
   </swiper-container>
+
   </div>
   <ion-card class="job-card" *ngIf="job">
     <h1>{{ job.title }}</h1>
