@@ -29,7 +29,7 @@
         <ion-card-header>
           <ion-card-title class="card-title">Konrad Hansen</ion-card-title>
         </ion-card-header>
-    
+
         <ion-card-content>
           <h2 class="message-content">
             Hej Hanne, jeg vil gerne hjælpe dig med at gå med Fido. Jeg kan gå
@@ -45,7 +45,7 @@
         <ion-card-header>
           <ion-card-title class="card-title">Konrad Hansen</ion-card-title>
         </ion-card-header>
-    
+
         <ion-card-content>
           <h2 class="message-content">
             Hej Hanne, jeg vil gerne hjælpe dig med at gå med Fido. Jeg kan gå
@@ -54,6 +54,14 @@
           <ion-card-subtitle class="message-time">12:00</ion-card-subtitle>
         </ion-card-content>
       </ion-card>
+    </div>
+
+    <ion-button (click)="test()" expand="block" shape="round">
+      Click me
+    </ion-button>
+
+    <div *ngFor="let message of messages">
+      <p>{{ message.text }}</p>
     </div>
     
   </div>
