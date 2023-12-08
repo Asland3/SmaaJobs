@@ -51,7 +51,7 @@ export class RegisterPage implements OnInit {
   swipeNext() {
     const currentSlideIndex = this.swiper?.activeIndex || 0;
 
-    const slideGroups = ['slide1', 'slide2', 'slide3', 'slide4']; // Adjust based on your slide count
+    const slideGroups = ['slide1', 'slide2', 'slide3', 'slide4'];
     const currentGroup = this.credentials.get(slideGroups[currentSlideIndex]);
 
     if (currentGroup.valid) {
