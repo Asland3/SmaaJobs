@@ -7,6 +7,7 @@ import {
   query,
   orderBy,
   onSnapshot,
+  where,
 } from '@angular/fire/firestore';
 
 @Injectable({
@@ -16,28 +17,35 @@ export class ChatService {
   constructor(private firestore: Firestore) {}
 
   // Function to send a message
-  async sendMessage(text: string, userId: string) {
+  async sendMessage(text: string, userId: string, recipientId: string) {
     const messagesRef = collection(this.firestore, 'messages');
     await addDoc(messagesRef, {
       text,
-      userId,
+      userId,         // The sender's user ID
+      recipientId,    // The recipient's user ID
       createdAt: new Date(),
     });
   }
+  
 
   // Function to listen for new messages
-  getMessages(): Observable<any[]> {
+  getMessages(userId: string): Observable<any[]> {
+    console.log("hit")
     return new Observable((observer) => {
       const messagesRef = collection(this.firestore, 'messages');
-      const q = query(messagesRef, orderBy('createdAt', 'asc'));
-
+      // Query messages sent by the user
+      const q = query(messagesRef, where('userId', '==', userId), orderBy('createdAt', 'asc'));
+      
+  
       const unsubscribe = onSnapshot(q, (snapshot) => {
         const messages = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        console.log(messages)
         observer.next(messages);
       }, observer.error);
-
-      // Cleanup subscription on unsubscribe
+  
       return { unsubscribe };
     });
   }
+  
+  
 }
