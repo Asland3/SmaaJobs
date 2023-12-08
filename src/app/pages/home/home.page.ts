@@ -1,22 +1,21 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { FiltermodalPage } from '../../modals/filtermodal/filtermodal.page';
 import { JobService } from 'src/app/services/job-service/job.service';
-import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { Jobs } from 'src/app/models/jobs.model';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit, OnDestroy {
-  jobs: any[] = [];
-  filteredJobs: any[] = [];
+export class HomePage implements OnInit {
+  jobs: Jobs[] = []; 
+  filteredJobs: Jobs[] = [];
   searchTerm: string = ''; 
   currentUser: any;
-  selectedCategories: string[] = []; // Tilføjer et array til valgte kategorier
-  private jobsSubscription!: Subscription;
+  selectedCategories: string[] = [];
 
   constructor(
     private modalController: ModalController,
@@ -26,13 +25,10 @@ export class HomePage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.jobsSubscription = this.jobService.getAllJobs().subscribe(
+    this.jobService.getAllJobs().subscribe(
       (jobs) => {
         this.jobs = jobs;
-        this.applyFilters(); // Kalder applyFilters ved initialisering
-      },
-      (error) => {
-        console.error('Fejl ved hentning af jobs:', error);
+        this.applyFilters();
       }
     );
     this.authService.currentUser.subscribe(user => {
@@ -40,26 +36,18 @@ export class HomePage implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
-    if (this.jobsSubscription) {
-      this.jobsSubscription.unsubscribe();
-    }
-  }
-
   applyFilters() {
     let filtered = this.jobs;
 
-    // Filtrer efter kategori, hvis nogle er valgt
     if (this.selectedCategories.length > 0) {
       filtered = filtered.filter(job =>
-        this.selectedCategories.includes(job.category)
+        this.selectedCategories.includes(job.category!)
       );
     }
 
-    // Filtrer efter søgeterm
     if (this.searchTerm) {
       filtered = filtered.filter(job =>
-        job.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+        job.title!.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
 
@@ -80,9 +68,9 @@ export class HomePage implements OnInit, OnDestroy {
     if (selectedCategories) {
       this.selectedCategories = selectedCategories;
     } else {
-      this.selectedCategories = []; // Nulstiller valgte kategorier, hvis ingen er valgt
+      this.selectedCategories = [];
     }
-    this.applyFilters(); // Kalder applyFilters efter at modalen er lukket
+    this.applyFilters();
   }
 
   addNew() {

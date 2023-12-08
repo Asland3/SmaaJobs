@@ -12,6 +12,8 @@ import {
   deleteDoc,
   onSnapshot,
   getDoc,
+  serverTimestamp,
+  orderBy,
 } from '@angular/fire/firestore';
 import {
   getDownloadURL,
@@ -65,17 +67,18 @@ export class JobService {
         payment: jobData.payment,
         photos: photoURLs,
         userId: this.auth.currentUser.uid,
-        userProfilePicUrl: userProfilePicUrl, // Tilføj denne linje
+        userProfilePicUrl: userProfilePicUrl, 
+        createdAt: serverTimestamp(),
       });
     }
   }
 
   getAllJobs(): Observable<any[]> {
     const db = getFirestore();
-    const jobsCollectionRef = collection(db, 'jobs');
+    const jobsCollectionRef = query(collection(db, 'jobs'), orderBy('createdAt', 'desc'));
 
     return new Observable((observer) => {
-      const unsubscribe = onSnapshot(jobsCollectionRef, (querySnapshot) => {
+      onSnapshot(jobsCollectionRef, (querySnapshot) => {
         const jobs = querySnapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
@@ -84,9 +87,6 @@ export class JobService {
       }, (error: any) => {
         observer.error(error);
       });
-
-      // Returner en afmeldingsfunktion
-      return { unsubscribe };
     });
   }
 

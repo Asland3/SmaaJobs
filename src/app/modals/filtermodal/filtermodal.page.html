@@ -2,8 +2,10 @@
   <ion-toolbar>
     <h2>Filtrer efter kategori</h2>
     <ion-buttons slot="end">
-      <ion-button (click)="close()"
-        ><ion-icon name="close"></ion-icon
+      <ion-button (click)="isAnyCategorySelected() ? clearCategories() : close()">
+        <ion-icon
+          [name]="isAnyCategorySelected() ? 'refresh' : 'close'"
+        ></ion-icon
       ></ion-button>
     </ion-buttons>
   </ion-toolbar>
