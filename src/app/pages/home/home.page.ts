@@ -11,9 +11,9 @@ import { Jobs } from 'src/app/models/jobs.model';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  jobs: Jobs[] = []; 
+  jobs: Jobs[] = [];
   filteredJobs: Jobs[] = [];
-  searchTerm: string = ''; 
+  searchTerm: string = '';
   currentUser: any;
   selectedCategories: string[] = [];
 
@@ -25,28 +25,31 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.jobService.getAllJobs().subscribe(
-      (jobs) => {
-        this.jobs = jobs;
-        this.applyFilters();
-      }
-    );
-    this.authService.currentUser.subscribe(user => {
+    this.authService.currentUser.subscribe((user) => {
       this.currentUser = user;
     });
+  }
+
+  ionViewDidEnter() {
+    this.getJobs();
+  }
+
+  async getJobs() {
+    this.jobs = await this.jobService.getAllJobs();
+    this.applyFilters();
   }
 
   applyFilters() {
     let filtered = this.jobs;
 
     if (this.selectedCategories.length > 0) {
-      filtered = filtered.filter(job =>
+      filtered = filtered.filter((job) =>
         this.selectedCategories.includes(job.category!)
       );
     }
 
     if (this.searchTerm) {
-      filtered = filtered.filter(job =>
+      filtered = filtered.filter((job) =>
         job.title!.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
