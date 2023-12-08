@@ -15,7 +15,7 @@ export class FiltermodalPage implements OnInit {
   ngOnInit() {}
 
   // Add the Category type to the parameter of the toggleCategory function
-  toggleCategory(category: Category): void {
+  toggleCategory(category: Category) {
     category.selected = !category.selected;
   }
 
@@ -25,7 +25,16 @@ export class FiltermodalPage implements OnInit {
       .filter((c) => c.selected)
       .map((c) => c.name);
     this.modalController.dismiss(selectedCategories);
+  }
+  
+  isAnyCategorySelected(): boolean {
+    return this.categories.some(category => category.selected);
   }  
+
+  clearCategories(){
+    this.categories.forEach((c) => (c.selected = false));
+    this.modalController.dismiss();
+  }
 
   // Function to close the modal without applying filters
   close(): void {

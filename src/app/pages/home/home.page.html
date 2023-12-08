@@ -17,24 +17,25 @@
 
     <h1 class="ion-text-center">Hej Mikkel</h1>
 
-    <div class="container">
+    <div class="search-container">
       <ion-searchbar
         placeholder="Hvad søger du?"
         [(ngModel)]="searchTerm"
         (ionInput)="applyFilters()"
+        clearIcon="none"
       ></ion-searchbar>
+      <ion-button fill="clear" class="filter-button" (click)="presentFilterModal()">
+        <ion-icon name="filter"></ion-icon>
+      </ion-button>
     </div>
   </div>
 
-  <ion-button class="right-button" (click)="presentFilterModal()"
-    ><ion-icon name="filter"></ion-icon>
-    Filtrer</ion-button
-  >
+  <div style="padding: 20px;"></div>
 
   <div class="scroll-element">
     <ion-card *ngFor="let job of filteredJobs" (click)="jobDetails()">
       <div class="card-content">
-        <h2 class="ion-no-margin">{{ job.title }}</h2>
+        <h2 class="ion-no-margin">{{ job.title}}</h2>
         <h4 class="ion-no-margin">{{ job.subline }}</h4>
         <h5 class="ion-no-margin">{{ job.payment }} kr.</h5>
       </div>
