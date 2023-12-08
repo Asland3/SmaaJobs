@@ -73,22 +73,22 @@ export class JobService {
     }
   }
 
-  getAllJobs(): Observable<any[]> {
+  async getAllJobs(): Promise<any[]> {
     const db = getFirestore();
     const jobsCollectionRef = query(collection(db, 'jobs'), orderBy('createdAt', 'desc'));
-
-    return new Observable((observer) => {
-      onSnapshot(jobsCollectionRef, (querySnapshot) => {
-        const jobs = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-        observer.next(jobs);
-      }, (error: any) => {
-        observer.error(error);
-      });
-    });
+  
+    try {
+      const querySnapshot = await getDocs(jobsCollectionRef);
+      return querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+    } catch (error) {
+      console.error("Error fetching jobs: ", error);
+      throw error;
+    }
   }
+  
 
 
   async getJobsForUser() {

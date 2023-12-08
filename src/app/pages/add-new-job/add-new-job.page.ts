@@ -8,7 +8,9 @@ import {
   ToastController,
 } from '@ionic/angular';
 import { CATEGORIES, Category } from 'src/app/models/category.model';
+import { Jobs } from 'src/app/models/jobs.model';
 import { JobService } from 'src/app/services/job-service/job.service';
+
 
 @Component({
   selector: 'app-add-new-job',
@@ -28,7 +30,7 @@ export class AddNewJobPage implements OnInit {
     private jobService: JobService,
     private loadingController: LoadingController,
     private alertController: AlertController,
-    private toastController: ToastController
+    private toastController: ToastController,
   ) {}
 
   ngOnInit() {
