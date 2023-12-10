@@ -16,35 +16,41 @@
       </ion-col>
     </ion-row>
 
-
-    <!-- <swiper-container *ngIf="job?.photos?.length">
+    <!-- Container when there are photos -->
+    <swiper-container *ngIf="job?.photos?.length" [pagination]="true">
       <swiper-slide *ngFor="let photo of job.photos">
-        <img [src]="photo" alt="Job photo">
+        <img
+          class="swiper-img"
+          [src]="photo || 'assets/svg/piggy-bank.svg'"
+          alt="Job photo"
+        />
       </swiper-slide>
-    </swiper-container> -->
-  
+    </swiper-container>
 
-  <swiper-container>
-    <swiper-slide>
-<h1> Slide 1</h1>
-    </swiper-slide>
-
-    <swiper-slide>
-<h1> slide 2 </h1>
-    </swiper-slide>
-    
-  </swiper-container>
-
+    <!-- Container for default image when there are no photos -->
+    <swiper-container *ngIf="!job?.photos?.length" [pagination]="true">
+      <swiper-slide>
+        <img
+          class="swiper-img"
+          src="assets/svg/piggy-bank.svg"
+          alt="Default Image"
+        />
+      </swiper-slide>
+    </swiper-container>
   </div>
   <ion-card class="job-card" *ngIf="job">
-    <h1>{{ job.title }}</h1>
-    <h4>{{ job.description }}</h4>
-    <h4>{{ job.payment }} kr.</h4>
+    <h1 class="ion-no-margin ion-text-center">{{ job.title }}</h1>
+    <h4 class="ion-no-margin">{{ job.description }}</h4>
+    <h4 class="ion-no-margin">{{ job.payment }} kr.</h4>
   </ion-card>
 
-  <ion-card class="person-card" *ngIf="job">
-    <!-- <h1>{{ job.firstName }} {{ job.lastName }}</h1> -->
-    <ion-button class="contact-button" (click)="startChat()">Kontakt</ion-button>
-    <ion-img [src]="job.userProfilePicUrl || 'assets/svg/profile/profile-picture.svg'"></ion-img>
-  </ion-card>
+  <!-- <ion-card class="person-card" *ngIf="job">
+    <div class="text-container">
+      <h1 class="ion-no-margin">{{ job.firstName }} {{ job.lastName }}</h1>
+      <ion-button class="contact-button" (click)="startChat()"
+        >Skriv en besked <ion-icon name="arrow-redo"></ion-icon
+      ></ion-button>
+    </div>
+    <img class="profile-pic" [src]="job.userProfilePicUrl" alt="Profile Pic" />
+  </ion-card> -->
 </ion-content>

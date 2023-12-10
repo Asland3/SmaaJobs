@@ -27,6 +27,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.authService.currentUser.subscribe((user) => {
       this.currentUser = user;
+      console.log(user);
     });
   }
 

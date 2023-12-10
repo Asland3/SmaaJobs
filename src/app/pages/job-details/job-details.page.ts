@@ -26,11 +26,11 @@ export class JobDetailsPage implements OnInit {
     this.jobService.getJob(jobId).then((jobData) => {
       if (jobData) {
         this.job = jobData;
-      } else {
-        // Handle the case where job is not found
-        console.log('Job not found');
       }
-      console.log(this.job);
+    });
+
+    this.authService.currentUser.subscribe((user) => {
+      this.currentUser = user;
     });
   }
 
@@ -40,5 +40,7 @@ export class JobDetailsPage implements OnInit {
 
   startChat() {
     // Implement chat functionality or navigation
+
+    //Malthe fix
   }
 }

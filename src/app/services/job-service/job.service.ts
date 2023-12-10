@@ -21,13 +21,13 @@ import {
   ref,
   uploadBytes,
 } from '@angular/fire/storage';
-import { Observable } from 'rxjs';
+import { AuthService } from '../auth-service/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JobService {
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth, private authservice: AuthService) {}
 
   async addJob(jobData: {
     title: string;
@@ -44,9 +44,10 @@ export class JobService {
       // Hent brugerens data for at få profilbillede URL
       const userDocRef = doc(db, 'users', this.auth.currentUser.uid);
       const userDocSnap = await getDoc(userDocRef);
-      const userProfilePicUrl = userDocSnap.exists() ? userDocSnap.data()['profilePic'] : null;
+      const userProfilePicUrl = userDocSnap.exists()
+        ? userDocSnap.data()['profilePic']
+        : null;
 
-  
       // Upload fotos til storage og få deres URL'er
       const photoURLs = [];
       for (const photo of jobData.photos) {
@@ -67,7 +68,8 @@ export class JobService {
         payment: jobData.payment,
         photos: photoURLs,
         userId: this.auth.currentUser.uid,
-        userProfilePicUrl: userProfilePicUrl, 
+        phone: this.authservice.currentUser.value.email,
+        userProfilePicUrl: userProfilePicUrl,
         createdAt: serverTimestamp(),
       });
     }
@@ -75,21 +77,22 @@ export class JobService {
 
   async getAllJobs(): Promise<any[]> {
     const db = getFirestore();
-    const jobsCollectionRef = query(collection(db, 'jobs'), orderBy('createdAt', 'desc'));
-  
+    const jobsCollectionRef = query(
+      collection(db, 'jobs'),
+      orderBy('createdAt', 'desc')
+    );
+
     try {
       const querySnapshot = await getDocs(jobsCollectionRef);
-      return querySnapshot.docs.map(doc => ({
+      return querySnapshot.docs.map((doc) => ({
         id: doc.id,
-        ...doc.data()
+        ...doc.data(),
       }));
     } catch (error) {
-      console.error("Error fetching jobs: ", error);
+      console.error('Error fetching jobs: ', error);
       throw error;
     }
   }
-  
-
 
   async getJobsForUser() {
     const db = getFirestore();
@@ -116,43 +119,17 @@ export class JobService {
     await deleteDoc(jobRef);
   }
 
-
-
-
-async getJob(jobId: string) {
+  async getJob(jobId: string) {
     const db = getFirestore();
     const jobDocRef = doc(db, 'jobs', jobId);
 
     const docSnapshot = await getDoc(jobDocRef);
     if (docSnapshot.exists()) {
-        return { id: docSnapshot.id, ...docSnapshot.data() };
+      return { id: docSnapshot.id, ...docSnapshot.data() };
     } else {
-        // handle the case where the document does not exist
-        console.log("No such document!");
-        return null;
+      // handle the case where the document does not exist
+      console.log('No such document!');
+      return null;
     }
-}
-
-
-  // getJob(jobId: string): Observable<any> {
-  //   const db = getFirestore();
-  //   const jobDocRef = doc(db, 'jobs', jobId);
-    
-  //   return new Observable((observer) => {
-  //     getDoc(jobDocRef)
-  //       .then(docSnapshot => {
-  //         if (docSnapshot.exists()) {
-  //           observer.next({
-  //             id: docSnapshot.id,
-  //             ...docSnapshot.data()
-  //           });
-  //         } else {
-  //           observer.error(new Error('Job not found'));
-  //         }
-  //       })
-  //       .catch(error => {
-  //         observer.error(error);
-  //       });
-  //   });
-  // }
+  }
 }
