@@ -43,7 +43,7 @@
   </ion-card>
 
   <ion-card class="person-card" *ngIf="job">
-    <h1>{{ job.firstName }} {{ job.lastName }}</h1>
+    <!-- <h1>{{ job.firstName }} {{ job.lastName }}</h1> -->
     <ion-button class="contact-button" (click)="startChat()">Kontakt</ion-button>
     <ion-img [src]="job.userProfilePicUrl || 'assets/svg/profile/profile-picture.svg'"></ion-img>
   </ion-card>

@@ -17,17 +17,22 @@ export class JobDetailsPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private jobService: JobService,
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private authService: AuthService
-  ) { }
+  ) {}
 
   ngOnInit() {
     const jobId = this.route.snapshot.params['jobId'];
-    this.jobService.getJob(jobId).subscribe(job => {
-      this.job = job;
+    this.jobService.getJob(jobId).then((jobData) => {
+      if (jobData) {
+        this.job = jobData;
+      } else {
+        // Handle the case where job is not found
+        console.log('Job not found');
+      }
+      console.log(this.job);
     });
   }
-
 
   navigateToHome() {
     this.navCtrl.navigateBack('/home');

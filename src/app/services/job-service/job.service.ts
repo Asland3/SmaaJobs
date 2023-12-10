@@ -116,25 +116,43 @@ export class JobService {
     await deleteDoc(jobRef);
   }
 
-  getJob(jobId: string): Observable<any> {
+
+
+
+async getJob(jobId: string) {
     const db = getFirestore();
     const jobDocRef = doc(db, 'jobs', jobId);
+
+    const docSnapshot = await getDoc(jobDocRef);
+    if (docSnapshot.exists()) {
+        return { id: docSnapshot.id, ...docSnapshot.data() };
+    } else {
+        // handle the case where the document does not exist
+        console.log("No such document!");
+        return null;
+    }
+}
+
+
+  // getJob(jobId: string): Observable<any> {
+  //   const db = getFirestore();
+  //   const jobDocRef = doc(db, 'jobs', jobId);
     
-    return new Observable((observer) => {
-      getDoc(jobDocRef)
-        .then(docSnapshot => {
-          if (docSnapshot.exists()) {
-            observer.next({
-              id: docSnapshot.id,
-              ...docSnapshot.data()
-            });
-          } else {
-            observer.error(new Error('Job not found'));
-          }
-        })
-        .catch(error => {
-          observer.error(error);
-        });
-    });
-  }
+  //   return new Observable((observer) => {
+  //     getDoc(jobDocRef)
+  //       .then(docSnapshot => {
+  //         if (docSnapshot.exists()) {
+  //           observer.next({
+  //             id: docSnapshot.id,
+  //             ...docSnapshot.data()
+  //           });
+  //         } else {
+  //           observer.error(new Error('Job not found'));
+  //         }
+  //       })
+  //       .catch(error => {
+  //         observer.error(error);
+  //       });
+  //   });
+  // }
 }
