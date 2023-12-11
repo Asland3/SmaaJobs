@@ -67,13 +67,18 @@ const routes: Routes = [
         (m) => m.PrivacyPolicyPageModule
       ),
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+
 
   {
     path: 'add-new-job',
     loadChildren: () => import('./pages/add-new-job/add-new-job.module').then( m => m.AddNewJobPageModule)
   },
   {
-    path: 'job-details',
+    path: 'home/:jobId',
     loadChildren: () => import('./pages/job-details/job-details.module').then( m => m.JobDetailsPageModule)
   },
   {
@@ -96,13 +101,7 @@ const routes: Routes = [
       import('./modals/filtermodal/filtermodal.module').then(
         (m) => m.FiltermodalPageModule
       ),
-  },  {
-    path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
-
-
-
 ];
 
 @NgModule({

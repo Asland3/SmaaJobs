@@ -30,12 +30,10 @@ export class AuthService {
   constructor(private auth: Auth) {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
-        // User is signed in, fetch their data
         this.getUser(user.uid).then((userData) => {
           this.currentUser.next(userData);
         });
       } else {
-        // User is signed out
         this.currentUser.next(null);
       }
     });
@@ -51,7 +49,7 @@ export class AuthService {
     town,
     postalCode,
     phone,
-    profilePic, // Assume this is a File object
+    profilePic,
   }: {
     firstName: string;
     lastName: string;
