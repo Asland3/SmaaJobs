@@ -73,10 +73,10 @@ export class AuthService {
       const user = userCredential.user;
 
       if (user) {
-        // const storage = getStorage();
-        // const profilePicRef = ref(storage, `profilePics/${user.uid}`);
-        // await uploadBytes(profilePicRef, profilePic);
-        // const profilePicUrl = await getDownloadURL(profilePicRef);
+        const storage = getStorage();
+        const profilePicRef = ref(storage, `profilePics/${user.uid}`);
+        await uploadBytes(profilePicRef, profilePic);
+        const profilePicUrl = await getDownloadURL(profilePicRef);
 
         const db = getFirestore();
         await setDoc(doc(db, 'users', user.uid), {
@@ -89,7 +89,7 @@ export class AuthService {
           town,
           postalCode,
           phone,
-          // profilePic: profilePicUrl,
+          profilePic: profilePicUrl,
         });
       }
       return user;

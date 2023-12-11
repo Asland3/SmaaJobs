@@ -1,11 +1,9 @@
 <ion-content>
-  <swiper-container #swiper (afterinit)="swiperReady()" [allowTouchMove]="true">
+  <swiper-container #swiper (afterinit)="swiperReady()" [allowTouchMove]="false">
     <swiper-slide class="slide-one">
       <div class="background">
         <ion-row class="top-row">
-          <ion-col size-s="2" class="left">
-            
-          </ion-col>
+          <ion-col size-s="2" class="left"> </ion-col>
 
           <ion-col size-s="8" class="middle">
             <ion-img
@@ -27,7 +25,7 @@
 
         <div style="padding: 5px"></div>
 
-        <form [formGroup]="credentials">
+        <form [formGroup]="credentials.get('slide1')">
           <div>
             <ion-input
               label="Email"
@@ -98,7 +96,9 @@
               class="logo"
             ></ion-img>
           </ion-col>
-          <ion-col size-s="2" class="right"><p (click)="cancel()" class="cancel">Fortryd</p></ion-col>
+          <ion-col size-s="2" class="right"
+            ><p (click)="cancel()" class="cancel">Fortryd</p></ion-col
+          >
         </ion-row>
         <h1 class="container">Vis dig frem!</h1>
         <div style="padding: 6px"></div>
@@ -110,24 +110,36 @@
         <ion-grid class="img-grid">
           <ion-row>
             <ion-col
-              ><ion-img
-                class="onSelected"
-                src="../../../../assets/svg/profile/boy.svg"
-              ></ion-img
-            ></ion-col>
+              (click)="selectProfileImage('../../../../assets/svg/profile/boy.png')"
+            >
+              <ion-img
+                class="avatarImage"
+                [class.selectedAvatar]="selectedProfileImage === '../../../../assets/svg/profile/boy.png'"
+                src="../../../../assets/svg/profile/boy.png"
+              >
+              </ion-img>
+            </ion-col>
+            <ion-col>
+              <ion-img
+                [src]="selectedProfileImage ? selectedProfileImage : '../../../../assets/svg/icons/camera.svg'"
+                (click)="openGallery()"
+              >
+              </ion-img>
+            </ion-col>
             <ion-col
-              ><ion-img src="../../../../assets/svg/icons/camera.svg"></ion-img
-            ></ion-col>
-            <ion-col
-              ><ion-img
-                class="onSelected"
-                src="../../../../assets/svg/profile/girl.svg"
-              ></ion-img
-            ></ion-col>
+              (click)="selectProfileImage('../../../../assets/svg/profile/girl.png')"
+            >
+              <ion-img
+                class="avatarImage"
+                [class.selectedAvatar]="selectedProfileImage === '../../../../assets/svg/profile/girl.png'"
+                src="../../../../assets/svg/profile/girl.png"
+              >
+              </ion-img>
+            </ion-col>
           </ion-row>
         </ion-grid>
 
-        <form [formGroup]="credentials">
+        <form [formGroup]="credentials.get('slide2')">
           <ion-input
             label="Fornavn"
             label-placement="floating"
@@ -182,12 +194,14 @@
               class="logo"
             ></ion-img>
           </ion-col>
-          <ion-col size-s="2" class="right"><p (click)="cancel()" class="cancel">Fortryd</p></ion-col>
+          <ion-col size-s="2" class="right"
+            ><p (click)="cancel()" class="cancel">Fortryd</p></ion-col
+          >
         </ion-row>
         <h1 class="container">Lidt om dig</h1>
         <div class="spacer"></div>
 
-        <form [formGroup]="credentials">
+        <form [formGroup]="credentials.get('slide3')">
           <ion-input
             label="Alder"
             label-placement="floating"
@@ -243,12 +257,14 @@
               class="logo"
             ></ion-img>
           </ion-col>
-          <ion-col size-s="2" class="right"><p (click)="cancel()" class="cancel">Fortryd</p></ion-col>
+          <ion-col size-s="2" class="right"
+            ><p (click)="cancel()" class="cancel">Fortryd</p></ion-col
+          >
         </ion-row>
         <h1 style="margin-top: 0" class="container">Næsten på plads</h1>
 
         <h4 class="move-right">Om Lokation:</h4>
-        <form [formGroup]="credentials">
+        <form [formGroup]="credentials.get('slide4')">
           <ion-input
             label="By"
             label-placement="floating"
@@ -307,7 +323,9 @@
 
         <div class="spacer"></div>
 
-        <ion-button (click)="register()" class="main-button next-button">Færdiggør</ion-button>
+        <ion-button (click)="register()" class="main-button next-button"
+          >Færdiggør</ion-button
+        >
       </div>
     </swiper-slide>
   </swiper-container>
