@@ -16,7 +16,6 @@
       </ion-col>
     </ion-row>
 
-    <!-- Container when there are photos -->
     <swiper-container *ngIf="job?.photos?.length" [pagination]="true">
       <swiper-slide *ngFor="let photo of job.photos">
         <img
@@ -27,7 +26,6 @@
       </swiper-slide>
     </swiper-container>
 
-    <!-- Container for default image when there are no photos -->
     <swiper-container *ngIf="!job?.photos?.length" [pagination]="true">
       <swiper-slide>
         <img
@@ -44,13 +42,13 @@
     <h4 class="ion-no-margin">{{ job.payment }} kr.</h4>
   </ion-card>
 
-  <!-- <ion-card class="person-card" *ngIf="job">
+  <ion-card class="person-card" *ngIf="job">
     <div class="text-container">
-      <h1 class="ion-no-margin">{{ job.firstName }} {{ job.lastName }}</h1>
+      <h1 class="ion-no-margin ion-padding-bottom ion-padding-top">{{ job.firstName }} {{ job.lastName }}</h1>
       <ion-button class="contact-button" (click)="startChat()"
         >Skriv en besked <ion-icon name="arrow-redo"></ion-icon
       ></ion-button>
     </div>
     <img class="profile-pic" [src]="job.userProfilePicUrl" alt="Profile Pic" />
-  </ion-card> -->
+  </ion-card>
 </ion-content>

@@ -8,7 +8,7 @@ export class Jobs {
     photos?: string[];
     userId?: string;
     userProfilePicUrl?: string;
-    userFirstName?: string;
-    userLastName?: string;
+    firstName?: string;
+    lastName?: string;
     createdAt?: Date;
 }

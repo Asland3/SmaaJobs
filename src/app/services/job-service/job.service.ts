@@ -27,7 +27,17 @@ import { AuthService } from '../auth-service/auth.service';
   providedIn: 'root',
 })
 export class JobService {
-  constructor(private auth: Auth, private authservice: AuthService) {}
+  private currentUser: any;
+
+  constructor(private authService: AuthService) {
+    this.initializeCurrentUser()
+  }
+
+  private initializeCurrentUser() {
+    this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
+  }
 
   async addJob(jobData: {
     title: string;
@@ -40,20 +50,13 @@ export class JobService {
     const db = getFirestore();
     const storage = getStorage();
 
-    if (this.auth.currentUser) {
-      // Hent brugerens data for at få profilbillede URL
-      const userDocRef = doc(db, 'users', this.auth.currentUser.uid);
-      const userDocSnap = await getDoc(userDocRef);
-      const userProfilePicUrl = userDocSnap.exists()
-        ? userDocSnap.data()['profilePic']
-        : null;
+    if (this.currentUser) {
 
-      // Upload fotos til storage og få deres URL'er
       const photoURLs = [];
       for (const photo of jobData.photos) {
         const photoRef = ref(
           storage,
-          `jobPhotos/${this.auth.currentUser.uid}/${new Date().getTime()}`
+          `jobPhotos/${this.currentUser.uid}/${new Date().getTime()}`
         );
         await uploadBytes(photoRef, photo);
         const photoURL = await getDownloadURL(photoRef);
@@ -67,9 +70,10 @@ export class JobService {
         description: jobData.description,
         payment: jobData.payment,
         photos: photoURLs,
-        userId: this.auth.currentUser.uid,
-        phone: this.authservice.currentUser.value.email,
-        userProfilePicUrl: userProfilePicUrl,
+        userId: this.currentUser.uid,
+        firstName: this.currentUser.firstName,
+        lastName: this.currentUser.lastName,
+        userProfilePicUrl: this.currentUser.profilePic,
         createdAt: serverTimestamp(),
       });
     }
@@ -96,10 +100,10 @@ export class JobService {
 
   async getJobsForUser() {
     const db = getFirestore();
-    if (this.auth.currentUser) {
+    if (this.currentUser.uid) {
       const q = query(
         collection(db, 'jobs'),
-        where('userId', '==', this.auth.currentUser.uid)
+        where('userId', '==', this.currentUser.uid)
       );
       const querySnapshot = await getDocs(q);
       return querySnapshot.docs.map((doc) => doc.data());
