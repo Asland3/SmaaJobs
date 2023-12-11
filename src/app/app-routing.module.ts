@@ -96,7 +96,11 @@ const routes: Routes = [
       import('./modals/filtermodal/filtermodal.module').then(
         (m) => m.FiltermodalPageModule
       ),
+  },  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
+
 
 
 ];
