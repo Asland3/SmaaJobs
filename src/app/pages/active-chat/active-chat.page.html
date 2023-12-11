@@ -56,13 +56,26 @@
       </ion-card>
     </div>
 
-    <ion-button (click)="testSendMessage()" expand="block" shape="round">
-      Click me
-    </ion-button>
 
-    <div *ngFor="let message of messages">
-      <p>{{ message.text }}</p>
-    </div>
+
     
+
+    <ion-list>
+      <ion-item *ngFor="let message of messages$ | async">
+        <ion-label>
+          {{ message.text }}
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-button (click)="sendMessage('Hello')">Send Message</ion-button>
+  
+    <!-- <ion-item>
+      <ion-input #messageInput type="text" placeholder="Type a message"></ion-input>
+
+      <ion-button slot="end" (click)="sendMessage(messageInput.value || ''); messageInput.value=''">
+        Send
+      </ion-button>
+    </ion-item> -->
   </div>
 </ion-content>

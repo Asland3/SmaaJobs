@@ -22,7 +22,7 @@
 
     <div style="padding-top: 10px"></div>
 
-    <div *ngFor="let chat of conversations">
+    <div *ngFor="let chat of conversations" (click)="openChat(chat.chatId, chat.recipient)">
       <ion-card>
         <ion-img
           [src]="chat.profilePicture || 'assets/svg/profile/profile-picture.svg'"

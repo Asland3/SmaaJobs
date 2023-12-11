@@ -1,3 +1,4 @@
+import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
@@ -66,10 +67,11 @@ export class ChatPage implements OnInit {
     }
   }
 
-  openChat(conversationId: string) {
-    // Navigate to the chat window with the necessary parameters
-    this.router.navigate(['/chat-window'], { queryParams: { conversationId, recipientId } });
+  openChat(chatId: string, recipient: any) {
+    const recipientData = JSON.stringify(recipient);
+    this.router.navigate(['/active-chat'], { queryParams: { chatId, recipientData } });
   }
+  
   
   
 
