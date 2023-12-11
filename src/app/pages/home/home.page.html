@@ -24,26 +24,33 @@
         (ionInput)="applyFilters()"
         clearIcon="none"
       ></ion-searchbar>
-      <ion-button fill="clear" class="filter-button" (click)="presentFilterModal()">
+      <ion-button
+        fill="clear"
+        class="filter-button"
+        (click)="presentFilterModal()"
+      >
         <ion-icon name="filter"></ion-icon>
       </ion-button>
     </div>
   </div>
 
-  <div style="padding: 20px;"></div>
+  <div style="padding: 20px"></div>
 
   <div class="scroll-element">
-    <ion-card *ngFor="let job of filteredJobs" (click)="jobDetails()">
+    <ion-card *ngFor="let job of filteredJobs" [routerLink]="[job.id]">
       <div class="card-content">
-        <h2 class="ion-no-margin">{{ job.title}}</h2>
-        <h4 class="ion-no-margin">{{ job.subline }}</h4>
-        <h5 class="ion-no-margin">{{ job.payment }} kr.</h5>
+        <div class="text-content">
+          <h2 class="ion-no-margin">{{ job.title }}</h2>
+          <h4 class="ion-no-margin">{{ job.subline }}</h4>
+          <h5 class="ion-no-margin">{{ job.payment }} kr.</h5>
+        </div>
+        <img class="profile-pic"
+          [src]="job.userProfilePicUrl || 'assets/svg/profile/profile-picture.svg'"
+        />
       </div>
-      <img
-        [src]="job.userProfilePicUrl || 'assets/svg/profile/profile-picture.svg'"
-      />
     </ion-card>
   </div>
+  
 
   <ion-fab>
     <ion-fab-button>
