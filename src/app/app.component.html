@@ -9,28 +9,44 @@
           <div class="user-profile-image">
             <ion-img src="assets/svg/profile/profile-picture.svg" />
           </div>
-          <h1>{{user.firstName}} {{user.lastName}}</h1>
+          <div *ngIf="user; else loggedOut">
+            <h1>{{ user.firstName }} {{ user.lastName }}</h1>
+          </div>
+          <ng-template #loggedOut>
+            <h1>Log in for mere</h1>
+            <p>For at oprette og søge jobs, skal du venligst logge ind.</p>
+          </ng-template>
         </div>
-        <ion-list lines="none">
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
-            <ion-item
-              (click)="navigateToPage(p)"
-              [class.active]="isActive(p.url)"
+        <div *ngIf="user; else logIn">
+          <ion-list lines="none">
+            <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
+              <ion-item
+                (click)="navigateToPage(p)"
+                [class.active]="isActive(p.url)"
+              >
+                <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                <ion-label>
+                  {{ p.title }}
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
+          <ion-img class="logo" src="../assets/svg/icons/logo.svg"> </ion-img>
+          <div class="logout-button-container">
+            <ion-button class="logout" expand="block" (click)="logout()">
+              <ion-icon name="log-out"> </ion-icon>Log ud</ion-button
             >
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
-              <ion-label>
-                {{ p.title }}
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-        <ion-img class="logo" src="../assets/svg/icons/logo.svg"> </ion-img>
-        <div class="logout-button-container">
-          <div *ngIf="user">
-          <ion-button class="logout" expand="block" (click)="logout()">
-            <ion-icon name="log-out"> </ion-icon>Log ud</ion-button
-          ></div>
+          </div>
         </div>
+
+        <ng-template #logIn>
+          <ion-img class="logo" src="../assets/svg/icons/logo.svg"> </ion-img>
+          <div class="logout-button-container">
+            <ion-button class="logout" expand="block" (click)="goToLogIn()">
+              <ion-icon name="log-in"> </ion-icon>Log Ind</ion-button
+            >
+          </div>
+        </ng-template>
       </div>
     </ion-content>
   </ion-menu>

@@ -28,7 +28,13 @@ export class AppComponent {
     },
   ];
 
-  constructor(private router: Router, private menu: MenuController, private navCtrl: NavController) {}
+  constructor(
+    private router: Router,
+    private menu: MenuController,
+    private navCtrl: NavController,
+    private authService: AuthService,
+    private modalCtrl: ModalController
+  ) {}
 
   ngOnInit() {
     this.authService.currentUser.subscribe((userData) => {
@@ -43,6 +49,10 @@ export class AppComponent {
       backdropDismiss: true,
     });
     await modal.present();
+  }
+
+  goToLogIn() {
+    this.navCtrl.navigateBack('/email-password');
   }
 
   navigateToPage(page: any) {
