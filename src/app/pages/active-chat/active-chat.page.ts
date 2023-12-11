@@ -21,10 +21,10 @@ export class ActiveChatPage implements OnInit {
 
   ngOnInit() {
     this.authService.currentUser.subscribe((user) => {
-      console.log(user);
+      // console.log(user);
       
         // Assign the subscription to messagesSubscription
-        this.messagesSubscription = this.chatService.getMessages(user.uid).subscribe((data) => {
+        this.messagesSubscription = this.chatService.getMessages("y5R7rdeGxhO9MlSjT9wogIrFYy12").subscribe((data) => {
           this.messages = data;
           console.log("🚀 ~ file: active-chat.page.ts:29 ~ ActiveChatPage ~ this.messagesSubscription=this.chatService.getMessages ~ this.messages:", this.messages)
           
@@ -42,7 +42,7 @@ export class ActiveChatPage implements OnInit {
   
 
   test() {
-    this.chatService.sendMessage('Hello World', "y5R7rdeGxhO9MlSjT9wogIrFYy12", "y5R7rdeGxhO9MlSjT9wogIrFYy12");
+    this.chatService.sendMessage('Test2', "y5R7rdeGxhO9MlSjT9wogIrFYy12", "y5R7rdeGxhO9MlSjT9wogIrFYy12");
   }
 
   navigateToChat() {

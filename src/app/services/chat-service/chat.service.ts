@@ -21,31 +21,28 @@ export class ChatService {
     const messagesRef = collection(this.firestore, 'messages');
     await addDoc(messagesRef, {
       text,
-      userId,         // The sender's user ID
-      recipientId,    // The recipient's user ID
+      userId,
       createdAt: new Date(),
     });
   }
-  
 
   // Function to listen for new messages
   getMessages(userId: string): Observable<any[]> {
-    console.log("hit")
     return new Observable((observer) => {
       const messagesRef = collection(this.firestore, 'messages');
-      // Query messages sent by the user
       const q = query(messagesRef, where('userId', '==', userId), orderBy('createdAt', 'asc'));
-      
   
       const unsubscribe = onSnapshot(q, (snapshot) => {
         const messages = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        console.log(messages)
+        console.log("Fetched messages:", messages);
         observer.next(messages);
-      }, observer.error);
+      }, (error) => {
+        console.error("Error fetching messages:", error);
+        observer.error(error);
+      });
   
-      return { unsubscribe };
+      return () => unsubscribe();
     });
   }
-  
   
 }
