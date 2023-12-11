@@ -1,13 +1,57 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <div class="top-container">
+    <ion-row>
+      <ion-col size-s="2" class="left">
+        <ion-button fill="clear" (click)="navigateToHome()">
+          <ion-img
+            src="../../../assets/svg/icons/back-arrow.svg"
+            alt="back-arrow"
+          ></ion-img> </ion-button
+      ></ion-col>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+      <ion-col size-s="8"> </ion-col>
+
+      <ion-col size-s="2" class="right">
+        <ion-menu-button></ion-menu-button>
+      </ion-col>
+    </ion-row>
+    <img class="profile-pic" [src]="user?.profilePic" alt="Profile Pic" />
+    <ion-card class="profile-card">
+      <div class="text-padding">
+        <h1>{{ user?.firstName }} {{ user?.lastName }}</h1>
+        <h3 class="ion-no-margin">{{ user?.postalCode}} {{ user?.town}}</h3>
+        <h3 class="ion-no-margin">{{ user?.phone }}</h3>
+        <h3 class="ion-no-margin">{{ user?.email }}</h3>
+        <h3 class="ion-no-margin">{{ user?.age }} år</h3>
+      </div>
+    </ion-card>
+  </div>
+
+  <ion-card class="description-card">
+    <h2>Om dig</h2>
+    <h4>{{ user?.description }}</h4>
+  </ion-card>
+
+  <div *ngIf="userJobs.length > 0">
+    <h1 class="all-jobs">Oprettet jobs</h1>
+    <ion-card
+      class="job-card"
+      *ngFor="let job of userJobs"
+      (click)="openJob(job.id)"
+    >
+      <div class="card-content">
+        <div class="text-content">
+          <h2 class="ion-no-margin">{{ job.title }}</h2>
+          <h4 class="ion-no-margin">{{ job.subline }}</h4>
+          <h5 class="ion-no-margin">{{ job.payment }} kr.</h5>
+          <ion-icon
+            class="trash-icon"
+            name="trash"
+            (click)="deleteJobConfirmation(job.id);$event.stopPropagation();"
+          ></ion-icon>
+          <ion-icon class="edit-icon" name="create" (click)="updateJob(job.id);$event.stopPropagation();"></ion-icon>
+        </div>
+      </div>
+    </ion-card>
+  </div>
 </ion-content>

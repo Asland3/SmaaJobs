@@ -30,11 +30,11 @@ export class JobService {
   private currentUser: any;
 
   constructor(private authService: AuthService) {
-    this.initializeCurrentUser()
+    this.initializeCurrentUser();
   }
 
   private initializeCurrentUser() {
-    this.authService.currentUser.subscribe(user => {
+    this.authService.currentUser.subscribe((user) => {
       this.currentUser = user;
     });
   }
@@ -51,7 +51,6 @@ export class JobService {
     const storage = getStorage();
 
     if (this.currentUser) {
-
       const photoURLs = [];
       for (const photo of jobData.photos) {
         const photoRef = ref(
@@ -103,13 +102,16 @@ export class JobService {
     if (this.currentUser.uid) {
       const q = query(
         collection(db, 'jobs'),
-        where('userId', '==', this.currentUser.uid)
+        where('userId', '==', this.currentUser.uid),
+        orderBy('createdAt', 'desc')
       );
       const querySnapshot = await getDocs(q);
-      return querySnapshot.docs.map((doc) => doc.data());
+      const jobs = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      return jobs;
     }
     return [];
   }
+  
 
   async updateJob(jobId: string, newJobData: any) {
     const db = getFirestore();
