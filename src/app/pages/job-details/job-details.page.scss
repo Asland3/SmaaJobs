@@ -1,36 +1,106 @@
 ion-content {
-    --background: #e6e6e6;
-  }
-  .top-container {
-    background: url("../../../assets/svg/backgrounds/add-new-job.svg") no-repeat
-      center center / cover;
-    min-height: 36vh;
-    max-height: 36vh;
-  }
-  
-  ion-row {
-    .left {
-      ion-img {
-        width: 25px;
-        height: 25px;
-      }
-    }
-  
-    .middle {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .right {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-  
-      ion-img {
-        width: 25px;
-        height: 25px;
-      }
+  --background: #e6e6e6;
+}
+.top-container {
+  background: url("../../../assets/svg/backgrounds/add-new-job.svg") no-repeat
+    center center / cover;
+  min-height: 36vh;
+  max-height: 36vh;
+  margin-bottom: 20px;
+}
+
+ion-row {
+  .left {
+    ion-img {
+      width: 25px;
+      height: 25px;
     }
   }
-  
+
+  .middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-img {
+  width: 305px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+ion-card {
+  margin-top: 0 !important;
+  margin-bottom: 10px !important;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 15px;
+  width: 350px;
+  --border-radius: 10px;
+  --box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2);
+  color: black;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+.job-card h1 {
+  margin: 8px 0;
+}
+
+.job-card h4 {
+  margin: 12px 0;
+}
+
+.job-card h5 {
+  margin: 8px 0;
+}
+
+.person-card {
+  display: flex;
+  flex-direction: row; /* Arrangerer elementerne horisontalt */
+  align-items: center; /* Centrerer elementerne vertikalt */
+  justify-content: space-between; /* Placerer indhold i hver sin ende af kortet */
+  padding: 10px;
+  width: 350px;
+  --border-radius: 10px;
+  --box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2);
+  color: black;
+  background-color: #ffffff;
+}
+
+.contact-button {
+  font-size: 16px;
+}
+
+.contact-button ion-icon {
+  margin-left: 5px;
+  font-size: 16px;
+}
+
+.person-card .profile-pic {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+}

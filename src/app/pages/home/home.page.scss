@@ -8,12 +8,6 @@ ion-content {
   max-height: 36vh;
 }
 
-.scroll-element {
-  height: 450px;
-  width: 100%;
-  overflow-y: auto;
-}
-
 .search-container {
   position: relative;
   top: 19vh;
@@ -34,31 +28,50 @@ ion-searchbar {
   transform: translateY(-50%);
 }
 
+.scroll-element {
+  height: 450px;
+  width: 100%;
+  overflow-y: auto;
+}
+
 ion-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 10px;
+  width: 350px;
   margin-top: 0 !important;
   margin-bottom: 10px !important;
   --border-radius: 10px;
   --box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2);
-  width: 350px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
   padding: 8px;
-  box-sizing: border-box;
   color: black;
+  box-sizing: border-box;
   background-color: #ffffff;
 }
 
-ion-card img {
-  width: 80px;
-  height: 80px;
-  margin-right: 5px;
-  border-radius: 50%;
-}
-
 .card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   flex-grow: 1;
   padding: 5px 0;
+}
+
+.text-content {
+  padding-right: 20px;
+}
+
+.profile-pic {
+  width: 80px; /* Juster efter behov */
+  height: 80px; /* Juster efter behov */
+  object-fit: cover;
+  align-self: center;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  border-radius: 50%;
 }
 
 .card-content h2 {
