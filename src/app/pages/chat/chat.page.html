@@ -19,31 +19,21 @@
     </ion-row>
 
     <div class="spacer"></div>
-    <div class="container">
-      <ion-searchbar placeholder="Hvad søger du?"></ion-searchbar>
-    </div>
 
-    <div style="padding-top: 10px;"></div>
-    <ion-card>
-      <ion-img src="assets/svg/profile/profile-picture.svg" />
-      <div class="card-content">
-        <h2 class="ion-no-margin">Hanne Henriksen</h2>
-        <h4 class="ion-no-margin">Gå med Fido</h4>
-      </div>
-    </ion-card>
-    <ion-card>
-      <ion-img src="assets/svg/profile/profile-picture.svg" />
-      <div class="card-content">
-        <h2 class="ion-no-margin">Søren Helle Hansen</h2>
-        <h4 class="ion-no-margin">Hjælp en ældre med at handle</h4>
-      </div>
-    </ion-card>
-    <ion-card>
-      <ion-img src="assets/svg/profile/profile-picture.svg" />
-      <div class="card-content">
-        <h2 class="ion-no-margin">Dorthe Karen Silje Jensen</h2>
-        <h4 class="ion-no-margin">Foder Miley mens vi er på ferie</h4>
-      </div>
-    </ion-card>
+    <div style="padding-top: 10px"></div>
+
+    <div *ngFor="let chat of conversations">
+      <ion-card>
+        <ion-img
+          [src]="chat.profilePicture || 'assets/svg/profile/profile-picture.svg'"
+        ></ion-img>
+        <div class="card-content">
+          <h2 class="ion-no-margin">{{ chat.recipient.firstName }} {{chat.recipient.lastName}}</h2>
+      
+          <h4 class="ion-no-margin">{{ chat.lastMessage.text }}</h4>
+         
+        </div>
+      </ion-card>
+    </div>
   </div>
 </ion-content>
