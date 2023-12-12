@@ -1,30 +1,43 @@
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col (click)="navigateToStart()">
-        <ion-img class="back-arrow"
-          src="../../../assets/svg/icons/back-arrow.svg"
-          alt="back-arrow"
-        ></ion-img
-      ></ion-col>
-      <ion-col size="10"> </ion-col>
-      
+  <div class="background">
+    <ion-row class="top-row">
+      <ion-col size-s="2" class="left">
+        <ion-button (click)="navigateToHome()" fill="clear">
+          <ion-img
+            src="../../../assets/svg/icons/back-arrow.svg"
+            alt="back-arrow"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+
+      <ion-col size-s="8" class="middle">
+        <ion-img
+          src="../../../assets/svg/icons/logo.svg"
+          alt="logo"
+          class="logo"
+        ></ion-img>
+      </ion-col>
+      <ion-col size-s="2" class="right"></ion-col>
     </ion-row>
-  </ion-grid>
-  <div class="container">
-    <h1>Du skal være logget ind for at bruge appen!</h1><br />
-    <h2>Ved at logge ind ville du få adgang til funktioner som:</h2>
-    <ul style="padding-left: 60px; padding-right: 60px">
-      <li>Chat</li>
-      <li>Tage Opgaver</li>
-      <li>Oprette Opgaver</li>
-      med mere...
-    </ul>
-    <ion-img src="../../../assets/svg/decision-isometric.svg"></ion-img>
-    <br />
-    <br />
-    <ion-button class="align-items-center" (click)="goToLogIn()"
-      >Log Ind</ion-button
-    >
+
+      
+    <div class="container">
+      <h1>Du skal være logget ind for at bruge appen!</h1>
+      <br>
+      <h2>Ved at logge ind ville du få adgang til funktioner såsom:</h2>
+      <div class="text-align">
+        <p>Chat</p>     
+        <p>Tage Opgaver</p>
+        <p>Oprette Opgaver</p>
+        <p>med mere...</p>
+      </div>
+      <br>
+      <ion-img src="../../../assets/svg/decision-isometric.svg"></ion-img>
+      <br />
+      <br />
+      <ion-button class="login-button" (click)="goToLogIn()"
+        >Log Ind</ion-button
+      >
+    </div>
   </div>
 </ion-content>

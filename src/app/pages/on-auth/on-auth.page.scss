@@ -1,42 +1,49 @@
-ion-content{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
+.background {   
+    background: url('../../../assets/svg/backgrounds/start.svg') no-repeat center center / cover;
+    min-height: 100vh;
 }
 
-h1 {
-  font-size: 4vh;
-  margin:0;
+.container {
+    padding-right: 50px;
+    padding-left: 50px;
 }
 
-ion-text {
-  text-align: center;
+.back-arrow {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
 }
 
 ion-grid {
-    padding: 0;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-ion-col {
-    padding: 0;
+.login-button {
+    --background: var(--ion-color-secondary);
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: block;
+    margin: auto;
+    width: 70%;
+}
+p{
+  margin: 0;
+}
+.text-align{
+  text-align: center;
 }
 
-.back-arrow{
-    width: 50px;
-    height: 50px;
-    padding-left: 10px;
-    padding-top: 10px;
+h1{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 0;
 }
 
-ion-button {
-  --background: var(--ion-color-secondary);
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-
-.container{
-    padding-left: 50px;
-    padding-right: 50px;
+h2{
+    text-align: center;
+    
+    margin-left: auto; margin-right: auto; margin-top: 0;
+    margin-top: 0;
 }

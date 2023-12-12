@@ -14,7 +14,7 @@ export class OnAuthPage implements OnInit {
   goToLogIn() {
     this.navCtrl.navigateForward('/auth/login');
   }
-  navigateToStart() {
+  navigateToHome() {
     this.navCtrl.navigateBack('/home');
   }
 }
