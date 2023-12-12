@@ -12,7 +12,7 @@ export class OnAuthPage implements OnInit {
   ngOnInit() {}
 
   goToLogIn() {
-    this.navCtrl.navigateForward('/auth/login');
+    this.navCtrl.navigateBack('/start');
   }
   navigateToHome() {
     this.navCtrl.navigateBack('/home');
