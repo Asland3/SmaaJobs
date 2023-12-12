@@ -113,18 +113,6 @@ export class RegisterPage implements OnInit {
 
   async register() {
     if (this.credentials.valid) {
-
-      if (!this.profilePicBlob) {
-        const alert = await this.alertController.create({
-          header: 'Missing Profile Picture',
-          message: 'Please select a profile picture to continue.',
-          buttons: ['OK']
-        });
-        await alert.present();
-        return; // Stop the registration process
-      }
-
-
       const loading = await this.loadingController.create({
         message: 'Creating account...',
       });
@@ -145,6 +133,7 @@ export class RegisterPage implements OnInit {
         await loading.dismiss();
 
         if (user) {
+          this.authService.updateUserData();
           this.navCtrl.navigateForward('/home');
         }
       } catch (error: any) {

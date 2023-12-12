@@ -22,18 +22,40 @@
 
     <div style="padding-top: 10px"></div>
 
-    <div *ngFor="let chat of conversations" (click)="openChat(chat.chatId, chat.recipient.uid)">
-      <ion-card>
-        <ion-img
-          [src]="chat.profilePicture || 'assets/svg/profile/profile-picture.svg'"
-        ></ion-img>
-        <div class="card-content">
-          <h2 class="ion-no-margin">{{ chat.recipient.firstName }} {{chat.recipient.lastName}}</h2>
-      
-          <h4 class="ion-no-margin">{{ chat.lastMessage.text }}</h4>
-         
+    <div *ngIf="!loading">
+      <div
+        *ngIf="conversations && conversations.length > 0 else noChatsTemplate"
+      >
+        <div
+          *ngFor="let chat of conversations"
+          (click)="openChat(chat.chatId, chat.recipient.uid)"
+        >
+          <ion-card>
+            <ion-img
+              [src]="chat.profilePicture || 'assets/svg/profile/profile-picture.svg'"
+            ></ion-img>
+            <div class="card-content">
+              <h2 class="ion-no-margin">
+                {{ chat.recipient.firstName }} {{ chat.recipient.lastName }}
+              </h2>
+              <h4 class="ion-no-margin">{{ chat.lastMessage.text }}</h4>
+            </div>
+          </ion-card>
         </div>
-      </ion-card>
+      </div>
     </div>
+
+    <ng-template #noChatsTemplate>
+      <div class="">
+        <h2 class="no-chat">
+          Det ser ud til, at du endnu ikke har nogen chats. <br />
+          <br />
+          For at starte en ny chat, skal du finde et job og skrive en besked på
+          det.
+        </h2>
+        <ion-img src="../../../assets/svg/goggle-lady.svg" alt="No Chats">
+        </ion-img>
+      </div>
+    </ng-template>
   </div>
 </ion-content>
