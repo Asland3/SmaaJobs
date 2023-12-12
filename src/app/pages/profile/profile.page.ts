@@ -25,13 +25,12 @@ export class ProfilePage implements OnInit {
     this.authService.currentUser.subscribe(async (userData) => {
       if (userData) {
         this.user = userData;
-        this.userJobs = await this.jobService.getJobsForUser();
       }
     });
   }
 
-  navigateToHome() {
-    this.navCtrl.navigateBack('/home');
+  navigateBack() {
+    this.navCtrl.back();
   }
 
   async deleteJobConfirmation(jobId?: string) {
@@ -64,11 +63,15 @@ export class ProfilePage implements OnInit {
     this.userJobs = await this.jobService.getJobsForUser();
   }
 
+  ionViewDidEnter() {
+    this.loadUserJobs();
+  }
+
   openJob(jobId?: string) {
     this.navCtrl.navigateForward(`/home/${jobId}`);
   }
 
   updateJob(jobId?: string) {
-    this.navCtrl.navigateForward(`/update-job/${jobId}`);
+    this.navCtrl.navigateForward(`/profile/${jobId}`);
   }
 }

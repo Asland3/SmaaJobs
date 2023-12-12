@@ -97,7 +97,7 @@
       >
         Kategori er påkrævet
       </ion-text>
-      <div style="padding-bottom: 10px;"></div>
+      <div style="padding-bottom: 10px"></div>
 
       <!-- Beskrivelse -->
       <ion-textarea
@@ -119,14 +119,13 @@
         label="Løn"
         label-placement="floating"
         fill="outline"
-        placeholder="Løn"
         mode="md"
         type="number"
         formControlName="payment"
         errorText="Løn er påkrævet"
       ></ion-input>
-      <ion-button class="add-job-button" (click)="createJob()"
-        >Opret Job</ion-button
+      <ion-button class="add-job-button" (click)="updateJob()"
+        >Opdater Job</ion-button
       >
     </div>
   </form>
