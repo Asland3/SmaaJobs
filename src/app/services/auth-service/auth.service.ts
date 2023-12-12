@@ -29,10 +29,10 @@ export class AuthService {
 
   constructor(private auth: Auth) {
     onAuthStateChanged(this.auth, (user) => {
-      console.log("hitt")
       if (user) {
         this.getUser(user.uid).then((userData) => {
           this.currentUser.next(userData);
+          console.log(userData)
         });
       } else {
         this.currentUser.next(null);
@@ -196,6 +196,20 @@ export class AuthService {
     }
   }
 
+  async getSpecificUser(uid: string) {
+    const db = getFirestore();
+    const docRef = doc(db, 'users', uid);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const userData = docSnap.data();
+      return userData;
+    } else {
+      console.log('No such user!'); // Log the error
+      return null;
+    }
+  }
+
   //Not used because it required user to veriying new email before changing
   async updateEmail(newEmail: string) {
     try {
@@ -262,6 +276,8 @@ export class AuthService {
     if (this.auth.currentUser) {
       const userData = await this.getUser(this.auth.currentUser.uid);
       this.currentUser.next(userData);
+    } else {
+      this.currentUser.next(null);
     }
   }
 }

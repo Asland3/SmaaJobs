@@ -1,16 +1,24 @@
 <ion-app>
   <ion-menu contentId="main-content" side="end" swipeGesture="false">
     <ion-content>
+      <!-- burger menu -->
       <div class="content">
         <ion-button (click)="closeMenu()" fill="clear" class="close-button">
           <ion-icon name="close-outline" size="large" slot="end"></ion-icon>
         </ion-button>
         <div class="menu-header">
-          <div class="user-profile-image">
-            <ion-img src="assets/svg/profile/profile-picture.svg" />
+          <div *ngIf="user; else loggedOut">
+            <div class="user-profile-image">
+              <ion-img src="{{ user.profilePic }}"></ion-img>
+            </div>
+            <h1>{{ user.firstName }} {{ user.lastName }}</h1>
           </div>
-          <h1>Mikkel Hansen Henriksen Nielsen</h1>
+          <ng-template #loggedOut>
+            <h1>Log in for mere</h1>
+            <p>For at oprette og søge jobs, skal du venligst logge ind.</p>
+          </ng-template>
         </div>
+
         <ion-list lines="none">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
             <ion-item
@@ -25,11 +33,21 @@
           </ion-menu-toggle>
         </ion-list>
         <ion-img class="logo" src="../assets/svg/icons/logo.svg"> </ion-img>
-        <div class="logout-button-container">
+
+        <div *ngIf="user; else logIn" class="logout-button-container">
           <ion-button class="logout" expand="block" (click)="logout()">
             <ion-icon name="log-out"> </ion-icon>Log ud</ion-button
           >
         </div>
+
+        <ng-template #logIn>
+          
+          <div class="logout-button-container">
+            <ion-button class="logout" expand="block" (click)="goToLogIn()">
+              <ion-icon name="log-in"> </ion-icon>Log Ind</ion-button
+            >
+          </div>
+        </ng-template>
       </div>
     </ion-content>
   </ion-menu>

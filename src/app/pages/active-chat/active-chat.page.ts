@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, map } from 'rxjs';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { ChatService } from 'src/app/services/chat-service/chat.service';
 
 @Component({
   selector: 'app-active-chat',
   templateUrl: './active-chat.page.html',
   styleUrls: ['./active-chat.page.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ActiveChatPage implements OnInit {
   // messages: any[] = [];
@@ -17,45 +19,59 @@ export class ActiveChatPage implements OnInit {
   messages$!: Observable<any[]>;
   chatId!: string;
   recipient: any;
-
+  currentUser: any;
 
   constructor(
     private navCtrl: NavController,
     private route: ActivatedRoute,
     private chatService: ChatService,
-    private auth: Auth // Assuming you're using Firebase Auth
+    private authService: AuthService,
+    private auth: Auth
   ) {}
 
   ngOnInit() {
+    // debugger
+    this.currentUser = this.auth.currentUser;
+
     const params = this.route.snapshot.queryParams;
     this.chatId = params['chatId'];
-    console.log("🚀 ~ file: active-chat.page.ts:30 ~ ActiveChatPage ~ ngOnInit ~ this.chatId:", this.chatId)
-    if (params['recipientData']) {
-      this.recipient = JSON.parse(params['recipientData']);
-      console.log("🚀 ~ file: active-chat.page.ts:32 ~ ActiveChatPage ~ ngOnInit ~ this.recipient:", this.recipient)
-    }
+    console.log(
+      '🚀 ~ file: active-chat.page.ts:30 ~ ActiveChatPage ~ ngOnInit ~ this.chatId:',
+      this.chatId
+    );
 
-    this.messages$ = this.chatService.getMessages(this.chatId);
+    // Check if userId parameter is available
+    const recipientUserId = params['userId'];
+    if (recipientUserId) {
+      this.authService
+        .getSpecificUser(recipientUserId)
+        .then((recipientData) => {
+          this.recipient = recipientData;
+          console.log(
+            '🚀 ~ file: active-chat.page.ts:32 ~ ActiveChatPage ~ ngOnInit ~ this.recipient:',
+            this.recipient
+          );
+        });
+
+      this.messages$ = this.chatService.getMessages(this.chatId).pipe(
+        map((messages) =>
+          messages.map((message) => ({
+            ...message,
+            createdAt: new Date(message.createdAt.seconds * 1000), // Convert to JavaScript Date
+          }))
+        )
+      );
+    }
   }
 
-  ngOnDestroy() {
-    if (this.messagesSubscription) {
-      this.messagesSubscription.unsubscribe();
-    }
-  }
-
-
-  sendMessage(text?: string) {
-    const userId = this.auth.currentUser?.uid;
+  sendMessage(text: any) {
+    const userId = this.currentUser.uid;
     if (userId && text) {
       this.chatService.sendMessage(this.chatId, text, userId).then(() => {
         // Clear the input field, handle UI updates, etc.
       });
     }
   }
-
- 
-
 
   navigateToChat() {
     this.navCtrl.navigateBack('/chat');
