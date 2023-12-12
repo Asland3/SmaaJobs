@@ -29,14 +29,27 @@ export class AuthService {
 
   constructor(private auth: Auth) {
     onAuthStateChanged(this.auth, (user) => {
+      console.log("hitt")
       if (user) {
-        // User is signed in, fetch their data
         this.getUser(user.uid).then((userData) => {
           this.currentUser.next(userData);
         });
       } else {
-        // User is signed out
         this.currentUser.next(null);
+      }
+    });
+  }
+
+  initAuthListener(resolve: () => void): void { // Corrected signature
+    onAuthStateChanged(this.auth, (user) => {
+      if (user) {
+        this.getUser(user.uid).then((userData) => {
+          this.currentUser.next(userData);
+          resolve(); // Resolve the promise once user data is fetched
+        });
+      } else {
+        this.currentUser.next(null);
+        resolve(); // Resolve the promise even if there's no user
       }
     });
   }
@@ -51,7 +64,7 @@ export class AuthService {
     town,
     postalCode,
     phone,
-    profilePic, // Assume this is a File object
+    profilePic,
   }: {
     firstName: string;
     lastName: string;

@@ -97,6 +97,8 @@ const routes: Routes = [
       import('./pages/job-details/job-details.module').then(
         (m) => m.JobDetailsPageModule
       ),
+    path: 'home/:jobId',
+    loadChildren: () => import('./pages/job-details/job-details.module').then( m => m.JobDetailsPageModule)
   },
   {
     path: '**',
