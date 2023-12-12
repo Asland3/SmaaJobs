@@ -68,6 +68,11 @@ export class UpdateProfilePage implements OnInit {
       message: 'Opdaterer profil...'
     });
     await loading.present();
+
+    if (!this.newProfileImageBlob)
+    {
+      return
+    }
   
     const updatedUserData = this.credentials.value;
     const uid = this.user.uid;
@@ -108,8 +113,6 @@ export class UpdateProfilePage implements OnInit {
       console.error('Bruger-ID ikke fundet');
     }
   }
-  
-  
 
   validators() {
     this.credentials = this.fb.group({
