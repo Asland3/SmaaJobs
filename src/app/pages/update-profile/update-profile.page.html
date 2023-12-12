@@ -20,11 +20,11 @@
         <!-- Update profile page -->
         <div class="profile-pic-container">
           <img class="profile-pic" [src]="user?.profilePic" alt="Profile Pic" />
-          <ion-icon
+          <ion-img
             class="edit-profile"
-            name="pencil"
+            src="../../../assets/svg/icons/camera-outline.svg"
             (click)="editProfilePic()"
-          ></ion-icon>
+          ></ion-img>
         </div>
 
         <ion-card class="profile-card">

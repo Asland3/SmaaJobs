@@ -29,8 +29,8 @@ export class ProfilePage implements OnInit {
     });
   }
 
-  navigateBack() {
-    this.navCtrl.back();
+  navigateToHome() {
+    this.navCtrl.navigateBack('/home');
   }
 
   editProfile() {
