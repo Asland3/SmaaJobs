@@ -69,6 +69,14 @@ const routes: Routes = [
   },
 
   {
+    path: 'add-new-job',
+    loadChildren: () => import('./pages/add-new-job/add-new-job.module').then( m => m.AddNewJobPageModule)
+  },
+  {
+    path: 'job-details',
+    loadChildren: () => import('./pages/job-details/job-details.module').then( m => m.JobDetailsPageModule)
+  },
+  {
     path: '**',
     loadChildren: () =>
       import('./pages/not-found/not-found.module').then(
@@ -88,7 +96,8 @@ const routes: Routes = [
       import('./modals/filtermodal/filtermodal.module').then(
         (m) => m.FiltermodalPageModule
       ),
-  },  {
+  },
+  {
     path: 'logout-modal',
     loadChildren: () => import('./modals/logout-modal/logout-modal.module').then( m => m.LogoutModalPageModule)
   },

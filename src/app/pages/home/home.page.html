@@ -25,49 +25,37 @@
       <h1 class="ion-text-center">Velkommen</h1>
     </ng-template>
 
-    <div class="container">
-      <ion-searchbar placeholder="Hvad søger du?"></ion-searchbar>
+    <div class="search-container">
+      <ion-searchbar
+        placeholder="Hvad søger du?"
+        [(ngModel)]="searchTerm"
+        (ionInput)="applyFilters()"
+        clearIcon="none"
+      ></ion-searchbar>
+      <ion-button fill="clear" class="filter-button" (click)="presentFilterModal()">
+        <ion-icon name="filter"></ion-icon>
+      </ion-button>
     </div>
   </div>
 
-  <ion-icon
-    class="right-button"
-    name="filter-circle"
-    (click)="presentFilterModal()"
-  ></ion-icon>
+  <div style="padding: 20px;"></div>
 
-  <ion-card>
-    <div class="card-content">
-      <h2 class="ion-no-margin">Gå tur med Fido</h2>
-      <h4 class="ion-no-margin">Hver mandag og torsdag inden kl. 18</h4>
-      <h5 class="ion-no-margin">300 kr. om måneden</h5>
-    </div>
-    <img src="assets/svg/profile/profile-picture.svg" />
-  </ion-card>
-
-  <ion-card>
-    <div class="card-content">
-      <h2 class="ion-no-margin">Hjælp en ældre med at handle</h2>
-      <h4 class="ion-no-margin">
-        Mangler hjælp til at handle 2-3 gange om ugen
-      </h4>
-      <h5 class="ion-no-margin">50 kr. om ugen</h5>
-    </div>
-    <img src="assets/svg/profile/profile-picture.svg" />
-  </ion-card>
-
-  <ion-card>
-    <div class="card-content">
-      <h2 class="ion-no-margin">Foder Miley mens vi er på ferie</h2>
-      <h4 class="ion-no-margin">Hver aften, fra d. 06/07 til d. 16/7</h4>
-      <h5 class="ion-no-margin">100 kr.</h5>
-    </div>
-    <img src="assets/svg/profile/profile-picture.svg" />
-  </ion-card>
+  <div class="scroll-element">
+    <ion-card *ngFor="let job of filteredJobs" (click)="jobDetails()">
+      <div class="card-content">
+        <h2 class="ion-no-margin">{{ job.title}}</h2>
+        <h4 class="ion-no-margin">{{ job.subline }}</h4>
+        <h5 class="ion-no-margin">{{ job.payment }} kr.</h5>
+      </div>
+      <img
+        [src]="job.userProfilePicUrl || 'assets/svg/profile/profile-picture.svg'"
+      />
+    </ion-card>
+  </div>
 
   <ion-fab>
     <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
+      <ion-icon name="add" (click)="addNew()"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>

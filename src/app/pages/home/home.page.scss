@@ -7,44 +7,35 @@ ion-content {
   min-height: 36vh;
   max-height: 36vh;
 }
-.placering {
-  padding-top: 25px;
+
+.scroll-element {
+  height: 450px;
+  width: 100%;
+  overflow-y: auto;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  ion-searchbar {
-    margin-top: 19vh;
-    --background: #ffffff;
-    --placeholder-color: #000000;
-    --color: #000000;
-    --border-radius: 10px;
-    --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    --placeholder-font-size: 14px;
-    width: 290px;
-    height: 40px;
-  }
+.search-container {
+  position: relative;
+  top: 19vh;
+  width: calc(100% - 52px);
+  margin: 0 26px;
 }
 
-.right-button {
-  float: right;
-  font-size: 35px;
-  padding-right: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  transition: transform 0.3s ease;
-  color: var(--ion-color-primary);
+ion-searchbar {
+  --background: white;
+  --border-radius: 10px;
+  --box-shadow: 0px 3px 12px 2px rgba(0, 0, 0, 0.16);
 }
 
-.right-button:active {
-  transform: scale(0.9);
+.filter-button {
+  position: absolute;
+  right: 0;
+  top: 45%;
+  transform: translateY(-50%);
 }
 
 ion-card {
-  margin-top: 0px !important;
+  margin-top: 0 !important;
   margin-bottom: 10px !important;
   --border-radius: 10px;
   --box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2);
@@ -59,10 +50,9 @@ ion-card {
 }
 
 ion-card img {
-  width: 90px;
-  height: 90px;
-  margin-right: 12px;
-  padding-top: 8px;
+  width: 80px;
+  height: 80px;
+  margin-right: 5px;
   border-radius: 50%;
 }
 
@@ -96,26 +86,26 @@ ion-fab-button {
 
 ion-row {
   .left {
-      ion-img {
-          width: 25px;
-          height: 25px;
-      }
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
   }
 
   .middle {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .right {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
-      ion-img {
-          width: 25px;
-          height: 25px;
-      }
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
   }
 }
