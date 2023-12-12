@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
 import { Jobs } from 'src/app/models/jobs.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
@@ -18,7 +18,9 @@ export class ProfilePage implements OnInit {
     private navCtrl: NavController,
     private authService: AuthService,
     private jobService: JobService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    private toastController: ToastController
   ) {}
 
   ngOnInit() {
@@ -59,9 +61,36 @@ export class ProfilePage implements OnInit {
   }
 
   async deleteJob(jobId: any) {
-    await this.jobService.deleteJob(jobId);
-    this.loadUserJobs();
+    const loading = await this.loadingController.create({
+      message: 'Sletter job...'
+    });
+    await loading.present();
+  
+    try {
+      await this.jobService.deleteJob(jobId);
+      await loading.dismiss();
+      this.loadUserJobs();
+  
+      const toast = await this.toastController.create({
+        message: 'Job slettet',
+        duration: 2000,
+        color: 'success',
+      });
+      toast.present();
+  
+    } catch (error) {
+      await loading.dismiss();
+      console.error('Fejl under sletning af job:', error);
+  
+      const alert = await this.alertController.create({
+        header: 'Fejl ved sletning af job',
+        message: 'Der skete en fejl under sletning af jobbet. Prøv igen senere.',
+        buttons: ['OK']
+      });
+      await alert.present();
+    }
   }
+  
 
   async loadUserJobs() {
     this.userJobs = await this.jobService.getJobsForUser();
