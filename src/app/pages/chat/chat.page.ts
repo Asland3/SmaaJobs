@@ -16,6 +16,7 @@ export class ChatPage implements OnInit {
   conversations: any[] = [];
   usersData: Map<string, any> = new Map(); // To store user data
   subscription!: Subscription;
+  loading: boolean = false;
 
   constructor(
     private navCtrl: NavController,
@@ -28,6 +29,7 @@ export class ChatPage implements OnInit {
   async ngOnInit() {
     const user = this.auth.currentUser;
     if (user) {
+      this.loading = true;
       this.subscription = this.chatService
         .getConversations(user.uid)
         .subscribe(async (conversations) => {
@@ -63,9 +65,12 @@ export class ChatPage implements OnInit {
           );
 
           this.conversations = conversationsWithDetails;
+          this.loading = false;
         });
+       
     } else {
       console.log('No user is currently logged in.');
+      this.loading = false;
     }
   }
 
