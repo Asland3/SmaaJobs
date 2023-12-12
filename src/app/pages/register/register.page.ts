@@ -54,6 +54,15 @@ export class RegisterPage implements OnInit {
     const slideGroups = ['slide1', 'slide2', 'slide3', 'slide4'];
     const currentGroup = this.credentials.get(slideGroups[currentSlideIndex]);
 
+    if (currentSlideIndex === 1 && !this.profilePicBlob) {
+      this.alertController.create({
+        header: 'Profile Picture Required',
+        message: 'Please select a profile picture to continue.',
+        buttons: ['OK']
+      }).then(alert => alert.present());
+      return; 
+    }
+
     if (currentGroup.valid) {
       this.swiper?.slideNext();
     } else {
@@ -104,6 +113,18 @@ export class RegisterPage implements OnInit {
 
   async register() {
     if (this.credentials.valid) {
+
+      if (!this.profilePicBlob) {
+        const alert = await this.alertController.create({
+          header: 'Missing Profile Picture',
+          message: 'Please select a profile picture to continue.',
+          buttons: ['OK']
+        });
+        await alert.present();
+        return; // Stop the registration process
+      }
+
+
       const loading = await this.loadingController.create({
         message: 'Creating account...',
       });
@@ -182,7 +203,6 @@ export class RegisterPage implements OnInit {
             .then(res => res.blob())
             .then(blob => {
               this.profilePicBlob = blob;
-              console.log(this.profilePicBlob);
             });
         };
       }
