@@ -17,6 +17,8 @@ export class HomePage implements OnInit {
   searchTerm: string = '';
   currentUser: any;
   selectedCategories: string[] = [];
+  isLoading: boolean = false;
+  skeletonArray = [1, 2, 3]
 
   constructor(
     private modalController: ModalController,
@@ -36,8 +38,10 @@ export class HomePage implements OnInit {
   }
 
   async getJobs() {
+    this.isLoading = true;
     this.jobs = await this.jobService.getAllJobs();
     this.applyFilters();
+    this.isLoading = false;
   }
 
   applyFilters() {

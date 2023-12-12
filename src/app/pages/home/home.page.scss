@@ -1,9 +1,9 @@
 ion-content {
   --background: #e6e6e6;
 }
+
 .top-container {
-  background: url("../../../assets/svg/backgrounds/home.svg") no-repeat center
-    center / cover;
+  background: url("../../../assets/svg/backgrounds/home.svg") no-repeat center center / cover;
   min-height: 36vh;
   max-height: 36vh;
 }
@@ -34,7 +34,7 @@ ion-searchbar {
   overflow-y: auto;
 }
 
-ion-card {
+.content-cards {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -65,8 +65,10 @@ ion-card {
 }
 
 .profile-pic {
-  width: 80px; /* Juster efter behov */
-  height: 80px; /* Juster efter behov */
+  width: 80px;
+  /* Juster efter behov */
+  height: 80px;
+  /* Juster efter behov */
   object-fit: cover;
   align-self: center;
   margin-right: 5px;
@@ -93,6 +95,7 @@ ion-fab {
   transform: translateX(50%);
   z-index: 989;
 }
+
 ion-fab-button {
   --color: #ffffff;
 }
@@ -122,3 +125,38 @@ ion-row {
     }
   }
 }
+
+.profile-pic-skeleton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+
+.skeleton-card {
+  /* Increase the size of the card */
+  // width: 100%; /* or any specific width you prefer */
+  padding: 20px; /* Add padding to increase the overall size */
+
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .profile-pic-skeleton {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+
+  .text-content {
+    flex: 1; /* Allows text content to take up remaining space */
+    /* Add more spacing between the skeleton text lines */
+    ion-skeleton-text {
+      margin-bottom: 10px; /* Adjust as needed for more space between lines */
+    }
+  }
+}
+

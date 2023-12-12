@@ -10,7 +10,10 @@
             {{currentUser?.postalCode}} - {{currentUser?.town}}
           </h5>
         </div>
-        <ng-template #noLocation><br> <h2 class="middle ion-no-margin">-- --</h2> </ng-template>
+        <ng-template #noLocation
+          ><br />
+          <h2 class="middle ion-no-margin">-- --</h2>
+        </ng-template>
       </ion-col>
 
       <ion-col size-s="2" class="right">
@@ -45,20 +48,45 @@
   <div style="padding: 20px"></div>
 
   <div class="scroll-element">
-    <ion-card *ngFor="let job of filteredJobs" [routerLink]="[job.id]">
-      <div class="card-content">
-        <div class="text-content">
-          <h2 class="ion-no-margin">{{ job.title }}</h2>
-          <h4 class="ion-no-margin">{{ job.subline }}</h4>
-          <h5 class="ion-no-margin">{{ job.payment }} kr.</h5>
+    <!-- Skeleton Loading Cards -->
+    <ng-container *ngIf="isLoading">
+      <ion-card class="skeleton-card" *ngFor="let skeleton of skeletonArray">
+        <div class="flex-container">
+          <div class="text-content">
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+          </div>
+          <ion-skeleton-text
+            animated
+            class="profile-pic-skeleton"
+          ></ion-skeleton-text>
         </div>
-        <img class="profile-pic"
-          [src]="job.userProfilePicUrl"
-        />
-      </div>
-    </ion-card>
+      </ion-card>
+    </ng-container>
+
+    <!-- Actual Content Cards -->
+    <ng-container *ngIf="!isLoading">
+      <ion-card
+        class="content-cards"
+        *ngFor="let job of filteredJobs"
+        [routerLink]="[job.id]"
+      >
+        <div class="card-content">
+          <div class="text-content">
+            <h2 class="ion-no-margin">{{ job.title }}</h2>
+            <h4 class="ion-no-margin">{{ job.subline }}</h4>
+            <h5 class="ion-no-margin">{{ job.payment }} kr.</h5>
+          </div>
+          <img
+            class="profile-pic"
+            [src]="job.userProfilePicUrl || 'assets/svg/profile/profile-picture.svg'"
+          />
+        </div>
+      </ion-card>
+    </ng-container>
   </div>
-  
+
   <ion-fab>
     <ion-fab-button>
       <ion-icon name="add" (click)="addNew()"></ion-icon>
