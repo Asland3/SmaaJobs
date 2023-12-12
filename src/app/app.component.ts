@@ -56,7 +56,7 @@ export class AppComponent {
   }
 
   goToLogIn() {
-    this.navCtrl.navigateBack('/auth/login');
+    this.navCtrl.navigateBack('/start');
     this.closeMenu()
   }
 
