@@ -72,6 +72,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
+    path: 'profile/:userId',
+    loadChildren: () => import('./pages/update-profile/update-profile.module').then( m => m.UpdateProfilePageModule)
+  },
+  {
     path: 'profile/:jobId',
     loadChildren: () => import('./pages/update-job/update-job.module').then( m => m.UpdateJobPageModule)
   },

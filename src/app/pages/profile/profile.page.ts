@@ -33,6 +33,10 @@ export class ProfilePage implements OnInit {
     this.navCtrl.back();
   }
 
+  editProfile() {
+    this.navCtrl.navigateForward(`/profile/${this.user.uid}`);
+  }
+
   async deleteJobConfirmation(jobId?: string) {
     const alert = await this.alertController.create({
       header: 'Bekræft sletning',

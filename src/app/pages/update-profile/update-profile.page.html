@@ -1,0 +1,128 @@
+<ion-content>
+  <div class="top-container">
+    <ion-row>
+      <ion-col size-s="2" class="left">
+        <ion-button fill="clear" (click)="navigateBack()">
+          <ion-img
+            src="../../../assets/svg/icons/back-arrow.svg"
+            alt="back-arrow"
+          ></ion-img> </ion-button
+      ></ion-col>
+
+      <ion-col size-s="8"> </ion-col>
+
+      <ion-col size-s="2" class="right">
+        <ion-menu-button></ion-menu-button>
+      </ion-col>
+    </ion-row>
+    <form [formGroup]="credentials">
+      <div>
+        <ion-card class="profile-card">
+          <div class="text-padding">
+            <!-- Update first name -->
+            <ion-input
+              label="Fornavn"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Fornavn"
+              mode="md"
+              formControlName="firstName"
+              errorText="Fornavn skal udfyldes"
+            ></ion-input>
+
+            <!-- Update last name -->
+            <ion-input
+              label="Efternavn"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Efternavn"
+              mode="md"
+              formControlName="lastName"
+              errorText="Efternavn skal udfyldes"
+            ></ion-input>
+
+            <!-- Update email -->
+            <ion-input
+              label="Email"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Email"
+              mode="md"
+              formControlName="email"
+              errorText="Email skal udfyldes"
+            ></ion-input>
+
+            <!-- Update phone -->
+            <ion-input
+              label="Telefon"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Telefon"
+              mode="md"
+              formControlName="phone"
+              errorText="Telefon skal udfyldes"
+            ></ion-input>
+
+            <!-- Update age -->
+            <ion-input
+              label="Alder"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Alder"
+              mode="md"
+              formControlName="age"
+              errorText="Alder skal udfyldes"
+            ></ion-input>
+
+            <!-- Update postal code -->
+            <ion-input
+              label="Postnummer"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Postnummer"
+              mode="md"
+              formControlName="postalCode"
+              errorText="Postnummer skal udfyldes"
+            ></ion-input>
+
+            <!-- Update town -->
+            <ion-input
+              label="By"
+              label-placement="floating"
+              fill="outline"
+              placeholder="By"
+              mode="md"
+              formControlName="town"
+              errorText="By skal udfyldes"
+            ></ion-input>
+
+            <!-- Update password -->
+            <ion-input
+              label="Adgangskode"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Adgangskode"
+              mode="md"
+              formControlName="password"
+              errorText="Adgangskode skal udfyldes"
+            ></ion-input>
+
+            <!-- Update description -->
+            <ion-textarea
+              label="Beskrivelse"
+              label-placement="floating"
+              class="description-text"
+              placeholder="Beskrivelse"
+              fill="outline"
+              mode="md"
+              counter="true"
+              maxlength="500"
+              formControlName="description"
+              errorText="Beskrivelse skal udfyldes"
+            ></ion-textarea>
+          </div>
+        </ion-card>
+      </div>
+    </form>
+  </div>
+</ion-content>

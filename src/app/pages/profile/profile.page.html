@@ -17,6 +17,7 @@
     </ion-row>
     <img class="profile-pic" [src]="user?.profilePic" alt="Profile Pic" />
     <ion-card class="profile-card">
+      <ion-icon class="edit-profile" name="pencil" (click)="editProfile()"></ion-icon>
       <div class="text-padding">
         <h1>{{ user?.firstName }} {{ user?.lastName }}</h1>
         <h3 class="ion-no-margin">{{ user?.postalCode}} {{ user?.town}}</h3>

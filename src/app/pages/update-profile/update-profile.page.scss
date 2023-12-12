@@ -1,0 +1,74 @@
+ion-content {
+    --background: #e6e6e6;
+  }
+  .top-container {
+    background: url("../../../assets/svg/backgrounds/profile.svg") no-repeat
+      center center / cover;
+    min-height: 36vh;
+    max-height: 36vh;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  ion-row {
+    .left {
+      ion-img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  
+    .middle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+  
+      ion-img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+  
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    background-color: white;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+  .text-padding {
+    padding-left: 35%;
+    padding-right: 20px;
+    padding-top: 70px;
+  }
+  
+  .edit-profile {
+    font-size: 24px;
+    float: right;
+    margin: 20px;
+  }
+  
+  .profile-card {
+    position: absolute;
+    top: 60vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    margin: 0 auto;
+    width: 350px;
+    color: black;
+    height: auto;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
