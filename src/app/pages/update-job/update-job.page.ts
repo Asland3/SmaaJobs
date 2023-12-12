@@ -80,7 +80,6 @@ export class UpdateJobPage implements OnInit {
   }
 
   countSelectedImages(): number {
-    console.log(this.imageURIs);
     return this.imageURIs.filter((uri) => uri !== '').length;
   }
 

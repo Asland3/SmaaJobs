@@ -20,7 +20,7 @@
       <ion-icon
         class="edit-profile"
         name="pencil"
-        (click)="editProfile()"
+        (click)="editProfile();$event.stopPropagation();"
       ></ion-icon>
       <div class="text-padding">
         <h1>{{ user?.firstName }} {{ user?.lastName }}</h1>
@@ -38,7 +38,7 @@
   </ion-card>
 
   <h1 class="all-jobs">Oprettet jobs</h1>
-  <div *ngIf="userJobs.length > 0">
+  <div *ngIf="userJobs.length > 0; else noJobsTemplate">
     <ion-card
       class="job-card"
       *ngFor="let job of userJobs"
@@ -63,4 +63,16 @@
       </div>
     </ion-card>
   </div>
+  <ng-template #noJobsTemplate>
+    <div class="no-jobs-container">
+      <img
+        src="../../../assets/svg/goggle-lady.svg"
+        alt="Ingen jobs tilgængelige"
+      />
+      <h2 class="ion-text-center ion-padding-bottom">
+        Ingen jobs fundet. Lav et job og start en skattejagt for talentfulde
+        individer!
+      </h2>
+    </div>
+  </ng-template>
 </ion-content>

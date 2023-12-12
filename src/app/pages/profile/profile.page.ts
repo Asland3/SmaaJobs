@@ -34,7 +34,7 @@ export class ProfilePage implements OnInit {
   }
 
   editProfile() {
-    this.navCtrl.navigateForward(`/profile/${this.user.uid}`);
+    this.navCtrl.navigateForward(`/profile/user/${this.user.uid}`);
   }
 
   async deleteJobConfirmation(jobId?: string) {
@@ -76,6 +76,6 @@ export class ProfilePage implements OnInit {
   }
 
   updateJob(jobId?: string) {
-    this.navCtrl.navigateForward(`/profile/${jobId}`);
+    this.navCtrl.navigateForward(`/profile/job/${jobId}`);
   }
 }
