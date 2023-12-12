@@ -21,13 +21,23 @@ import {
   ref,
   uploadBytes,
 } from '@angular/fire/storage';
-import { Observable } from 'rxjs';
+import { AuthService } from '../auth-service/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JobService {
-  constructor(private auth: Auth) {}
+  private currentUser: any;
+
+  constructor(private authService: AuthService) {
+    this.initializeCurrentUser()
+  }
+
+  private initializeCurrentUser() {
+    this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
+  }
 
   async addJob(jobData: {
     title: string;
@@ -40,19 +50,13 @@ export class JobService {
     const db = getFirestore();
     const storage = getStorage();
 
-    if (this.auth.currentUser) {
-      // Hent brugerens data for at få profilbillede URL
-      const userDocRef = doc(db, 'users', this.auth.currentUser.uid);
-      const userDocSnap = await getDoc(userDocRef);
-      const userProfilePicUrl = userDocSnap.exists() ? userDocSnap.data()['profilePic'] : null;
+    if (this.currentUser) {
 
-  
-      // Upload fotos til storage og få deres URL'er
       const photoURLs = [];
       for (const photo of jobData.photos) {
         const photoRef = ref(
           storage,
-          `jobPhotos/${this.auth.currentUser.uid}/${new Date().getTime()}`
+          `jobPhotos/${this.currentUser.uid}/${new Date().getTime()}`
         );
         await uploadBytes(photoRef, photo);
         const photoURL = await getDownloadURL(photoRef);
@@ -66,8 +70,10 @@ export class JobService {
         description: jobData.description,
         payment: jobData.payment,
         photos: photoURLs,
-        userId: this.auth.currentUser.uid,
-        userProfilePicUrl: userProfilePicUrl, 
+        userId: this.currentUser.uid,
+        firstName: this.currentUser.firstName,
+        lastName: this.currentUser.lastName,
+        userProfilePicUrl: this.currentUser.profilePic,
         createdAt: serverTimestamp(),
       });
     }
@@ -75,28 +81,29 @@ export class JobService {
 
   async getAllJobs(): Promise<any[]> {
     const db = getFirestore();
-    const jobsCollectionRef = query(collection(db, 'jobs'), orderBy('createdAt', 'desc'));
-  
+    const jobsCollectionRef = query(
+      collection(db, 'jobs'),
+      orderBy('createdAt', 'desc')
+    );
+
     try {
       const querySnapshot = await getDocs(jobsCollectionRef);
-      return querySnapshot.docs.map(doc => ({
+      return querySnapshot.docs.map((doc) => ({
         id: doc.id,
-        ...doc.data()
+        ...doc.data(),
       }));
     } catch (error) {
-      console.error("Error fetching jobs: ", error);
+      console.error('Error fetching jobs: ', error);
       throw error;
     }
   }
-  
-
 
   async getJobsForUser() {
     const db = getFirestore();
-    if (this.auth.currentUser) {
+    if (this.currentUser.uid) {
       const q = query(
         collection(db, 'jobs'),
-        where('userId', '==', this.auth.currentUser.uid)
+        where('userId', '==', this.currentUser.uid)
       );
       const querySnapshot = await getDocs(q);
       return querySnapshot.docs.map((doc) => doc.data());
@@ -116,25 +123,17 @@ export class JobService {
     await deleteDoc(jobRef);
   }
 
-  getJob(jobId: string): Observable<any> {
+  async getJob(jobId: string) {
     const db = getFirestore();
     const jobDocRef = doc(db, 'jobs', jobId);
-    
-    return new Observable((observer) => {
-      getDoc(jobDocRef)
-        .then(docSnapshot => {
-          if (docSnapshot.exists()) {
-            observer.next({
-              id: docSnapshot.id,
-              ...docSnapshot.data()
-            });
-          } else {
-            observer.error(new Error('Job not found'));
-          }
-        })
-        .catch(error => {
-          observer.error(error);
-        });
-    });
+
+    const docSnapshot = await getDoc(jobDocRef);
+    if (docSnapshot.exists()) {
+      return { id: docSnapshot.id, ...docSnapshot.data() };
+    } else {
+      // handle the case where the document does not exist
+      console.log('No such document!');
+      return null;
+    }
   }
 }

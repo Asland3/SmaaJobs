@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { JobService } from 'src/app/services/job-service/job.service';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { Jobs } from 'src/app/models/jobs.model';
 
 @Component({
   selector: 'app-job-details',
@@ -10,34 +11,28 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
   styleUrls: ['./job-details.page.scss'],
 })
 export class JobDetailsPage implements OnInit {
-  job: any; // Add a variable to store the job details
-  jobPhotos: string[] = [];
+  job!: Jobs;
   currentUser: any;
 
   constructor(
     private navCtrl: NavController,
     private jobService: JobService,
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private authService: AuthService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    // const jobId = this.route.snapshot.params['jobId'];
-    // this.loadJobDetails(jobId);
+    const jobId = this.route.snapshot.params['jobId'];
+    this.jobService.getJob(jobId).then((jobData) => {
+      if (jobData) {
+        this.job = jobData;
+      }
+    });
 
-    // this.authService.currentUser.subscribe(user => {
-    //   this.currentUser = user;
-    // });
+    this.authService.currentUser.subscribe((user) => {
+      this.currentUser = user;
+    });
   }
-
-  // loadJobDetails(jobId: string) {
-  //   this.jobService.getJob(jobId).subscribe(job => {
-  //     this.job = job; // Store the entire job object
-  //     this.jobPhotos = job.photos || []; // Assuming 'photos' is an array of image URLs
-  //   }, error => {
-  //     console.error('Error fetching job details:', error);
-  //   });
-  // }
 
   navigateToHome() {
     this.navCtrl.navigateBack('/home');
@@ -45,5 +40,7 @@ export class JobDetailsPage implements OnInit {
 
   startChat() {
     // Implement chat functionality or navigation
+
+    //Malthe fix
   }
 }
