@@ -38,7 +38,6 @@ export class ChatService {
         chatId: chatId,
         messages: [],
         userIds: [userId, recipientId],
-        recipientId: recipientId,
       });
       // Also add this chatId to both users' conversation list
       // This part is omitted for simplicity but should be implemented

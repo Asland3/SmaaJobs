@@ -1,7 +1,4 @@
-import {
-  Component,
-  OnInit,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
@@ -33,6 +30,7 @@ export class ActiveChatPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    // debugger
     this.currentUser = this.auth.currentUser;
 
     const params = this.route.snapshot.queryParams;
@@ -41,22 +39,29 @@ export class ActiveChatPage implements OnInit {
       '🚀 ~ file: active-chat.page.ts:30 ~ ActiveChatPage ~ ngOnInit ~ this.chatId:',
       this.chatId
     );
-    if (params['recipientData']) {
-      this.recipient = JSON.parse(params['recipientData']);
-      console.log(
-        '🚀 ~ file: active-chat.page.ts:32 ~ ActiveChatPage ~ ngOnInit ~ this.recipient:',
-        this.recipient
+
+    // Check if userId parameter is available
+    const recipientUserId = params['userId'];
+    if (recipientUserId) {
+      this.authService
+        .getSpecificUser(recipientUserId)
+        .then((recipientData) => {
+          this.recipient = recipientData;
+          console.log(
+            '🚀 ~ file: active-chat.page.ts:32 ~ ActiveChatPage ~ ngOnInit ~ this.recipient:',
+            this.recipient
+          );
+        });
+
+      this.messages$ = this.chatService.getMessages(this.chatId).pipe(
+        map((messages) =>
+          messages.map((message) => ({
+            ...message,
+            createdAt: new Date(message.createdAt.seconds * 1000), // Convert to JavaScript Date
+          }))
+        )
       );
     }
-
-    this.messages$ = this.chatService.getMessages(this.chatId).pipe(
-      map((messages) =>
-        messages.map((message) => ({
-          ...message,
-          createdAt: new Date(message.createdAt.seconds * 1000), // Convert to JavaScript Date
-        }))
-      )
-    );
   }
 
   sendMessage(text: any) {

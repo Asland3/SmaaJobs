@@ -50,7 +50,9 @@ export class JobDetailsPage implements OnInit {
 
     try {
       const chatId = await this.chatService.getOrCreateConversationId(this.currentUser.uid, this.job.userId!);
-      this.router.navigate(['/active-chat'], { queryParams: { chatId } });
+      console.log("This is the currnet user id", this.currentUser.uid)
+      console.log("This is the job user id", this.job.userId)
+      this.router.navigate(['/active-chat'], { queryParams: { chatId, userId: this.job.userId } });
     } catch (error) {
       console.error('Error starting chat:', error);
     }

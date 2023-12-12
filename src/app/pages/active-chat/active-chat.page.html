@@ -23,7 +23,7 @@
       <!-- <ion-img src={{recipient.profile-picture}}> </ion-img> -->
       <ion-img src="assets/svg/profile/profile-picture.svg"> </ion-img>
       <h2 class="header-name">
-        {{recipient.firstName}} {{recipient.lastName}}
+        {{recipient?.firstName}} {{recipient?.lastName}}
       </h2>
     </div>
 
@@ -61,12 +61,12 @@
 
     <div *ngFor="let message of messages$ | async">
       <div
-        [ngClass]="{'chat-window-outgoing': message.userId === currentUser.uid, 'chat-window-incoming': message.userId !== currentUser.uid}"
+        [ngClass]="{'chat-window-outgoing': message.userId === currentUser.uid, 'chat-window-incomming': message.userId !== currentUser.uid}"
       >
         <ion-card>
           <ion-card-header>
             <ion-card-title class="card-title"
-              >{{ message.userId === currentUser.uid ? 'You' : recipient?.name
+              >{{ message.userId === currentUser.uid ? 'You' : recipient?.firstName
               }}</ion-card-title
             >
           </ion-card-header>

@@ -34,49 +34,45 @@ export class ChatPage implements OnInit {
           const conversationsWithDetails = await Promise.all(
             conversations.map(async (conversation) => {
               const chatId = conversation.id;
-              const lastMessageObservable = this.chatService.getLastMessage(chatId);
+              const lastMessageObservable =
+                this.chatService.getLastMessage(chatId);
               const lastMessage = await firstValueFrom(lastMessageObservable);
-  
+
               const recipientId = conversation.userIds.find(
                 (userId: string) => userId !== user.uid
               );
-  
+
               let userData = null;
               if (recipientId) {
                 userData = this.usersData.get(recipientId);
                 if (!userData) {
                   // Fetch user data if not already cached
-                  userData = await this.authService.getUser(recipientId);
+                  userData = await this.authService.getSpecificUser(
+                    recipientId
+                  );
                   this.usersData.set(recipientId, userData);
                 }
               }
-  
+
               return {
                 ...conversation,
                 recipient: userData,
-                lastMessage: lastMessage.length > 0 ? lastMessage[0] : null
+                lastMessage: lastMessage.length > 0 ? lastMessage[0] : null,
               };
             })
           );
-  
+
           this.conversations = conversationsWithDetails;
-          console.log("🚀 ~ file: chat.page.ts:61 ~ ChatPage ~ .subscribe ~ this.conversations:", this.conversations)
         });
     } else {
       console.log('No user is currently logged in.');
     }
   }
 
-  openChat(chatId: string, recipient: any) {
-    const recipientData = JSON.stringify(recipient);
-    this.router.navigate(['/active-chat'], { queryParams: { chatId, recipientData } });
-  }
-  
-  
-  
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  openChat(chatId: string, recipientId: string) {
+    this.router.navigate(['/active-chat'], {
+      queryParams: { chatId, userId: recipientId },
+    });
   }
 
   navigateToHome() {
