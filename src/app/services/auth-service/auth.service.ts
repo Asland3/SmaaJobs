@@ -276,6 +276,8 @@ export class AuthService {
     if (this.auth.currentUser) {
       const userData = await this.getUser(this.auth.currentUser.uid);
       this.currentUser.next(userData);
+    } else {
+      this.currentUser.next(null);
     }
   }
 }

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { FiltermodalPage } from '../../modals/filtermodal/filtermodal.page';
 import { JobService } from 'src/app/services/job-service/job.service';
-import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { Jobs } from 'src/app/models/jobs.model';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { User } from 'src/app/models/user-model';
 
 @Component({
   selector: 'app-home',
@@ -27,6 +28,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.authService.currentUser.subscribe((user) => {
       this.currentUser = user;
+      console.log(user);
     });
   }
 

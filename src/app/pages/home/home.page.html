@@ -4,10 +4,13 @@
       <ion-col size-s="2"> </ion-col>
 
       <ion-col size-s="8">
-        <h5 class="middle">Placering</h5>
-        <h5 class="middle ion-no-margin" style="margin-top: -10px">
-          2630 Taastrup
-        </h5>
+        <div *ngIf="currentUser; else noLocation">
+          <h5 class="middle">Placering</h5>
+          <h5 class="middle ion-no-margin" style="margin-top: -10px">
+            {{currentUser?.postalCode}} - {{currentUser?.town}}
+          </h5>
+        </div>
+        <ng-template #noLocation> <h2 class="middle ion-no-margin">-- --</h2> </ng-template>
       </ion-col>
 
       <ion-col size-s="2" class="right">
@@ -15,7 +18,12 @@
       </ion-col>
     </ion-row>
 
-    <h1 class="ion-text-center">Hej Mikkel</h1>
+    <div *ngIf="currentUser; else loggedOut">
+      <h1 class="ion-text-center">Hej {{currentUser?.firstName}}</h1>
+    </div>
+    <ng-template #loggedOut>
+      <h1 class="ion-text-center">Velkommen</h1>
+    </ng-template>
 
     <div class="search-container">
       <ion-searchbar
