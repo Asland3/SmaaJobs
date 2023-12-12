@@ -1,6 +1,7 @@
 <ion-app>
   <ion-menu contentId="main-content" side="end" swipeGesture="false">
     <ion-content>
+      <!-- burger menu -->
       <div class="content">
         <ion-button (click)="closeMenu()" fill="clear" class="close-button">
           <ion-icon name="close-outline" size="large" slot="end"></ion-icon>
@@ -8,7 +9,6 @@
         <div class="menu-header">
           <div *ngIf="user; else loggedOut">
             <div class="user-profile-image">
-              <!-- <ion-img src="assets/svg/profile/profile-picture.svg" /> -->
               <ion-img src="{{ user.profilePic }}"></ion-img>
             </div>
             <h1>{{ user.firstName }} {{ user.lastName }}</h1>

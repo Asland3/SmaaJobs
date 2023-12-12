@@ -90,6 +90,7 @@ small {
 
 ion-button {
   --border-radius: 10px;
+  border-radius: 10px;
   font-size: 20px;
   min-height: 0;
 }
@@ -103,6 +104,7 @@ ion-button {
   min-height: 0;
   margin-left: auto;
   margin-right: auto;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 ion-menu-button {
