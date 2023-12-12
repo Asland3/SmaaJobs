@@ -18,8 +18,6 @@ export class HomePage implements OnInit {
   currentUser: any;
   selectedCategories: string[] = [];
 
-  user!: User;
-
   constructor(
     private modalController: ModalController,
     private navCtrl: NavController,
@@ -30,6 +28,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.authService.currentUser.subscribe((user) => {
       this.currentUser = user;
+      console.log(user);
     });
   }
 

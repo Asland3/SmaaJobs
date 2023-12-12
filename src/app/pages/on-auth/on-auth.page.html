@@ -1,0 +1,30 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col (click)="navigateToStart()">
+        <ion-img class="back-arrow"
+          src="../../../assets/svg/icons/back-arrow.svg"
+          alt="back-arrow"
+        ></ion-img
+      ></ion-col>
+      <ion-col size="10"> </ion-col>
+      
+    </ion-row>
+  </ion-grid>
+  <div class="container">
+    <h1>Du skal være logget ind for at bruge appen!</h1><br />
+    <h2>Ved at logge ind ville du få adgang til funktioner som:</h2>
+    <ul style="padding-left: 60px; padding-right: 60px">
+      <li>Chat</li>
+      <li>Tage Opgaver</li>
+      <li>Oprette Opgaver</li>
+      med mere...
+    </ul>
+    <ion-img src="../../../assets/svg/decision-isometric.svg"></ion-img>
+    <br />
+    <br />
+    <ion-button class="align-items-center" (click)="goToLogIn()"
+      >Log Ind</ion-button
+    >
+  </div>
+</ion-content>

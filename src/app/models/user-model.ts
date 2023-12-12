@@ -6,6 +6,7 @@ export class User{
     lastName?: string
     phone?: string
     postalCode?: string
+    profilePic?: string
     town?: string
     uid?: string 
 }

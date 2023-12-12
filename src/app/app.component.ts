@@ -52,7 +52,8 @@ export class AppComponent {
   }
 
   goToLogIn() {
-    this.navCtrl.navigateBack('/email-password');
+    this.navCtrl.navigateBack('/auth/login');
+    this.closeMenu()
   }
 
   navigateToPage(page: any) {
@@ -61,7 +62,7 @@ export class AppComponent {
     } else if (page.direction === 'back') {
       this.navCtrl.navigateBack(page.url);
     }
-    this.menu.close();
+    this.closeMenu()
   }
 
   isActive(url: string): boolean {

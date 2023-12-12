@@ -1,6 +1,14 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { IntroGuard } from './guards/intro.guard';
+import {
+  redirectUnauthorizedTo,
+  redirectLoggedInTo,
+  canActivate,
+} from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToOnAuth = () => redirectUnauthorizedTo(['on-auth']);
+
 
 const routes: Routes = [
   {
@@ -28,6 +36,7 @@ const routes: Routes = [
     path: 'chat',
     loadChildren: () =>
       import('./pages/chat/chat.module').then((m) => m.ChatPageModule),
+    ...canActivate(redirectUnauthorizedToOnAuth),
   },
   {
     path: 'active-chat',
@@ -35,6 +44,12 @@ const routes: Routes = [
       import('./pages/active-chat/active-chat.module').then(
         (m) => m.ActiveChatPageModule
       ),
+    ...canActivate(redirectUnauthorizedToOnAuth),
+  },
+  {
+    path: 'on-auth',
+    loadChildren: () =>
+      import('./pages/on-auth/on-auth.module').then((m) => m.OnAuthPageModule),
   },
   {
     path: 'auth',
@@ -57,7 +72,7 @@ const routes: Routes = [
           import('./pages/register/register.module').then(
             (m) => m.RegisterPageModule
           ),
-      }
+      },
     ],
   },
   {
@@ -70,11 +85,18 @@ const routes: Routes = [
 
   {
     path: 'add-new-job',
-    loadChildren: () => import('./pages/add-new-job/add-new-job.module').then( m => m.AddNewJobPageModule)
+    loadChildren: () =>
+      import('./pages/add-new-job/add-new-job.module').then(
+        (m) => m.AddNewJobPageModule
+      ),
+    ...canActivate(redirectUnauthorizedToOnAuth),
   },
   {
     path: 'job-details',
-    loadChildren: () => import('./pages/job-details/job-details.module').then( m => m.JobDetailsPageModule)
+    loadChildren: () =>
+      import('./pages/job-details/job-details.module').then(
+        (m) => m.JobDetailsPageModule
+      ),
   },
   {
     path: '**',
@@ -99,9 +121,12 @@ const routes: Routes = [
   },
   {
     path: 'logout-modal',
-    loadChildren: () => import('./modals/logout-modal/logout-modal.module').then( m => m.LogoutModalPageModule)
+    loadChildren: () =>
+      import('./modals/logout-modal/logout-modal.module').then(
+        (m) => m.LogoutModalPageModule
+      ),
+    ...canActivate(redirectUnauthorizedToOnAuth),
   },
-
 ];
 
 @NgModule({

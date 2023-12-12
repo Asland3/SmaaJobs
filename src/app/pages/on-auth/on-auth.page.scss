@@ -1,0 +1,42 @@
+ion-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+h1 {
+  font-size: 4vh;
+  margin:0;
+}
+
+ion-text {
+  text-align: center;
+}
+
+ion-grid {
+    padding: 0;
+}
+
+ion-col {
+    padding: 0;
+}
+
+.back-arrow{
+    width: 50px;
+    height: 50px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+ion-button {
+  --background: var(--ion-color-secondary);
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.container{
+    padding-left: 50px;
+    padding-right: 50px;
+}
