@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JobService } from 'src/app/services/job-service/job.service';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { Jobs } from 'src/app/models/jobs.model';
+import { ChatService } from 'src/app/services/chat-service/chat.service';
 
 @Component({
   selector: 'app-job-details',
@@ -18,7 +19,9 @@ export class JobDetailsPage implements OnInit {
     private navCtrl: NavController,
     private jobService: JobService,
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private chatService: ChatService,
+    private router: Router // Add this
   ) {}
 
   ngOnInit() {
@@ -26,6 +29,7 @@ export class JobDetailsPage implements OnInit {
     this.jobService.getJob(jobId).then((jobData) => {
       if (jobData) {
         this.job = jobData;
+        console.log("🚀 ~ file: job-details.page.ts:29 ~ JobDetailsPage ~ this.jobService.getJob ~ this.job:", this.job)
       }
     });
 
@@ -38,9 +42,17 @@ export class JobDetailsPage implements OnInit {
     this.navCtrl.navigateBack('/home');
   }
 
-  startChat() {
-    // Implement chat functionality or navigation
+  async startChat() {
+    if (!this.currentUser || !this.job) {
+      // Handle case where currentUser or job data is not available
+      return;
+    }
 
-    //Malthe fix
+    try {
+      const chatId = await this.chatService.getOrCreateConversationId(this.currentUser.uid, this.job.userId!);
+      this.router.navigate(['/active-chat'], { queryParams: { chatId } });
+    } catch (error) {
+      console.error('Error starting chat:', error);
+    }
   }
 }

@@ -20,11 +20,14 @@
     <div style="padding-top: 10vh"></div>
 
     <div class="active-chat">
+      <!-- <ion-img src={{recipient.profile-picture}}> </ion-img> -->
       <ion-img src="assets/svg/profile/profile-picture.svg"> </ion-img>
-      <h2 class="header-name">Hanne Henriksen</h2>
+      <h2 class="header-name">
+        {{recipient.firstName}} {{recipient.lastName}}
+      </h2>
     </div>
 
-    <div class="chat-window-incomming">
+    <!-- <div class="chat-window-incomming">
       <ion-card>
         <ion-card-header>
           <ion-card-title class="card-title">Konrad Hansen</ion-card-title>
@@ -54,28 +57,43 @@
           <ion-card-subtitle class="message-time">12:00</ion-card-subtitle>
         </ion-card-content>
       </ion-card>
+    </div> -->
+
+    <div *ngFor="let message of messages$ | async">
+      <div
+        [ngClass]="{'chat-window-outgoing': message.userId === currentUser.uid, 'chat-window-incoming': message.userId !== currentUser.uid}"
+      >
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="card-title"
+              >{{ message.userId === currentUser.uid ? 'You' : recipient?.name
+              }}</ion-card-title
+            >
+          </ion-card-header>
+          <ion-card-content>
+            <h2 class="message-content">{{ message.text }}</h2>
+            <ion-card-subtitle class="message-time"
+              >{{ message.createdAt | date: 'HH:mm' }}</ion-card-subtitle
+            >
+          </ion-card-content>
+        </ion-card>
+      </div>
     </div>
 
-
-
-    
-
-    <ion-list>
-      <ion-item *ngFor="let message of messages$ | async">
-        <ion-label>
-          {{ message.text }}
-        </ion-label>
-      </ion-item>
-    </ion-list>
-
-    <ion-button (click)="sendMessage('Hello')">Send Message</ion-button>
-  
-    <!-- <ion-item>
-      <ion-input #messageInput type="text" placeholder="Type a message"></ion-input>
-
-      <ion-button slot="end" (click)="sendMessage(messageInput.value || ''); messageInput.value=''">
-        Send
-      </ion-button>
-    </ion-item> -->
+    <ion-footer>
+      <ion-toolbar>
+        <ion-input
+          #messageInput
+          type="text"
+          placeholder="Type a message"
+        ></ion-input>
+        <ion-button
+          slot="end"
+          (click)="sendMessage(messageInput.value); messageInput.value=''"
+        >
+          Send
+        </ion-button>
+      </ion-toolbar>
+    </ion-footer>
   </div>
 </ion-content>

@@ -10,7 +10,6 @@ import {
   orderBy,
   onSnapshot,
   where,
-  updateDoc,
   getDoc,
   collectionData,
   limit,
