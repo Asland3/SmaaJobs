@@ -1,0 +1,165 @@
+ion-content {
+  --background: #e6e6e6;
+}
+.top-container {
+  background: url("../../../assets/svg/backgrounds/profile.svg") no-repeat
+    center center / cover;
+  min-height: 36vh;
+  max-height: 36vh;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+ion-row {
+  .left {
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.text-padding {
+  padding-left: 35%;
+  padding-right: 20px;
+  padding-top: 70px;
+}
+
+.edit-profile {
+  font-size: 24px;
+  float: right;
+  margin: 20px;
+}
+
+.profile-card {
+  position: absolute;
+  top: 40vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  margin: 0 auto;
+  width: 350px;
+  color: black;
+  height: 240px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.description-card {
+  margin-top: 20vh;
+  width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: black;
+}
+
+.description-card h2 {
+  margin-left: 20px;
+}
+
+.description-card h4 {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+
+.all-jobs {
+  padding-left: 20px;
+}
+
+.job-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 10px;
+  width: 350px;
+  margin-top: 0 !important;
+  margin-bottom: 10px !important;
+  --border-radius: 10px;
+  --box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  color: black;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+.card-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-grow: 1;
+  padding: 5px 0;
+}
+
+.text-content {
+  padding-right: 20px;
+}
+
+.card-content h2 {
+  margin: 8px 0;
+}
+
+.card-content h4 {
+  margin: 12px 0;
+}
+
+.card-content h5 {
+  margin: 8px 0;
+}
+
+.card-content ion-icon {
+  position: absolute;
+  right: 5px;
+  bottom: 3px;
+  transform: translateY(-50%);
+}
+
+.trash-icon {
+  font-size: 20px;
+  color: red;
+}
+
+.edit-icon {
+  margin-right: 50px;
+  font-size: 20px;
+  color: #00bfff;
+}
+
+.no-jobs-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

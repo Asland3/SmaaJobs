@@ -1,0 +1,134 @@
+<ion-content>
+  <div class="top-container">
+    <ion-row>
+      <ion-col size-s="2" class="left">
+        <ion-button fill="clear" (click)="navigateBack()">
+          <ion-img
+            src="../../../assets/svg/icons/back-arrow.svg"
+            alt="back-arrow"
+          ></ion-img> </ion-button
+      ></ion-col>
+
+      <ion-col size-s="8"> </ion-col>
+
+      <ion-col size-s="2" class="right">
+        <ion-menu-button></ion-menu-button>
+      </ion-col>
+    </ion-row>
+    <form [formGroup]="credentials">
+      <div>
+        <!-- Update profile page -->
+        <div class="profile-pic-container">
+          <img class="profile-pic" [src]="user?.profilePic" alt="Profile Pic" />
+          <ion-img
+            class="edit-profile"
+            src="../../../assets/svg/icons/camera-outline.svg"
+            (click)="editProfilePic()"
+          ></ion-img>
+        </div>
+
+        <ion-card class="profile-card">
+          <div>
+            <div style="margin-top: 100px">
+              <!-- Update first name -->
+              <ion-input
+                label="Fornavn"
+                labelPlacement="floating"
+                fill="outline"
+                placeholder="Fornavn"
+                mode="md"
+                formControlName="firstName"
+                errorText="Fornavn skal udfyldes"
+              ></ion-input>
+            </div>
+
+            <!-- Update last name -->
+            <ion-input
+              label="Efternavn"
+              labelPlacement="floating"
+              fill="outline"
+              placeholder="Efternavn"
+              mode="md"
+              formControlName="lastName"
+              errorText="Efternavn skal udfyldes"
+            ></ion-input>
+
+            <!-- Update email -->
+            <ion-input
+              label="Email"
+              labelPlacement="floating"
+              fill="outline"
+              placeholder="Email"
+              mode="md"
+              formControlName="email"
+              errorText="Email skal udfyldes"
+            ></ion-input>
+
+            <!-- Update phone -->
+            <ion-input
+              label="Telefon"
+              labelPlacement="floating"
+              fill="outline"
+              placeholder="Telefon"
+              mode="md"
+              formControlName="phone"
+              errorText="Telefon skal udfyldes"
+            ></ion-input>
+
+            <!-- Update age -->
+            <ion-input
+              label="Alder"
+              labelPlacement="floating"
+              fill="outline"
+              placeholder="Alder"
+              mode="md"
+              formControlName="age"
+              errorText="Alder skal udfyldes"
+            ></ion-input>
+
+            <!-- Update postal code -->
+            <ion-input
+              label="Postnummer"
+              labelPlacement="floating"
+              fill="outline"
+              placeholder="Postnummer"
+              mode="md"
+              formControlName="postalCode"
+              errorText="Postnummer skal udfyldes"
+            ></ion-input>
+
+            <!-- Update town -->
+            <ion-input
+              label="By"
+              labelPlacement="floating"
+              fill="outline"
+              placeholder="By"
+              mode="md"
+              formControlName="town"
+              errorText="By skal udfyldes"
+            ></ion-input>
+
+            <!-- Update description -->
+            <ion-textarea
+              label="Om dig"
+              labelPlacement="floating"
+              fill="outline"
+              mode="md"
+              counter="true"
+              maxlength="500"
+              formControlName="description"
+              errorText="Beskrivelse skal udfyldes"
+            ></ion-textarea>
+          </div>
+
+          <ion-button
+            class="update-button"
+            expand="block"
+            (click)="updateProfile()"
+            >Opdater profil</ion-button
+          >
+        </ion-card>
+      </div>
+    </form>
+  </div>
+</ion-content>

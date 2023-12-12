@@ -38,8 +38,8 @@ export class AddNewJobPage implements OnInit {
     this.validators();
   }
 
-  navigateToHome() {
-    this.navCtrl.navigateBack('/home');
+  navigateBack() {
+    this.navCtrl.back();
   }
 
   async openCamera(cardIndex: number) {

@@ -38,8 +38,8 @@ export class JobDetailsPage implements OnInit {
     });
   }
 
-  navigateToHome() {
-    this.navCtrl.navigateBack('/home');
+  navigateBack() {
+    this.navCtrl.back();
   }
 
   async startChat() {

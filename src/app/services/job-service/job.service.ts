@@ -22,6 +22,7 @@ import {
   uploadBytes,
 } from '@angular/fire/storage';
 import { AuthService } from '../auth-service/auth.service';
+import { Jobs } from 'src/app/models/jobs.model';
 
 @Injectable({
   providedIn: 'root',
@@ -30,11 +31,11 @@ export class JobService {
   private currentUser: any;
 
   constructor(private authService: AuthService) {
-    this.initializeCurrentUser()
+    this.initializeCurrentUser();
   }
 
   private initializeCurrentUser() {
-    this.authService.currentUser.subscribe(user => {
+    this.authService.currentUser.subscribe((user) => {
       this.currentUser = user;
     });
   }
@@ -51,7 +52,6 @@ export class JobService {
     const storage = getStorage();
 
     if (this.currentUser) {
-
       const photoURLs = [];
       for (const photo of jobData.photos) {
         const photoRef = ref(
@@ -103,33 +103,56 @@ export class JobService {
     if (this.currentUser.uid) {
       const q = query(
         collection(db, 'jobs'),
-        where('userId', '==', this.currentUser.uid)
+        where('userId', '==', this.currentUser.uid),
+        orderBy('createdAt', 'desc')
       );
       const querySnapshot = await getDocs(q);
-      return querySnapshot.docs.map((doc) => doc.data());
+      const jobs = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      return jobs;
     }
     return [];
   }
+  
 
-  async updateJob(jobId: string, newJobData: any) {
+  async updateJob(jobId: string, newJobData: any, imageBlobs: Blob[]) {
     const db = getFirestore();
+    const storage = getStorage();
     const jobRef = doc(db, 'jobs', jobId);
+  
+    // Upload images to Firebase Storage and get their URLs
+    const photoURLs = [];
+    for (const blob of imageBlobs) {
+      if (blob !== null) {
+        const photoRef = ref(
+          storage,
+          `jobPhotos/${this.currentUser.uid}/${new Date().getTime()}`
+        );
+        await uploadBytes(photoRef, blob);
+        const photoURL = await getDownloadURL(photoRef);
+        photoURLs.push(photoURL);
+      }
+    }
+  
+    // Replace Blob objects with URLs in newJobData
+    newJobData.photos = photoURLs;
+  
+    // Update the document in Firestore
     await updateDoc(jobRef, newJobData);
   }
-
+  
   async deleteJob(jobId: string) {
     const db = getFirestore();
     const jobRef = doc(db, 'jobs', jobId);
     await deleteDoc(jobRef);
   }
-
-  async getJob(jobId: string) {
+  
+  async getJob(jobId: string): Promise<Jobs | null> {
     const db = getFirestore();
     const jobDocRef = doc(db, 'jobs', jobId);
-
+  
     const docSnapshot = await getDoc(jobDocRef);
     if (docSnapshot.exists()) {
-      return { id: docSnapshot.id, ...docSnapshot.data() };
+      return { id: docSnapshot.id, ...(docSnapshot.data() as Jobs) };
     } else {
       // handle the case where the document does not exist
       console.log('No such document!');
