@@ -133,6 +133,7 @@ export class RegisterPage implements OnInit {
         await loading.dismiss();
 
         if (user) {
+          this.authService.updateUserData();
           this.navCtrl.navigateForward('/home');
         }
       } catch (error: any) {
