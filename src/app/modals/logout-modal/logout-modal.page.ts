@@ -25,7 +25,7 @@ export class LogoutModalPage implements OnInit {
 
   async logoutConfirm() {
     const loading = await this.loadingController.create({
-      message: 'Logging out...',
+      message: 'Logger ud...',
     });
     await loading.present();
 
@@ -37,8 +37,8 @@ export class LogoutModalPage implements OnInit {
       this.navCtrl.navigateBack('/start');
     } catch (error: any) {
       const alert = await this.alertController.create({
-        header: 'Logout failed',
-        message: error.message,
+        header: 'Log ud fejlede',
+        message: 'Der skete en fejl ved log ud. Prøv igen.',
         buttons: ['OK'],
       });
       await alert.present();

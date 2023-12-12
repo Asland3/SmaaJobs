@@ -81,7 +81,18 @@ const routes: Routes = [
         (m) => m.PrivacyPolicyPageModule
       ),
   },
-
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'profile/user/:userId',
+    loadChildren: () => import('./pages/update-profile/update-profile.module').then( m => m.UpdateProfilePageModule)
+  },
+  {
+    path: 'profile/job/:jobId',
+    loadChildren: () => import('./pages/update-job/update-job.module').then( m => m.UpdateJobPageModule)
+  },
   {
     path: 'add-new-job',
     loadChildren: () =>

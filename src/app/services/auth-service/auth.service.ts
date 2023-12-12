@@ -13,7 +13,7 @@ import {
   updateEmail,
   updatePassword,
 } from '@angular/fire/auth';
-import { getFirestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
+import { getFirestore, doc, getDoc, setDoc, updateDoc  } from '@angular/fire/firestore';
 import {
   getDownloadURL,
   getStorage,
@@ -279,5 +279,24 @@ export class AuthService {
     } else {
       this.currentUser.next(null);
     }
+  }
+
+  async updateUserProfile(uid: string, updatedUserData: any, newProfileImageBlob?: Blob | null) {
+    const db = getFirestore();
+    const storage = getStorage();
+    const userRef = doc(db, 'users', uid);
+  
+    if (newProfileImageBlob) {
+      // Upload det nye profilbillede til Firebase Storage
+      const profilePicRef = ref(storage, `profilePics/${uid}/${new Date().getTime()}`);
+      await uploadBytes(profilePicRef, newProfileImageBlob);
+      const profilePicUrl = await getDownloadURL(profilePicRef);
+  
+      // Sæt URL'en til det nye billede i updatedUserData
+      updatedUserData.profilePic = profilePicUrl;
+    }
+  
+    // Opdater brugerens data i Firestore
+    await updateDoc(userRef, updatedUserData);
   }
 }
