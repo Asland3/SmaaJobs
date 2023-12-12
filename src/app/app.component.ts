@@ -28,13 +28,17 @@ export class AppComponent {
     },
   ];
 
+
+
   constructor(
     private router: Router,
     private menu: MenuController,
     private navCtrl: NavController,
     private authService: AuthService,
     private modalCtrl: ModalController
-  ) {}
+  ) {
+    defineCustomElements(window);
+  }
 
   ngOnInit() {
     this.authService.currentUser.subscribe((userData) => {

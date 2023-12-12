@@ -149,17 +149,48 @@ export class RegisterPage implements OnInit {
         resultType: CameraResultType.DataUrl,
         source: CameraSource.Prompt,
       });
-
+  
       if (image.dataUrl) {
-        this.selectedProfileImage = image.dataUrl;
-        const response = await fetch(image.dataUrl);
-        this.profilePicBlob = await response.blob();
-        console.log(this.profilePicBlob);
+        // Convert DataURL to Image Object
+        const img = new Image();
+        img.src = image.dataUrl;
+        
+        img.onload = () => {
+          // Create Canvas
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+  
+          // Ensure canvas is square
+          const size = Math.min(img.width, img.height);
+          canvas.width = size;
+          canvas.height = size;
+  
+          // Draw round image
+          ctx?.beginPath();
+          ctx?.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2, true);
+          ctx?.closePath();
+          ctx?.clip();
+  
+          ctx?.drawImage(img, 0, 0, size, size);
+  
+          // Convert canvas to DataURL
+          const roundImageUrl = canvas.toDataURL();
+          this.selectedProfileImage = roundImageUrl;
+          
+          // Convert DataURL to Blob if needed
+          fetch(roundImageUrl)
+            .then(res => res.blob())
+            .then(blob => {
+              this.profilePicBlob = blob;
+              console.log(this.profilePicBlob);
+            });
+        };
       }
     } catch (error) {
       console.log('Camera prompt was dismissed', error);
     }
   }
+  
 
   selectProfileImage(imageUri: string) {
     this.selectedProfileImage = imageUri;

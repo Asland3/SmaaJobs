@@ -23,8 +23,10 @@ export class ChatService {
 
   // Function to create or get chatId for conversation
   async getOrCreateConversationId(userId: string, recipientId: string) {
-    // Ideally, this should be a transaction to ensure uniqueness and atomicity
-    // For simplicity, we're using a simple approach
+
+    if (userId === recipientId) {
+      throw new Error('You cannot start a chat with yourself.');
+    }
     const chatId =
       userId < recipientId
         ? `${userId}_${recipientId}`
@@ -39,8 +41,6 @@ export class ChatService {
         messages: [],
         userIds: [userId, recipientId],
       });
-      // Also add this chatId to both users' conversation list
-      // This part is omitted for simplicity but should be implemented
     }
 
     return chatId;
