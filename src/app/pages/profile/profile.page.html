@@ -17,7 +17,11 @@
     </ion-row>
     <img class="profile-pic" [src]="user?.profilePic" alt="Profile Pic" />
     <ion-card class="profile-card">
-      <ion-icon class="edit-profile" name="pencil" (click)="editProfile()"></ion-icon>
+      <ion-icon
+        class="edit-profile"
+        name="pencil"
+        (click)="editProfile()"
+      ></ion-icon>
       <div class="text-padding">
         <h1>{{ user?.firstName }} {{ user?.lastName }}</h1>
         <h3 class="ion-no-margin">{{ user?.postalCode}} {{ user?.town}}</h3>
@@ -33,8 +37,8 @@
     <h4>{{ user?.description }}</h4>
   </ion-card>
 
+  <h1 class="all-jobs">Oprettet jobs</h1>
   <div *ngIf="userJobs.length > 0">
-    <h1 class="all-jobs">Oprettet jobs</h1>
     <ion-card
       class="job-card"
       *ngFor="let job of userJobs"
@@ -50,7 +54,11 @@
             name="trash"
             (click)="deleteJobConfirmation(job.id);$event.stopPropagation();"
           ></ion-icon>
-          <ion-icon class="edit-icon" name="create" (click)="updateJob(job.id);$event.stopPropagation();"></ion-icon>
+          <ion-icon
+            class="edit-icon"
+            name="create"
+            (click)="updateJob(job.id);$event.stopPropagation();"
+          ></ion-icon>
         </div>
       </div>
     </ion-card>

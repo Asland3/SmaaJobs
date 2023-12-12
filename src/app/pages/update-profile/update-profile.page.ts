@@ -20,7 +20,6 @@ export class UpdateProfilePage implements OnInit {
   ) {}
 
   ngOnInit() {
-
     this.validators();
     this.loadUserData();
   }
@@ -32,8 +31,13 @@ export class UpdateProfilePage implements OnInit {
 
   async loadUserData() {
     this.authService.currentUser.subscribe(async (userData) => {
+      this.user = userData;
       this.credentials.patchValue(userData);
     });
+  }
+
+  updateProfile(){
+    console.log(this.credentials.value);
   }
 
   validators() {
@@ -46,16 +50,11 @@ export class UpdateProfilePage implements OnInit {
       postalCode: ['', [Validators.required]],
       town: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      password: ['', [Validators.required]],
     });
   }
 
   get email() {
     return this.credentials?.get('email');
-  }
-
-  get password() {
-    return this.credentials?.get('password');
   }
 
   get firstName() {

@@ -17,23 +17,35 @@
     </ion-row>
     <form [formGroup]="credentials">
       <div>
+        <!-- Update profile page -->
+        <div class="profile-pic-container">
+          <img class="profile-pic" [src]="user?.profilePic" alt="Profile Pic" />
+          <ion-icon
+            class="edit-profile"
+            name="pencil"
+            (click)="editProfilePic()"
+          ></ion-icon>
+        </div>
+
         <ion-card class="profile-card">
-          <div class="text-padding">
-            <!-- Update first name -->
-            <ion-input
-              label="Fornavn"
-              label-placement="floating"
-              fill="outline"
-              placeholder="Fornavn"
-              mode="md"
-              formControlName="firstName"
-              errorText="Fornavn skal udfyldes"
-            ></ion-input>
+          <div>
+            <div style="margin-top: 100px">
+              <!-- Update first name -->
+              <ion-input
+                label="Fornavn"
+                labelPlacement="floating"
+                fill="outline"
+                placeholder="Fornavn"
+                mode="md"
+                formControlName="firstName"
+                errorText="Fornavn skal udfyldes"
+              ></ion-input>
+            </div>
 
             <!-- Update last name -->
             <ion-input
               label="Efternavn"
-              label-placement="floating"
+              labelPlacement="floating"
               fill="outline"
               placeholder="Efternavn"
               mode="md"
@@ -44,7 +56,7 @@
             <!-- Update email -->
             <ion-input
               label="Email"
-              label-placement="floating"
+              labelPlacement="floating"
               fill="outline"
               placeholder="Email"
               mode="md"
@@ -55,7 +67,7 @@
             <!-- Update phone -->
             <ion-input
               label="Telefon"
-              label-placement="floating"
+              labelPlacement="floating"
               fill="outline"
               placeholder="Telefon"
               mode="md"
@@ -66,7 +78,7 @@
             <!-- Update age -->
             <ion-input
               label="Alder"
-              label-placement="floating"
+              labelPlacement="floating"
               fill="outline"
               placeholder="Alder"
               mode="md"
@@ -77,7 +89,7 @@
             <!-- Update postal code -->
             <ion-input
               label="Postnummer"
-              label-placement="floating"
+              labelPlacement="floating"
               fill="outline"
               placeholder="Postnummer"
               mode="md"
@@ -88,7 +100,7 @@
             <!-- Update town -->
             <ion-input
               label="By"
-              label-placement="floating"
+              labelPlacement="floating"
               fill="outline"
               placeholder="By"
               mode="md"
@@ -96,23 +108,10 @@
               errorText="By skal udfyldes"
             ></ion-input>
 
-            <!-- Update password -->
-            <ion-input
-              label="Adgangskode"
-              label-placement="floating"
-              fill="outline"
-              placeholder="Adgangskode"
-              mode="md"
-              formControlName="password"
-              errorText="Adgangskode skal udfyldes"
-            ></ion-input>
-
             <!-- Update description -->
             <ion-textarea
-              label="Beskrivelse"
-              label-placement="floating"
-              class="description-text"
-              placeholder="Beskrivelse"
+              label="Om dig"
+              labelPlacement="floating"
               fill="outline"
               mode="md"
               counter="true"
@@ -121,6 +120,13 @@
               errorText="Beskrivelse skal udfyldes"
             ></ion-textarea>
           </div>
+
+          <ion-button
+            class="update-button"
+            expand="block"
+            (click)="updateProfile()"
+            >Opdater profil</ion-button
+          >
         </ion-card>
       </div>
     </form>

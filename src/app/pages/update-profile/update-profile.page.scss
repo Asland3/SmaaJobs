@@ -1,74 +1,142 @@
 ion-content {
-    --background: #e6e6e6;
-  }
-  .top-container {
-    background: url("../../../assets/svg/backgrounds/profile.svg") no-repeat
-      center center / cover;
-    min-height: 36vh;
-    max-height: 36vh;
-    margin-bottom: 20px;
-    position: relative;
-  }
-  
-  ion-row {
-    .left {
-      ion-img {
-        width: 25px;
-        height: 25px;
-      }
-    }
-  
-    .middle {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .right {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-  
-      ion-img {
-        width: 25px;
-        height: 25px;
-      }
+  --background: #e6e6e6;
+}
+.top-container {
+  background: url("../../../assets/svg/backgrounds/profile.svg") no-repeat
+    center center / cover;
+  min-height: 36vh;
+  max-height: 36vh;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+ion-row {
+  .left {
+    ion-img {
+      width: 25px;
+      height: 25px;
     }
   }
-  
-  .profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    background-color: white;
-    transform: translate(-50%, -50%);
-    z-index: 11;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  .middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  .text-padding {
-    padding-left: 35%;
-    padding-right: 20px;
-    padding-top: 70px;
+
+  .right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
   }
-  
-  .edit-profile {
-    font-size: 24px;
-    float: right;
-    margin: 20px;
-  }
-  
-  .profile-card {
-    position: absolute;
-    top: 60vh;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    margin: 0 auto;
-    width: 350px;
-    color: black;
-    height: auto;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  }
+}
+
+
+.profile-pic-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  top: 95%;
+}
+
+.edit-profile {
+  position: absolute;
+  bottom: -120px;
+  right: 20px;
+  font-size: 24px;
+  color: var(--ion-color-secondary);
+  z-index: 12;
+}
+
+
+
+// .profile-pic {
+//   width: 150px;
+//   height: 150px;
+//   border-radius: 50%;
+//   position: absolute;
+//   top: 70%;
+//   left: 50%;
+//   background-color: white;
+//   transform: translate(-50%, -50%);
+//   z-index: 11;
+//   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+// }
+// .edit-profile {
+//   font-size: 24px;
+//   float: right;
+//   margin: 20px;
+// }
+
+ion-input[fill="outline"] {
+  --border-radius: 10px;
+  border-radius: 10px;
+  --border-color: black;
+  --border-style: solid;
+  --border-width: 1px;
+  --highlight-color-focused: rgba(0, 0, 0, 0.7);
+  --placeholder-color: black;
+  width: 285px;
+  min-height: 45px;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+ion-textarea[fill="outline"] {
+  --border-radius: 10px;
+  border-radius: 10px;
+  --border-color: black;
+  --border-style: solid;
+  --border-width: 1px;
+  --highlight-color-focused: rgba(0, 0, 0, 0.7);
+  --placeholder-color: black;
+  width: 285px;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-card {
+  position: absolute;
+  top: 70vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  margin: 0 auto;
+  width: 350px;
+  color: black;
+  height: auto;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.update-button {
+  --background: var(--ion-color-secondary);
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 285px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
