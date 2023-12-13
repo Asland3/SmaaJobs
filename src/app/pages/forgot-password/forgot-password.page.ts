@@ -53,8 +53,8 @@ export class ForgotPasswordPage implements OnInit {
         async (err: any) => {
           await loading.dismiss();
           const alert = await this.alertController.create({
-            header: 'Reset password failed',
-            message: err.message,
+            header: 'Nulstilling af adgangskode fejlede',
+            message: 'Der skete en fejl ved nulstilling af adgangskode. Prøv igen senere',
             buttons: [{ text: 'OK', role: 'ok' }],
           });
   

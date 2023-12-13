@@ -96,7 +96,7 @@ export class AddNewJobPage implements OnInit {
         await loading.dismiss();
         const alert = await this.alertController.create({
           header: 'Oprettelse af job fejlede',
-          message: error.message,
+          message: 'Der skete en fejl under oprettelsen af jobbet. Prøv igen senere.',
           buttons: ['OK'],
         });
 

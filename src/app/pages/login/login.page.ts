@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
   async login() {
     if (this.credentials.valid) {
       const loading = await this.loadingController.create({
-        message: 'logger ind...',
+        message: 'Logger ind...',
       });
       await loading.present();
 
@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
           await loading.dismiss();
           const alert = await this.alertController.create({
             header: 'Login fejlede',
-            message: err.message,
+            message: 'Der skete en fejl ved login. Prøv igen senere',
             buttons: ['OK'],
           });
 
