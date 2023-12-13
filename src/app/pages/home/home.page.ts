@@ -4,7 +4,6 @@ import { FiltermodalPage } from '../../modals/filtermodal/filtermodal.page';
 import { JobService } from 'src/app/services/job-service/job.service';
 import { Jobs } from 'src/app/models/jobs.model';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
-import { User } from 'src/app/models/user-model';
 
 @Component({
   selector: 'app-home',
