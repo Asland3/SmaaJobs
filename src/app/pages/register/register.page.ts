@@ -56,8 +56,8 @@ export class RegisterPage implements OnInit {
 
     if (currentSlideIndex === 1 && !this.profilePicBlob) {
       this.alertController.create({
-        header: 'Profile Picture Required',
-        message: 'Please select a profile picture to continue.',
+        header: 'Profil billede er påkrævet',
+        message: 'Du skal vælge et profil billede for at fortsætte',
         buttons: ['OK']
       }).then(alert => alert.present());
       return; 
@@ -114,7 +114,7 @@ export class RegisterPage implements OnInit {
   async register() {
     if (this.credentials.valid) {
       const loading = await this.loadingController.create({
-        message: 'Creating account...',
+        message: 'Opretter en profil...',
       });
       await loading.present();
 
@@ -139,8 +139,8 @@ export class RegisterPage implements OnInit {
       } catch (error: any) {
         await loading.dismiss();
         const alert = await this.alertController.create({
-          header: 'Registration failed',
-          message: error.message,
+          header: 'Registrering mislykkedes',
+          message: 'Der skete en fejl under registreringen. Prøv igen senere.',
           buttons: ['OK'],
         });
 
