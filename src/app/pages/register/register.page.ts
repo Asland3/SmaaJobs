@@ -105,7 +105,7 @@ export class RegisterPage implements OnInit {
   async register() {
     if (this.credentials.valid) {
       const loading = await this.loadingController.create({
-        message: 'Creating account...',
+        message: 'Opretter bruger...',
       });
       await loading.present();
 
@@ -129,7 +129,7 @@ export class RegisterPage implements OnInit {
       } catch (error: any) {
         await loading.dismiss();
         const alert = await this.alertController.create({
-          header: 'Registration failed',
+          header: 'Registrering fejlede...',
           message: error.message,
           buttons: ['OK'],
         });
