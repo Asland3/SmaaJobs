@@ -23,10 +23,30 @@ ion-content {
         height: 90px;
         margin-right: 12px;
         padding-top: 8px;
+        padding-bottom: 4px;
         border-radius: 50%;
+        flex-shrink: 0;
     }
 }
 
+.active-chat .more-details {
+  cursor: pointer;
+  /* Add styles for the default state */
+}
+
+.active-chat .more-details.active {
+  /* Add styles for the active state */
+  color: #000000; /* Change color or add any desired style */
+  font-weight: bolder; /* For example, bold the text */
+  
+}
+
+.more-details {
+  padding-top: 10px; /* Adjust as needed */
+}
+.details-text {
+  margin-top: 2px;
+}
 
 
 .chat-window-incomming {
@@ -71,4 +91,15 @@ ion-content {
         float: right;
         color: black;
     }
+}
+
+.send {
+    border-radius: 50px;
+}
+
+ion-footer {
+  position: fixed;
+  bottom: 8px;
+  width: 100%;
+  box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.20);
 }

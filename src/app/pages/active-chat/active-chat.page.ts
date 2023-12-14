@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { NavController, ScrollDetail } from '@ionic/angular';
 import { Observable, Subscription, map } from 'rxjs';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { ChatService } from 'src/app/services/chat-service/chat.service';
@@ -15,6 +15,7 @@ import { ChatService } from 'src/app/services/chat-service/chat.service';
 export class ActiveChatPage implements OnInit {
   // messages: any[] = [];
   private messagesSubscription!: Subscription;
+  showDetails = false;
 
   messages$!: Observable<any[]>;
   chatId!: string;

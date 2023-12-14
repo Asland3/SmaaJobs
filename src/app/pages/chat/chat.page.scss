@@ -2,6 +2,10 @@ ion-content {
   --background: #e6e6e6;
 }
 
+h1 {
+  text-align: center;
+}
+
 .top-container {
   background: url("../../../assets/svg/backgrounds/chat.svg") no-repeat center center / cover;
   min-height: 18vh;
@@ -9,7 +13,7 @@ ion-content {
 }
 
 .spacer {
-  height: 11vh;
+  height: 6vh;
 }
 
 .container {
@@ -36,7 +40,8 @@ ion-card {
   margin-top: 0px !important;
   margin-bottom: 10px !important;
   --border-radius: 10px;
-  --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  // --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   width: 350px;
   display: flex;
   flex-direction: row;
@@ -53,6 +58,7 @@ ion-card ion-img {
   margin-right: 12px;
   padding-top: 8px;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .card-content {
