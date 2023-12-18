@@ -19,11 +19,15 @@
       <div>
         <!-- Update profile page -->
         <div class="profile-pic-container">
-          <img class="profile-pic" [src]="user?.profilePic" alt="Profile Pic" />
+          <ion-img
+            class="profile-pic"
+            (click)="editProfilePic()"
+            [src]="user?.profilePic"
+            alt="Profile Pic"
+          />
           <ion-img
             class="edit-profile"
             src="../../../assets/svg/icons/camera-outline.svg"
-            (click)="editProfilePic()"
           ></ion-img>
         </div>
 

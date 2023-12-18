@@ -112,7 +112,21 @@ export class JobService {
     }
     return [];
   }
-  
+
+  async getJobsfromSpecificUser(userid: string) {
+    const db = getFirestore();
+    if (userid) {
+      const q = query(
+        collection(db, 'jobs'),
+        where('userId', '==', userid),
+        orderBy('createdAt', 'desc')
+      );
+      const querySnapshot = await getDocs(q);
+      const jobs = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      return jobs;
+    }
+    return [];
+  }
 
   async updateJob(jobId: string, newJobData: any, imageBlobs: Blob[]) {
     const db = getFirestore();

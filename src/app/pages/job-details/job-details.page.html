@@ -49,6 +49,6 @@
         >Skriv en besked <ion-icon name="arrow-redo"></ion-icon
       ></ion-button>
     </div>
-    <img class="profile-pic" [src]="job.userProfilePicUrl" alt="Profile Pic" />
+    <img class="profile-pic" [src]="job.userProfilePicUrl" (click)="openProfile()" alt="Profile Pic" />
   </ion-card>
 </ion-content>

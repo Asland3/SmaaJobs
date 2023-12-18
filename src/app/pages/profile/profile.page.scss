@@ -1,9 +1,9 @@
 ion-content {
   --background: #e6e6e6;
 }
+
 .top-container {
-  background: url("../../../assets/svg/backgrounds/profile.svg") no-repeat
-    center center / cover;
+  background: url("../../../assets/svg/backgrounds/profile.svg") no-repeat center center / cover;
   min-height: 36vh;
   max-height: 36vh;
   margin-bottom: 20px;
@@ -37,9 +37,12 @@ ion-row {
 }
 
 .profile-pic {
+  margin: 0 auto;
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
   position: absolute;
   top: 70%;
   left: 50%;
@@ -48,6 +51,7 @@ ion-row {
   z-index: 11;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
 .text-padding {
   padding-top: 35px;
 }
@@ -55,7 +59,7 @@ ion-row {
 .edit-profile {
   position: absolute;
   top: 10px;
-  right: 10px; 
+  right: 10px;
   font-size: 24px;
 
 }

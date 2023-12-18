@@ -69,11 +69,6 @@ export class UpdateProfilePage implements OnInit {
     });
     await loading.present();
 
-    if (!this.newProfileImageBlob)
-    {
-      return
-    }
-  
     const updatedUserData = this.credentials.value;
     const uid = this.user.uid;
     const newProfileImageBlob = this.newProfileImageBlob;

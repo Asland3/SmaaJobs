@@ -88,7 +88,7 @@
   </div>
 
   <ion-fab>
-    <ion-fab-button>
+    <ion-fab-button *ngIf="currentUser?.age >= 18">
       <ion-icon name="add" (click)="addNew()"></ion-icon>
     </ion-fab-button>
   </ion-fab>

@@ -82,8 +82,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'view-profile/:userId',
+    loadChildren: () => import('./pages/view-profile/view-profile.module').then( m => m.ViewProfilePageModule)
+  },
+  {
     path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule),
+    ...canActivate(redirectUnauthorizedToOnAuth),
   },
   {
     path: 'profile/user/:userId',

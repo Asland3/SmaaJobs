@@ -55,4 +55,8 @@ export class JobDetailsPage implements OnInit {
       console.error('Error starting chat:', error);
     }
   }
+
+  openProfile() {
+    this.navCtrl.navigateForward(`/view-profile/${this.job.userId}`);
+  }
 }
