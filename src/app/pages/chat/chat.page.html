@@ -1,18 +1,16 @@
 <ion-content>
   <div class="top-container">
-    <ion-row class="top-row">
+    <ion-row>
       <ion-col size-s="2" class="left">
         <ion-button fill="clear" (click)="navigateToHome()">
           <ion-img
             src="../../../assets/svg/icons/back-arrow.svg"
             alt="back-arrow"
-          ></ion-img>
-        </ion-button>
-      </ion-col>
+          ></ion-img> </ion-button
+      ></ion-col>
 
-      <ion-col size-s="8" class="middle">
-        <h1>Chats</h1>
-      </ion-col>
+      <ion-col size-s="8"> </ion-col>
+
       <ion-col size-s="2" class="right">
         <ion-menu-button></ion-menu-button>
       </ion-col>
@@ -20,7 +18,6 @@
 
     <div class="spacer"></div>
 
-    <div style="padding-top: 10px"></div>
 
     <div *ngIf="!loading">
       <div
@@ -38,7 +35,7 @@
               <h2 class="ion-no-margin">
                 {{ chat.recipient.firstName }} {{ chat.recipient.lastName }}
               </h2>
-              <h4 class="ion-no-margin">{{ chat.lastMessage.text }}</h4>
+              <h4 class="ion-no-margin">{{ chat.lastMessage.text | wordLimit:5 }}</h4>
             </div>
           </ion-card>
         </div>

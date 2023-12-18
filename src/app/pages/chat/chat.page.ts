@@ -6,12 +6,14 @@ import { NavController } from '@ionic/angular';
 import { Subscription, first, firstValueFrom, take } from 'rxjs';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { ChatService } from 'src/app/services/chat-service/chat.service';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.page.html',
   styleUrls: ['./chat.page.scss'],
 })
+
 export class ChatPage implements OnInit {
   conversations: any[] = [];
   usersData: Map<string, any> = new Map(); // To store user data
@@ -67,7 +69,6 @@ export class ChatPage implements OnInit {
           this.conversations = conversationsWithDetails;
           this.loading = false;
         });
-       
     } else {
       console.log('No user is currently logged in.');
       this.loading = false;

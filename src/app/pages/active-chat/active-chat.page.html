@@ -1,96 +1,77 @@
 <ion-content>
   <div class="top-container">
-    <ion-row class="top-row">
+    <ion-row>
       <ion-col size-s="2" class="left">
         <ion-button fill="clear" (click)="navigateToChat()">
           <ion-img
             src="../../../assets/svg/icons/back-arrow.svg"
             alt="back-arrow"
-          ></ion-img>
-        </ion-button>
-      </ion-col>
+          ></ion-img> </ion-button
+      ></ion-col>
 
-      <ion-col size-s="8" class="middle">
-        <h1>Chat</h1>
-      </ion-col>
+      <ion-col size-s="8"> </ion-col>
+
       <ion-col size-s="2" class="right">
         <ion-menu-button></ion-menu-button>
       </ion-col>
     </ion-row>
-    <div style="padding-top: 10vh"></div>
 
     <div class="active-chat">
       <ion-img src="{{ recipient?.profilePic }}"> </ion-img>
-      <h2 class="header-name">
-        {{recipient?.firstName}} {{recipient?.lastName}}
-      </h2>
-    </div>
-
-    <!-- <div class="chat-window-incomming">
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title class="card-title">Konrad Hansen</ion-card-title>
-        </ion-card-header>
-
-        <ion-card-content>
-          <h2 class="message-content">
-            Hej Hanne, jeg vil gerne hjælpe dig med at gå med Fido. Jeg kan gå
-            med ham i morgen kl. 12:00. Er det noget du er interesseret i?
-          </h2>
-          <ion-card-subtitle class="message-time">12:00</ion-card-subtitle>
-        </ion-card-content>
-      </ion-card>
-    </div>
-
-    <div class="chat-window-outgoing">
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title class="card-title">Konrad Hansen</ion-card-title>
-        </ion-card-header>
-
-        <ion-card-content>
-          <h2 class="message-content">
-            Hej Hanne, jeg vil gerne hjælpe dig med at gå med Fido. Jeg kan gå
-            med ham i morgen kl. 12:00. Er det noget du er interesseret i?
-          </h2>
-          <ion-card-subtitle class="message-time">12:00</ion-card-subtitle>
-        </ion-card-content>
-      </ion-card>
-    </div> -->
-
-    <div *ngFor="let message of messages$ | async">
-      <div
-        [ngClass]="{'chat-window-outgoing': message.userId === currentUser.uid, 'chat-window-incomming': message.userId !== currentUser.uid}"
-      >
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="card-title"
-              >{{ message.userId === currentUser.uid ? 'You' : recipient?.firstName
-              }}</ion-card-title
-            >
-          </ion-card-header>
-          <ion-card-content>
-            <h2 class="message-content">{{ message.text }}</h2>
-            <ion-card-subtitle class="message-time"
-              >{{ message.createdAt | date: 'HH:mm' }}</ion-card-subtitle
-            >
-          </ion-card-content>
-        </ion-card>
+      <div>
+        <h2 class="header-name">
+          {{recipient?.firstName}} {{recipient?.lastName}}
+        </h2>
+        <!-- <p
+          class="more-details"
+          [class.active]="showDetails"
+          (click)="showDetails = !showDetails"
+        >
+          Mere om
+        </p> -->
+        <ion-text class="details-text" *ngIf="showDetails">
+          {{recipient?.description}}
+        </ion-text>
       </div>
     </div>
 
+    <div class="scroll-element">
+      <div *ngFor="let message of messages$ | async">
+        <div
+          [ngClass]="{'chat-window-outgoing': message.userId === currentUser.uid, 'chat-window-incomming': message.userId !== currentUser.uid}"
+        >
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title class="card-title"
+                >{{ message.userId === currentUser.uid ? 'You' :
+                recipient?.firstName }}</ion-card-title
+              >
+            </ion-card-header>
+            <ion-card-content>
+              <h2 class="message-content">{{ message.text }}</h2>
+              <ion-card-subtitle class="message-time"
+                >{{ message.createdAt | date: 'HH:mm' }}</ion-card-subtitle
+              >
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 80px"></div>
     <ion-footer>
       <ion-toolbar>
         <ion-input
           #messageInput
           type="text"
-          placeholder="Type a message"
+          placeholder="Skriv besked her"
         ></ion-input>
         <ion-button
+          style="font-size: 15px"
           slot="end"
           (click)="sendMessage(messageInput.value); messageInput.value=''"
         >
-          Send
+          <ion-icon name="arrow-up"></ion-icon>
         </ion-button>
       </ion-toolbar>
     </ion-footer>

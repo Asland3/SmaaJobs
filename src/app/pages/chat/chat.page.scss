@@ -2,14 +2,49 @@ ion-content {
   --background: #e6e6e6;
 }
 
+h1 {
+  text-align: center;
+}
+
 .top-container {
-  background: url("../../../assets/svg/backgrounds/chat.svg") no-repeat center center / cover;
-  min-height: 18vh;
-  max-height: 18vh;
+  background: url("../../../assets/svg/backgrounds/chat-top.svg") no-repeat center
+    center / cover;
+  min-height: 10vh;
+  max-height: 15vh;
+  // transform: translateY(-20px);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+ion-row {
+  padding-bottom: 5.7vh;
+  .left {
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
+  }
 }
 
 .spacer {
-  height: 11vh;
+  height: 3vh;
 }
 
 .container {
@@ -30,21 +65,23 @@ ion-content {
   }
 }
 
-
-
 ion-card {
   margin-top: 0px !important;
   margin-bottom: 10px !important;
   --border-radius: 10px;
-  --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  // --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   width: 350px;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
   padding: 8px;
   box-sizing: border-box;
   color: black;
   background-color: #ffffff;
+
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 ion-card ion-img {
@@ -53,6 +90,7 @@ ion-card ion-img {
   margin-right: 12px;
   padding-top: 8px;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .card-content {
