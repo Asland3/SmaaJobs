@@ -79,6 +79,13 @@ ion-textarea[fill="outline"] {
     font-weight: 400;
     line-height: normal;
   }
+
+  .error-message {
+    padding-left: 70px;
+    padding-right: 50px;
+    color: #D32F2F;
+    font-size: 12px;
+  }
 }
 
 .slide-two {
@@ -295,12 +302,12 @@ ion-textarea[fill="outline"] {
     .checkbox-text {
       font-size: 15px;
       font-style: italic;
-      color: #3385FF;
+      color: #3385ff;
     }
 
     ion-checkbox {
       --size: 30px;
-      --checkbox-background-checked: #fd7406;
+      --checkbox-background-checked: #febf25;
       display: flex;
       align-items: center;
       justify-items: center;
@@ -308,7 +315,14 @@ ion-textarea[fill="outline"] {
 
     ion-checkbox::part(container) {
       border-radius: 6px;
-      border: 2px solid #fd7406;
+      border: 2px solid #febf25;
     }
+  }
+
+  .error-message {
+    padding-left: 70px;
+    padding-right: 50px;
+    color: #D32F2F;
+    font-size: 12px;
   }
 }

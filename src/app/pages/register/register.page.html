@@ -1,9 +1,5 @@
 <ion-content>
-  <swiper-container
-    #swiper
-    (afterinit)="swiperReady()"
-    [allowTouchMove]="true"
-  >
+  <swiper-container #swiper (afterinit)="swiperReady()" [allowTouchMove]="true">
     <swiper-slide class="slide-one">
       <div class="background">
         <ion-row class="top-row">
@@ -37,6 +33,7 @@
               fill="outline"
               placeholder="Skriv email"
               mode="md"
+              type="email"
               clearInput="true"
               errorText="Ugyldig e-mailaddresse"
               formControlName="email"
@@ -72,6 +69,13 @@
             errorText="Din adgangskode lever ikke op til kravene"
             formControlName="rePassword"
           ></ion-input>
+
+          <div class="error-message"
+          *ngIf="credentials.get('slide1').hasError('notSame') && credentials.get('slide1.rePassword').touched"
+        >
+          Adgangskoderne er ikke ens. Kontroller, at de er indtastet korrekt.
+        </div>
+        
 
           <div class="spacer"></div>
 
@@ -150,6 +154,7 @@
             fill="outline"
             placeholder="Fornavn"
             mode="md"
+            type="text"
             clearInput="true"
             required="true"
             errorText="Du mangler at udfylde dit fornavn"
@@ -164,6 +169,7 @@
             fill="outline"
             placeholder="Efternavn"
             mode="md"
+            type="text"
             clearInput="true"
             required="true"
             errorText="Du mangler at udfylde dit efternavn"
@@ -212,6 +218,7 @@
             fill="outline"
             placeholder="Alder"
             mode="md"
+            type="number"
             clearInput="true"
             required="true"
             errorText="Du mangler at udfylde din alder"
@@ -226,6 +233,7 @@
             class="description-text"
             fill="outline"
             mode="md"
+            type="text"
             placeholder="Skriv om dig selv, og hvis du har nogle informationer man bør vise hensyn til"
             counter="true"
             maxlength="500"
@@ -275,6 +283,7 @@
             fill="outline"
             placeholder="By"
             mode="md"
+            type="text"
             clearInput="true"
             required="true"
             errorText="Du mangler at udfylde din by"
@@ -289,6 +298,7 @@
             fill="outline"
             placeholder="Postnummer"
             mode="md"
+            type="number"
             clearInput="true"
             required="true"
             errorText="Du mangler at udfylde dit postnummer"
@@ -304,37 +314,35 @@
             fill="outline"
             placeholder="Telefon"
             mode="md"
+            type="number"
             clearInput="true"
             required="true"
             errorText="Du mangler at udfylde dit telefonnummer"
             formControlName="phone"
           ></ion-input>
-
           <div style="padding: 10px"></div>
 
-          <!-- <ion-input
-            label="Email"
-            label-placement="floating"
-            fill="outline"
-            placeholder="Email"
-            mode="md"
-            clearInput="true"
-            required="true"
-            errorText="Du mangler at udfylde din email"
-            formControlName="email"
-          ></ion-input> -->
+          <div class="privacyPolicy">
+            <p class="checkbox-text" (click)="privacyPolicy()">
+              Jeg accepterer fortrolighedspolitikken og vilkår
+            </p>
+            <ion-checkbox
+              formControlName="privacyPolicyAccepted"
+            ></ion-checkbox>
+          </div>
+          <div
+            class="error-message"
+            *ngIf="credentials.get('slide4.privacyPolicyAccepted').errors && credentials.get('slide4.privacyPolicyAccepted').touched"
+          >
+            Du skal acceptere vores fortrolighedspolitik og vilkår
+          </div>
         </form>
-        <div class="privacyPolicy">
-          <p class="checkbox-text" (click)="privacyPolicy()">
-            Jeg accepterer fortrolighedspolitkken og vilkår
-          </p>
-          <ion-checkbox> </ion-checkbox>
-        </div>
+
         <div class="spacer"></div>
 
-        <ion-button (click)="register()" class="main-button next-button"
-          >Færdiggør</ion-button
-        >
+        <ion-button (click)="register()" class="main-button next-button">
+          Færdiggør
+        </ion-button>
       </div>
     </swiper-slide>
   </swiper-container>
