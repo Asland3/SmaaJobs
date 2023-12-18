@@ -28,9 +28,9 @@
           (click)="openChat(chat.chatId, chat.recipient.uid)"
         >
           <ion-card>
-            <ion-img
+            <img class="profile-pic"
               [src]="chat.recipient.profilePic || 'assets/svg/profile/profile-picture.svg'"
-            ></ion-img>
+            >
             <div class="card-content">
               <h2 class="ion-no-margin">
                 {{ chat.recipient.firstName }} {{ chat.recipient.lastName }}

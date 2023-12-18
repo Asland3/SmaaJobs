@@ -6,12 +6,20 @@ h1 {
   text-align: center;
 }
 
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  align-self: center;
+  border-radius: 50%;
+  margin: 5px;
+}
+
 .top-container {
   background: url("../../../assets/svg/backgrounds/chat-top.svg") no-repeat center
     center / cover;
   min-height: 10vh;
   max-height: 15vh;
-  // transform: translateY(-20px);
   margin-bottom: 20px;
   position: relative;
 }
