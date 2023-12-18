@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JobService } from 'src/app/services/job-service/job.service';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
@@ -21,7 +21,8 @@ export class JobDetailsPage implements OnInit {
     private route: ActivatedRoute,
     private authService: AuthService,
     private chatService: ChatService,
-    private router: Router // Add this
+    private router: Router,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -47,6 +48,12 @@ export class JobDetailsPage implements OnInit {
       this.navCtrl.navigateForward('/on-auth')
       return;
     }
+    const recipientId = this.job.userId;
+
+    if (this.currentUser.uid === recipientId) {
+      this.presentAlert('Du kan ikke skrive på dit eget job.');
+      return;
+    }
 
     try {
       const chatId = await this.chatService.getOrCreateConversationId(this.currentUser.uid, this.job.userId!);
@@ -54,6 +61,16 @@ export class JobDetailsPage implements OnInit {
     } catch (error) {
       console.error('Error starting chat:', error);
     }
+  }
+
+  async presentAlert(message: string) {
+    const alert = await this.alertController.create({
+      header: 'Hov!',
+      message: message,
+      buttons: ['OK']
+    });
+  
+    await alert.present();
   }
 
   openProfile() {

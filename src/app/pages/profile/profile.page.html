@@ -22,7 +22,7 @@
         name="pencil"
         (click)="editProfile();$event.stopPropagation();"
       ></ion-icon>
-      <div class="text-padding">
+      <div class="ion-text-center text-padding">
         <h1>{{ user?.firstName }} {{ user?.lastName }}</h1>
         <h3 class="ion-no-margin">{{ user?.postalCode}} {{ user?.town}}</h3>
         <h3 class="ion-no-margin">{{ user?.phone }}</h3>
@@ -37,42 +37,45 @@
     <h4>{{ user?.description }}</h4>
   </ion-card>
 
-  <h1 class="all-jobs">Oprettet jobs</h1>
-  <div *ngIf="userJobs.length > 0; else noJobsTemplate">
-    <ion-card
-      class="job-card"
-      *ngFor="let job of userJobs"
-      (click)="openJob(job.id)"
-    >
-      <div class="card-content">
-        <div class="text-content">
-          <h2 class="ion-no-margin">{{ job.title }}</h2>
-          <h4 class="ion-no-margin">{{ job.subline }}</h4>
-          <h5 class="ion-no-margin">{{ job.payment }} kr.</h5>
-          <ion-icon
-            class="trash-icon"
-            name="trash"
-            (click)="deleteJobConfirmation(job.id);$event.stopPropagation();"
-          ></ion-icon>
-          <ion-icon
-            class="edit-icon"
-            name="create"
-            (click)="updateJob(job.id);$event.stopPropagation();"
-          ></ion-icon>
+  <div *ngIf="user && user.age !== undefined && user.age >= 18">
+    <h1 class="all-jobs">Oprettet jobs</h1>
+    <div *ngIf="userJobs.length > 0; else noJobsTemplate">
+      <ion-card
+        class="job-card"
+        *ngFor="let job of userJobs"
+        (click)="openJob(job.id)"
+      >
+        <div class="card-content">
+          <div class="text-content">
+            <h2 class="ion-no-margin">{{ job.title }}</h2>
+            <h4 class="ion-no-margin">{{ job.subline }}</h4>
+            <h5 class="ion-no-margin">{{ job.payment }} kr.</h5>
+            <ion-icon
+              class="trash-icon"
+              name="trash"
+              (click)="deleteJobConfirmation(job.id);$event.stopPropagation();"
+            ></ion-icon>
+            <ion-icon
+              class="edit-icon"
+              name="create"
+              (click)="updateJob(job.id);$event.stopPropagation();"
+            ></ion-icon>
+          </div>
         </div>
-      </div>
-    </ion-card>
-  </div>
-  <ng-template #noJobsTemplate>
-    <div class="no-jobs-container">
-      <img
-        src="../../../assets/svg/goggle-lady.svg"
-        alt="Ingen jobs tilgængelige"
-      />
-      <h2 class="ion-text-center ion-padding-bottom">
-        Ingen jobs fundet. Lav et job og start en skattejagt for talentfulde
-        individer!
-      </h2>
+      </ion-card>
     </div>
-  </ng-template>
+
+    <ng-template #noJobsTemplate>
+      <div class="no-jobs-container">
+        <img
+          src="../../../assets/svg/goggle-lady.svg"
+          alt="Ingen jobs tilgængelige"
+        />
+        <h2 class="ion-text-center ion-padding-bottom">
+          Ingen jobs fundet. Lav et job og start en skattejagt for talentfulde
+          individer!
+        </h2>
+      </div>
+    </ng-template>
+  </div>
 </ion-content>

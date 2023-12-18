@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { Jobs } from 'src/app/models/jobs.model';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { JobService } from 'src/app/services/job-service/job.service';
@@ -17,7 +18,8 @@ export class ViewProfilePage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
-    private jobSerivce: JobService
+    private jobSerivce: JobService,
+    private navCtrl: NavController
   ) {}
 
   ngOnInit() {
@@ -25,14 +27,27 @@ export class ViewProfilePage implements OnInit {
     this.authService.getSpecificUser(this.userId).then((userData) => {
       if (userData) {
         this.user = userData;
-        console.log("🚀 ~ file: view-profile.page.ts:28 ~ ViewProfilePage ~ this.authService.getUser ~ userData:", userData)
+        console.log(
+          '🚀 ~ file: view-profile.page.ts:28 ~ ViewProfilePage ~ this.authService.getUser ~ userData:',
+          userData
+        );
       }
     });
     this.jobSerivce.getJobsfromSpecificUser(this.userId).then((jobsData) => {
       if (jobsData) {
         this.userJobs = jobsData;
-        console.log("🚀 ~ file: view-profile.page.ts:33 ~ ViewProfilePage ~ this.jobSerivce.getJobsfromSpecificUser ~ jobsData:", jobsData)
+        console.log(
+          '🚀 ~ file: view-profile.page.ts:33 ~ ViewProfilePage ~ this.jobSerivce.getJobsfromSpecificUser ~ jobsData:',
+          jobsData
+        );
       }
     });
+  }
+
+  navigateBack() {
+    this.navCtrl.back();
+  }
+  openJob(jobId?: string) {
+    this.navCtrl.navigateForward(`/home/${jobId}`);
   }
 }

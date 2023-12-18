@@ -53,6 +53,7 @@ export class RegisterPage implements OnInit {
 
     const slideGroups = ['slide1', 'slide2', 'slide3', 'slide4'];
     const currentGroup = this.credentials.get(slideGroups[currentSlideIndex]);
+    console.log(currentGroup);
 
     if (currentSlideIndex === 1 && !this.profilePicBlob) {
       this.alertController.create({
@@ -100,6 +101,7 @@ export class RegisterPage implements OnInit {
         town: ['', [Validators.required]],
         postalCode: ['', [Validators.required]],
         phone: ['', [Validators.required]],
+        privacyPolicyAccepted: [false, [Validators.requiredTrue]]
       }),
     });
   }
@@ -108,6 +110,8 @@ export class RegisterPage implements OnInit {
     let pass = control.get('password')?.value || '';
     let confirmPass = control.get('rePassword')?.value || '';
 
+    console.log(pass, confirmPass);
+  
     return pass === confirmPass ? null : { notSame: true };
   }
 
@@ -252,5 +256,13 @@ export class RegisterPage implements OnInit {
 
   get phone() {
     return this.credentials?.get('phone');
+  }
+
+  get privacyPolicyAccepted() {
+    return this.credentials?.get('privacyPolicyAccepted');
+  }
+
+  privacyPolicy() {
+    this.navCtrl.navigateForward('/privacy-policy');
   }
 }
