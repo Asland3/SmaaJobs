@@ -1,0 +1,1491 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>SmåJobs documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">SmåJobs documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  UpdateProfilePage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/update-profile/update-profile.page.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-update-profile</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./update-profile.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./update-profile.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#credentials" >credentials</a>
+                            </li>
+                            <li>
+                                <a href="#newProfileImageBlob" >newProfileImageBlob</a>
+                            </li>
+                            <li>
+                                <a href="#user" >user</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#editProfilePic" >editProfilePic</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#loadUserData" >loadUserData</a>
+                            </li>
+                            <li>
+                                <a href="#navigateBack" >navigateBack</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#openCamera" >openCamera</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateProfile" >updateProfile</a>
+                            </li>
+                            <li>
+                                <a href="#validators" >validators</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#email" >email</a>
+                                </li>
+                                <li>
+                                    <a href="#firstName" >firstName</a>
+                                </li>
+                                <li>
+                                    <a href="#lastName" >lastName</a>
+                                </li>
+                                <li>
+                                    <a href="#age" >age</a>
+                                </li>
+                                <li>
+                                    <a href="#description" >description</a>
+                                </li>
+                                <li>
+                                    <a href="#town" >town</a>
+                                </li>
+                                <li>
+                                    <a href="#postalCode" >postalCode</a>
+                                </li>
+                                <li>
+                                    <a href="#phone" >phone</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(navCtrl: NavController, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, fb: FormBuilder, loadingController: LoadingController, toastController: ToastController, alertController: AlertController)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:16</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>navCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>NavController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>loadingController</td>
+                                                  
+                                                        <td>
+                                                                    <code>LoadingController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toastController</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alertController</td>
+                                                  
+                                                        <td>
+                                                                    <code>AlertController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editProfilePic"></a>
+                    <span class="name">
+                        <span ><b>editProfilePic</b></span>
+                        <a href="#editProfilePic"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editProfilePic()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadUserData"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>loadUserData</b></span>
+                        <a href="#loadUserData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadUserData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateBack"></a>
+                    <span class="name">
+                        <span ><b>navigateBack</b></span>
+                        <a href="#navigateBack"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateBack()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openCamera"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>openCamera</b></span>
+                        <a href="#openCamera"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openCamera()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="36"
+                                    class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateProfile"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateProfile</b></span>
+                        <a href="#updateProfile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateProfile()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validators"></a>
+                    <span class="name">
+                        <span ><b>validators</b></span>
+                        <a href="#validators"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validators()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="112"
+                                    class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:112</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="credentials"></a>
+                    <span class="name">
+                        <span ><b>credentials</b></span>
+                        <a href="#credentials"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup | any</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="newProfileImageBlob"></a>
+                    <span class="name">
+                        <span ><b>newProfileImageBlob</b></span>
+                        <a href="#newProfileImageBlob"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Blob | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user"></a>
+                    <span class="name">
+                        <span ><b>user</b></span>
+                        <a href="#user"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/User.html" target="_self" >User</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="email"></a>
+                        <span class="name"><b>email</b><a href="#email"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>email()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:125</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="firstName"></a>
+                        <span class="name"><b>firstName</b><a href="#firstName"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>firstName()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:129</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="lastName"></a>
+                        <span class="name"><b>lastName</b><a href="#lastName"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>lastName()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:133</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="age"></a>
+                        <span class="name"><b>age</b><a href="#age"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>age()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:137</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="description"></a>
+                        <span class="name"><b>description</b><a href="#description"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>description()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:141</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="town"></a>
+                        <span class="name"><b>town</b><a href="#town"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>town()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:145</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="postalCode"></a>
+                        <span class="name"><b>postalCode</b><a href="#postalCode"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>postalCode()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:149</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="phone"></a>
+                        <span class="name"><b>phone</b><a href="#phone"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>phone()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/app/pages/update-profile/update-profile.page.ts:153</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { Camera, CameraResultType, CameraSource } from &#x27;@capacitor/camera&#x27;;
+import { AlertController, LoadingController, NavController, ToastController } from &#x27;@ionic/angular&#x27;;
+import { User } from &#x27;src/app/models/user.model&#x27;;
+import { AuthService } from &#x27;src/app/services/auth-service/auth.service&#x27;;
+
+@Component({
+  selector: &#x27;app-update-profile&#x27;,
+  templateUrl: &#x27;./update-profile.page.html&#x27;,
+  styleUrls: [&#x27;./update-profile.page.scss&#x27;],
+})
+export class UpdateProfilePage implements OnInit {
+  user!: User;
+  credentials: FormGroup | any;
+  newProfileImageBlob: Blob | null &#x3D; null;
+
+  constructor(
+    private navCtrl: NavController,
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private loadingController: LoadingController,
+    private toastController: ToastController,
+    private alertController: AlertController
+  ) {}
+
+  ngOnInit() {
+    this.validators();
+    this.loadUserData();
+  }
+
+  navigateBack() {
+    this.navCtrl.back();
+  }
+  
+  async openCamera() {
+    try {
+      const image &#x3D; await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Prompt,
+      });
+  
+      if (image.dataUrl) {
+        this.user.profilePic &#x3D; image.dataUrl;
+        const response &#x3D; await fetch(image.dataUrl);
+        this.newProfileImageBlob &#x3D; await response.blob();
+        console.log(this.newProfileImageBlob);
+      }
+    } catch (error) {
+      console.error(&#x27;Error opening camera:&#x27;, error);
+    }
+  }
+  
+  editProfilePic() {
+    this.openCamera();
+  }
+  async loadUserData() {
+    this.authService.currentUser.subscribe(async (userData) &#x3D;&gt; {
+      this.user &#x3D; userData;
+      this.credentials.patchValue(userData);
+    });
+  }
+
+  async updateProfile() {
+    const loading &#x3D; await this.loadingController.create({
+      message: &#x27;Opdaterer profil...&#x27;
+    });
+    await loading.present();
+
+    const updatedUserData &#x3D; this.credentials.value;
+    const uid &#x3D; this.user.uid;
+    const newProfileImageBlob &#x3D; this.newProfileImageBlob;
+  
+    if (uid) {
+      try {
+        await this.authService.updateUserProfile(uid, updatedUserData, newProfileImageBlob);
+        this.authService.updateUserData();
+        await loading.dismiss();
+        this.navCtrl.navigateBack(&#x27;/profile&#x27;);
+        this.user &#x3D; { ...this.user, ...updatedUserData };
+  
+        if (newProfileImageBlob) {
+          this.user.profilePic &#x3D; URL.createObjectURL(newProfileImageBlob);
+        }
+  
+        const toast &#x3D; await this.toastController.create({
+          message: &#x27;Profil opdateret&#x27;,
+          duration: 2000,
+          color: &#x27;success&#x27;
+        });
+        toast.present();
+  
+      } catch (error) {
+        await loading.dismiss();
+        console.error(&#x27;Fejl under opdatering af profil:&#x27;, error);
+  
+        const alert &#x3D; await this.alertController.create({
+          header: &#x27;Fejl&#x27;,
+          message: &#x27;Der opstod en fejl under opdatering af din profil. Prøv igen senere.&#x27;,
+          buttons: [&#x27;OK&#x27;]
+        });
+        await alert.present();
+      }
+    } else {
+      await loading.dismiss();
+      console.error(&#x27;Bruger-ID ikke fundet&#x27;);
+    }
+  }
+
+  validators() {
+    this.credentials &#x3D; this.fb.group({
+      firstName: [&#x27;&#x27;, [Validators.required]],
+      lastName: [&#x27;&#x27;, [Validators.required]],
+      email: [&#x27;&#x27;, [Validators.required]],
+      phone: [&#x27;&#x27;, [Validators.required]],
+      age: [&#x27;&#x27;, [Validators.required]],
+      postalCode: [&#x27;&#x27;, [Validators.required]],
+      town: [&#x27;&#x27;, [Validators.required]],
+      description: [&#x27;&#x27;, [Validators.required]],
+    });
+  }
+
+  get email() {
+    return this.credentials?.get(&#x27;email&#x27;);
+  }
+
+  get firstName() {
+    return this.credentials?.get(&#x27;firstName&#x27;);
+  }
+
+  get lastName() {
+    return this.credentials?.get(&#x27;lastName&#x27;);
+  }
+
+  get age() {
+    return this.credentials?.get(&#x27;age&#x27;);
+  }
+
+  get description() {
+    return this.credentials?.get(&#x27;description&#x27;);
+  }
+
+  get town() {
+    return this.credentials?.get(&#x27;town&#x27;);
+  }
+
+  get postalCode() {
+    return this.credentials?.get(&#x27;postalCode&#x27;);
+  }
+
+  get phone() {
+    return this.credentials?.get(&#x27;phone&#x27;);
+  }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-content&gt;
+  &lt;div class&#x3D;&quot;top-container&quot;&gt;
+    &lt;ion-row&gt;
+      &lt;ion-col size-s&#x3D;&quot;2&quot; class&#x3D;&quot;left&quot;&gt;
+        &lt;ion-button fill&#x3D;&quot;clear&quot; (click)&#x3D;&quot;navigateBack()&quot;&gt;
+          &lt;ion-img
+            src&#x3D;&quot;../../../assets/svg/icons/back-arrow.svg&quot;
+            alt&#x3D;&quot;back-arrow&quot;
+          &gt;&lt;/ion-img&gt; &lt;/ion-button
+      &gt;&lt;/ion-col&gt;
+
+      &lt;ion-col size-s&#x3D;&quot;8&quot;&gt; &lt;/ion-col&gt;
+
+      &lt;ion-col size-s&#x3D;&quot;2&quot; class&#x3D;&quot;right&quot;&gt;
+        &lt;ion-menu-button&gt;&lt;/ion-menu-button&gt;
+      &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+    &lt;form [formGroup]&#x3D;&quot;credentials&quot;&gt;
+      &lt;div&gt;
+        &lt;!-- Update profile page --&gt;
+        &lt;div class&#x3D;&quot;profile-pic-container&quot;&gt;
+          &lt;ion-img
+            class&#x3D;&quot;profile-pic&quot;
+            (click)&#x3D;&quot;editProfilePic()&quot;
+            [src]&#x3D;&quot;user?.profilePic&quot;
+            alt&#x3D;&quot;Profile Pic&quot;
+          /&gt;
+          &lt;ion-img
+            class&#x3D;&quot;edit-profile&quot;
+            src&#x3D;&quot;../../../assets/svg/icons/camera-outline.svg&quot;
+          &gt;&lt;/ion-img&gt;
+        &lt;/div&gt;
+
+        &lt;ion-card class&#x3D;&quot;profile-card&quot;&gt;
+          &lt;div&gt;
+            &lt;div style&#x3D;&quot;margin-top: 100px&quot;&gt;
+              &lt;!-- Update first name --&gt;
+              &lt;ion-input
+                label&#x3D;&quot;Fornavn&quot;
+                labelPlacement&#x3D;&quot;floating&quot;
+                fill&#x3D;&quot;outline&quot;
+                placeholder&#x3D;&quot;Fornavn&quot;
+                mode&#x3D;&quot;md&quot;
+                formControlName&#x3D;&quot;firstName&quot;
+                errorText&#x3D;&quot;Fornavn skal udfyldes&quot;
+              &gt;&lt;/ion-input&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Update last name --&gt;
+            &lt;ion-input
+              label&#x3D;&quot;Efternavn&quot;
+              labelPlacement&#x3D;&quot;floating&quot;
+              fill&#x3D;&quot;outline&quot;
+              placeholder&#x3D;&quot;Efternavn&quot;
+              mode&#x3D;&quot;md&quot;
+              formControlName&#x3D;&quot;lastName&quot;
+              errorText&#x3D;&quot;Efternavn skal udfyldes&quot;
+            &gt;&lt;/ion-input&gt;
+
+            &lt;!-- Update email --&gt;
+            &lt;ion-input
+              label&#x3D;&quot;Email&quot;
+              labelPlacement&#x3D;&quot;floating&quot;
+              fill&#x3D;&quot;outline&quot;
+              placeholder&#x3D;&quot;Email&quot;
+              mode&#x3D;&quot;md&quot;
+              formControlName&#x3D;&quot;email&quot;
+              errorText&#x3D;&quot;Email skal udfyldes&quot;
+            &gt;&lt;/ion-input&gt;
+
+            &lt;!-- Update phone --&gt;
+            &lt;ion-input
+              label&#x3D;&quot;Telefon&quot;
+              labelPlacement&#x3D;&quot;floating&quot;
+              fill&#x3D;&quot;outline&quot;
+              placeholder&#x3D;&quot;Telefon&quot;
+              mode&#x3D;&quot;md&quot;
+              formControlName&#x3D;&quot;phone&quot;
+              errorText&#x3D;&quot;Telefon skal udfyldes&quot;
+            &gt;&lt;/ion-input&gt;
+
+            &lt;!-- Update age --&gt;
+            &lt;ion-input
+              label&#x3D;&quot;Alder&quot;
+              labelPlacement&#x3D;&quot;floating&quot;
+              fill&#x3D;&quot;outline&quot;
+              placeholder&#x3D;&quot;Alder&quot;
+              mode&#x3D;&quot;md&quot;
+              formControlName&#x3D;&quot;age&quot;
+              errorText&#x3D;&quot;Alder skal udfyldes&quot;
+            &gt;&lt;/ion-input&gt;
+
+            &lt;!-- Update postal code --&gt;
+            &lt;ion-input
+              label&#x3D;&quot;Postnummer&quot;
+              labelPlacement&#x3D;&quot;floating&quot;
+              fill&#x3D;&quot;outline&quot;
+              placeholder&#x3D;&quot;Postnummer&quot;
+              mode&#x3D;&quot;md&quot;
+              formControlName&#x3D;&quot;postalCode&quot;
+              errorText&#x3D;&quot;Postnummer skal udfyldes&quot;
+            &gt;&lt;/ion-input&gt;
+
+            &lt;!-- Update town --&gt;
+            &lt;ion-input
+              label&#x3D;&quot;By&quot;
+              labelPlacement&#x3D;&quot;floating&quot;
+              fill&#x3D;&quot;outline&quot;
+              placeholder&#x3D;&quot;By&quot;
+              mode&#x3D;&quot;md&quot;
+              formControlName&#x3D;&quot;town&quot;
+              errorText&#x3D;&quot;By skal udfyldes&quot;
+            &gt;&lt;/ion-input&gt;
+
+            &lt;!-- Update description --&gt;
+            &lt;ion-textarea
+              label&#x3D;&quot;Om dig&quot;
+              labelPlacement&#x3D;&quot;floating&quot;
+              fill&#x3D;&quot;outline&quot;
+              mode&#x3D;&quot;md&quot;
+              counter&#x3D;&quot;true&quot;
+              maxlength&#x3D;&quot;500&quot;
+              formControlName&#x3D;&quot;description&quot;
+              errorText&#x3D;&quot;Beskrivelse skal udfyldes&quot;
+            &gt;&lt;/ion-textarea&gt;
+          &lt;/div&gt;
+
+          &lt;ion-button
+            class&#x3D;&quot;update-button&quot;
+            expand&#x3D;&quot;block&quot;
+            (click)&#x3D;&quot;updateProfile()&quot;
+            &gt;Opdater profil&lt;/ion-button
+          &gt;
+        &lt;/ion-card&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./update-profile.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">ion-content {
+  --background: #e6e6e6;
+}
+.top-container {
+  background: url(&quot;../../../assets/svg/backgrounds/profile.svg&quot;) no-repeat
+    center center / cover;
+  min-height: 36vh;
+  max-height: 36vh;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+ion-row {
+  .left {
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    ion-img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+
+.profile-pic-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+}
+
+.profile-pic {
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  top: 95%;
+}
+
+.edit-profile {
+  position: absolute;
+  bottom: -144px;
+  right: 1px;
+  font-size: 44px;
+  color: var(--ion-color-secondary);
+  z-index: 12;
+}
+
+ion-input[fill&#x3D;&quot;outline&quot;] {
+  --border-radius: 10px;
+  border-radius: 10px;
+  --border-color: black;
+  --border-style: solid;
+  --border-width: 1px;
+  --highlight-color-focused: rgba(0, 0, 0, 0.7);
+  --placeholder-color: black;
+  width: 285px;
+  min-height: 45px;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+ion-textarea[fill&#x3D;&quot;outline&quot;] {
+  --border-radius: 10px;
+  border-radius: 10px;
+  --border-color: black;
+  --border-style: solid;
+  --border-width: 1px;
+  --highlight-color-focused: rgba(0, 0, 0, 0.7);
+  --placeholder-color: black;
+  width: 285px;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-card {
+  position: absolute;
+  top: 70vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  margin: 0 auto;
+  width: 350px;
+  color: black;
+  height: auto;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.update-button {
+  --background: var(--ion-color-secondary);
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 285px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-content>  <div class="top-container">    <ion-row>      <ion-col size-s="2" class="left">        <ion-button fill="clear" (click)="navigateBack()">          <ion-img            src="../../../assets/svg/icons/back-arrow.svg"            alt="back-arrow"          ></ion-img> </ion-button      ></ion-col>      <ion-col size-s="8"> </ion-col>      <ion-col size-s="2" class="right">        <ion-menu-button></ion-menu-button>      </ion-col>    </ion-row>    <form [formGroup]="credentials">      <div>        <!-- Update profile page -->        <div class="profile-pic-container">          <ion-img            class="profile-pic"            (click)="editProfilePic()"            [src]="user?.profilePic"            alt="Profile Pic"          />          <ion-img            class="edit-profile"            src="../../../assets/svg/icons/camera-outline.svg"          ></ion-img>        </div>        <ion-card class="profile-card">          <div>            <div style="margin-top: 100px">              <!-- Update first name -->              <ion-input                label="Fornavn"                labelPlacement="floating"                fill="outline"                placeholder="Fornavn"                mode="md"                formControlName="firstName"                errorText="Fornavn skal udfyldes"              ></ion-input>            </div>            <!-- Update last name -->            <ion-input              label="Efternavn"              labelPlacement="floating"              fill="outline"              placeholder="Efternavn"              mode="md"              formControlName="lastName"              errorText="Efternavn skal udfyldes"            ></ion-input>            <!-- Update email -->            <ion-input              label="Email"              labelPlacement="floating"              fill="outline"              placeholder="Email"              mode="md"              formControlName="email"              errorText="Email skal udfyldes"            ></ion-input>            <!-- Update phone -->            <ion-input              label="Telefon"              labelPlacement="floating"              fill="outline"              placeholder="Telefon"              mode="md"              formControlName="phone"              errorText="Telefon skal udfyldes"            ></ion-input>            <!-- Update age -->            <ion-input              label="Alder"              labelPlacement="floating"              fill="outline"              placeholder="Alder"              mode="md"              formControlName="age"              errorText="Alder skal udfyldes"            ></ion-input>            <!-- Update postal code -->            <ion-input              label="Postnummer"              labelPlacement="floating"              fill="outline"              placeholder="Postnummer"              mode="md"              formControlName="postalCode"              errorText="Postnummer skal udfyldes"            ></ion-input>            <!-- Update town -->            <ion-input              label="By"              labelPlacement="floating"              fill="outline"              placeholder="By"              mode="md"              formControlName="town"              errorText="By skal udfyldes"            ></ion-input>            <!-- Update description -->            <ion-textarea              label="Om dig"              labelPlacement="floating"              fill="outline"              mode="md"              counter="true"              maxlength="500"              formControlName="description"              errorText="Beskrivelse skal udfyldes"            ></ion-textarea>          </div>          <ion-button            class="update-button"            expand="block"            (click)="updateProfile()"            >Opdater profil</ion-button          >        </ion-card>      </div>    </form>  </div></ion-content></div>'
+    var COMPONENTS = [{'name': 'ActiveChatPage', 'selector': 'app-active-chat'},{'name': 'AddNewJobPage', 'selector': 'app-add-new-job'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChatPage', 'selector': 'app-chat'},{'name': 'FiltermodalPage', 'selector': 'app-filtermodal'},{'name': 'ForgotPasswordModalPage', 'selector': 'app-forgot-password-modal'},{'name': 'ForgotPasswordPage', 'selector': 'app-forgot-password'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'IntroPage', 'selector': 'app-intro'},{'name': 'JobDetailsPage', 'selector': 'app-job-details'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'LogoutModalPage', 'selector': 'app-logout-modal'},{'name': 'NotFoundPage', 'selector': 'app-not-found'},{'name': 'OnAuthPage', 'selector': 'app-on-auth'},{'name': 'PrivacyPolicyPage', 'selector': 'app-privacy-policy'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'StartPage', 'selector': 'app-start'},{'name': 'UpdateJobPage', 'selector': 'app-update-job'},{'name': 'UpdateProfilePage', 'selector': 'app-update-profile'},{'name': 'ViewProfilePage', 'selector': 'app-view-profile'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'UpdateProfilePage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'UpdateProfilePage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

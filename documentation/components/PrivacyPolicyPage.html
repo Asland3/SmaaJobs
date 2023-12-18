@@ -1,0 +1,669 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>SmåJobs documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">SmåJobs documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  PrivacyPolicyPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/privacy-policy/privacy-policy.page.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-privacy-policy</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./privacy-policy.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./privacy-policy.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#backToLastPage" >backToLastPage</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(navControl: NavController)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/pages/privacy-policy/privacy-policy.page.ts:9</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>navControl</td>
+                                                  
+                                                        <td>
+                                                                    <code>NavController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="backToLastPage"></a>
+                    <span class="name">
+                        <span ><b>backToLastPage</b></span>
+                        <a href="#backToLastPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>backToLastPage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="13"
+                                    class="link-to-prism">src/app/pages/privacy-policy/privacy-policy.page.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="16"
+                                    class="link-to-prism">src/app/pages/privacy-policy/privacy-policy.page.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { NavController } from &#x27;@ionic/angular&#x27;;
+
+@Component({
+  selector: &#x27;app-privacy-policy&#x27;,
+  templateUrl: &#x27;./privacy-policy.page.html&#x27;,
+  styleUrls: [&#x27;./privacy-policy.page.scss&#x27;],
+})
+export class PrivacyPolicyPage implements OnInit {
+
+  constructor(private navControl: NavController) { }
+
+  backToLastPage(){
+    this.navControl.back()
+  }
+  ngOnInit() {
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-content [fullscreen]&#x3D;&quot;true&quot;&gt;
+  &lt;div class&#x3D;&quot;topbackground&quot;&gt;
+    &lt;ion-grid class&#x3D;&quot;ion-no-padding ion-no-border ion-no-margin&quot;&gt;
+      &lt;ion-row&gt;
+        &lt;ion-col size-s&#x3D;&quot;2&quot; class&#x3D;&quot;ion-align-self-center&quot;&gt;
+          &lt;ion-button
+            (click)&#x3D;&quot;backToLastPage()&quot;
+            fill&#x3D;&quot;clear&quot;
+            class&#x3D;&quot;back-arrow&quot;
+          &gt;
+            &lt;ion-img
+              src&#x3D;&quot;../../../assets/svg/icons/back-arrow.svg&quot;
+              alt&#x3D;&quot;back-arrow&quot;
+              class&#x3D;&quot;back-arrow&quot;
+            &gt;&lt;/ion-img&gt;
+          &lt;/ion-button&gt;
+        &lt;/ion-col&gt;
+
+        &lt;ion-col size-s&#x3D;&quot;8&quot;&gt;
+          &lt;ion-img
+            src&#x3D;&quot;../../../assets/svg/icons/logo.svg&quot;
+            alt&#x3D;&quot;logo&quot;
+            class&#x3D;&quot;logo&quot;
+          &gt;&lt;/ion-img&gt;
+        &lt;/ion-col&gt;
+
+        &lt;ion-col size-s&#x3D;&quot;2&quot; class&#x3D;&quot;ion-align-self-center ion-text-end&quot;&gt;
+        &lt;/ion-col&gt;
+      &lt;/ion-row&gt;
+    &lt;/ion-grid&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;ion-img
+      src&#x3D;&quot;../../../assets/svg/security-two-color.svg&quot;
+      alt&#x3D;&quot;404&quot;
+      class&#x3D;&quot;illustration-404&quot;
+    &gt;&lt;/ion-img&gt;
+    &lt;h1&gt;Fortrolighedspolitik&lt;/h1&gt;
+    &lt;p&gt;
+      På småjobs.dk, en af vores hovedprioriteter er beskyttelsen af vores
+      besøgendes privatliv. Dette dokument om privatlivspolitik indeholder typer
+      af information, der indsamles og registreres af småjobs, samt hvordan vi
+      anvender den. Hvis du har yderligere spørgsmål eller behøver mere
+      information om vores privatlivspolitik, tøv ikke med at kontakte os. Denne
+      privatlivspolitik gælder kun for vores online aktiviteter og er gyldig for
+      besøgende på vores hjemmeside med hensyn til den information, de deler
+      og/eller indsamler på småjobs. Denne politik gælder ikke for nogen
+      information, der indsamles offline eller via kanaler, der ikke er denne
+      hjemmeside. Samtykke Ved at bruge vores hjemmeside giver du hermed dit
+      samtykke til vores privatlivspolitik og accepterer dens betingelser.
+      Information, vi indsamler De personlige oplysninger, du bliver bedt om at
+      give, og årsagerne til, at du bliver bedt om at give dem, vil blive
+      klargjort for dig på det tidspunkt, hvor vi beder dig om dine personlige
+      oplysninger. Hvis du kontakter os direkte, kan vi modtage yderligere
+      oplysninger om dig, såsom dit navn, e-mailadresse, telefonnummer,
+      indholdet af beskeden og/eller vedhæftninger, du sender os, samt andre
+      oplysninger, du måtte vælge at give. Når du registrerer dig for en konto,
+      kan vi bede om dine kontaktoplysninger, herunder ting som navn,
+      virksomhedsnavn, adresse, e-mailadresse og telefonnummer. Hvordan vi
+      bruger dine oplysninger Vi bruger de indsamlede oplysninger på forskellige
+      måder, herunder til at:
+    &lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Levere, drive og vedligeholde vores hjemmeside&lt;/li&gt;
+      &lt;li&gt;Forbedre, personalisere og udvide vores hjemmeside&lt;/li&gt;
+      &lt;li&gt;Forstå og analysere, hvordan du bruger vores hjemmeside&lt;/li&gt;
+      &lt;li&gt;Udvikle nye produkter, tjenester, funktioner og funktionalitet&lt;/li&gt;
+      &lt;li&gt;
+        Kommunikere med dig, enten direkte eller gennem en af vores partnere,
+        herunder kundeservice, at give dig opdateringer og anden information
+        relateret til hjemmesiden og til marketing- og reklameformål
+      &lt;/li&gt;
+      &lt;li&gt;Sende dig e-mails&lt;/li&gt;
+      &lt;li&gt;Finde og forhindre svindel&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;
+      Logfiler småjobs følger en standardprocedure for brug af logfiler. Disse
+      filer logger besøgende, når de besøger hjemmesider. Alle
+      hostingvirksomheder gør dette som en del af deres analyser af
+      hostingtjenester. De indsamlede oplysninger i logfilerne inkluderer
+      internetprotokol (IP)-adresser, browsertype, internetudbyder (ISP), dato
+      og tidspunkt for besøget, henvisnings-/afgangssider og muligvis antallet
+      af klik. Disse oplysninger er ikke knyttet til nogen personligt
+      identificerbare oplysninger. Formålet med informationen er at analysere
+      tendenser, administrere hjemmesiden, spore brugernes bevægelser på
+      hjemmesiden og indsamle demografiske oplysninger. Reklamepartnere og
+      privatlivspolitikker Du kan konsultere denne liste for at finde
+      privatlivspolitikken for hver af reklamepartnerne på småjobs. Tredjeparts
+      annonceringsservere eller annoncenetværk bruger teknologier som cookies,
+      JavaScript eller webbeacons, der bruges i deres respektive annoncer og
+      links, der vises på småjobs og sendes direkte til brugernes browser. De
+      modtager automatisk din IP-adresse, når dette sker. Disse teknologier
+      bruges til at måle effektiviteten af deres reklamekampagner og/eller til
+      at personalisere indholdet af reklamer, som du ser på de hjemmesider, du
+      besøger. Bemærk, at småjobs ikke har adgang til eller kontrol over disse
+      cookies, der bruges af tredjeparts annoncører. Privatlivspolitikker for
+      tredjepart småjobs&#x27; privatlivspolitik gælder ikke for andre annoncører
+      eller hjemmesider. Derfor råder vi dig til at konsultere de respektive
+      privatlivspolitikker for disse tredjeparts annonceringsservere for mere
+      detaljeret information. Dette kan omfatte deres praksis og instruktioner
+      om, hvordan du fravælger visse muligheder. Du kan vælge at deaktivere
+      cookies gennem dine individuelle browserindstillinger. For at få mere
+      detaljeret information om håndtering af cookies med specifikke webbrowsere
+      kan det findes på de respektive browseres hjemmesider.
+      CCPA-privatlivsrettigheder (Sælg ikke mine personlige oplysninger) Under
+      CCPA har californiske forbrugere blandt andre rettigheder ret til at:
+    &lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        Anmode om, at en virksomhed, der indsamler en forbrugers persondata,
+        afslører kategorierne og specifikke dele af persondata, som virksomheden
+        har indsamlet om forbrugere.
+      &lt;/li&gt;
+      &lt;li&gt;
+        Anmode om, at en virksomhed sletter eventuelle persondata om
+        forbrugeren, som virksomheden har indsamlet.
+      &lt;/li&gt;
+      &lt;li&gt;
+        Anmode om, at en virksomhed, der sælger en forbrugers persondata, ikke
+        sælger forbrugerens persondata. Hvis du fremsætter en anmodning, har vi
+        en måned til at svare dig. Hvis du ønsker at udøve nogen af disse
+        rettigheder, bedes du kontakte os. GDPR-databeskyttelsesrettigheder Vi
+        vil gerne sikre, at du er fuldt ud klar over alle dine
+        databeskyttelsesrettigheder. Hver bruger har følgende rettigheder:
+      &lt;/li&gt;
+      &lt;li&gt;
+        Retten til adgang - Du har ret til at anmode om kopier af dine
+        persondata. Vi kan opkræve et mindre gebyr for denne service.
+      &lt;/li&gt;
+      &lt;li&gt;
+        Retten til berigtigelse - Du har ret til at anmode om, at vi retter
+        oplysninger, du mener er unøjagtige. Du har også ret til at anmode om,
+        at vi fuldfører de oplysninger, du mener
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./privacy-policy.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.topbackground {   
+    background: url(&#x27;../../../assets/svg/backgrounds/privacy-background.svg&#x27;) no-repeat center center / cover;
+height: 195px;
+}
+
+.logo {
+    transform: scale(0.6);
+}
+
+.back-arrow {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+}
+
+ion-grid {
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.illustration-404{
+    transform: scale(0.7);
+}
+
+h1{
+    font-size: 32px;
+    text-align: center;
+    margin: 0;
+}
+
+.container{
+    padding-left: 20px; padding-right: 20px;
+    transform: translateY(-2.1rem);
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-content [fullscreen]="true">  <div class="topbackground">    <ion-grid class="ion-no-padding ion-no-border ion-no-margin">      <ion-row>        <ion-col size-s="2" class="ion-align-self-center">          <ion-button            (click)="backToLastPage()"            fill="clear"            class="back-arrow"          >            <ion-img              src="../../../assets/svg/icons/back-arrow.svg"              alt="back-arrow"              class="back-arrow"            ></ion-img>          </ion-button>        </ion-col>        <ion-col size-s="8">          <ion-img            src="../../../assets/svg/icons/logo.svg"            alt="logo"            class="logo"          ></ion-img>        </ion-col>        <ion-col size-s="2" class="ion-align-self-center ion-text-end">        </ion-col>      </ion-row>    </ion-grid>  </div>  <div class="container">    <ion-img      src="../../../assets/svg/security-two-color.svg"      alt="404"      class="illustration-404"    ></ion-img>    <h1>Fortrolighedspolitik</h1>    <p>      På småjobs.dk, en af vores hovedprioriteter er beskyttelsen af vores      besøgendes privatliv. Dette dokument om privatlivspolitik indeholder typer      af information, der indsamles og registreres af småjobs, samt hvordan vi      anvender den. Hvis du har yderligere spørgsmål eller behøver mere      information om vores privatlivspolitik, tøv ikke med at kontakte os. Denne      privatlivspolitik gælder kun for vores online aktiviteter og er gyldig for      besøgende på vores hjemmeside med hensyn til den information, de deler      og/eller indsamler på småjobs. Denne politik gælder ikke for nogen      information, der indsamles offline eller via kanaler, der ikke er denne      hjemmeside. Samtykke Ved at bruge vores hjemmeside giver du hermed dit      samtykke til vores privatlivspolitik og accepterer dens betingelser.      Information, vi indsamler De personlige oplysninger, du bliver bedt om at      give, og årsagerne til, at du bliver bedt om at give dem, vil blive      klargjort for dig på det tidspunkt, hvor vi beder dig om dine personlige      oplysninger. Hvis du kontakter os direkte, kan vi modtage yderligere      oplysninger om dig, såsom dit navn, e-mailadresse, telefonnummer,      indholdet af beskeden og/eller vedhæftninger, du sender os, samt andre      oplysninger, du måtte vælge at give. Når du registrerer dig for en konto,      kan vi bede om dine kontaktoplysninger, herunder ting som navn,      virksomhedsnavn, adresse, e-mailadresse og telefonnummer. Hvordan vi      bruger dine oplysninger Vi bruger de indsamlede oplysninger på forskellige      måder, herunder til at:    </p>    <ul>      <li>Levere, drive og vedligeholde vores hjemmeside</li>      <li>Forbedre, personalisere og udvide vores hjemmeside</li>      <li>Forstå og analysere, hvordan du bruger vores hjemmeside</li>      <li>Udvikle nye produkter, tjenester, funktioner og funktionalitet</li>      <li>        Kommunikere med dig, enten direkte eller gennem en af vores partnere,        herunder kundeservice, at give dig opdateringer og anden information        relateret til hjemmesiden og til marketing- og reklameformål      </li>      <li>Sende dig e-mails</li>      <li>Finde og forhindre svindel</li>    </ul>    <p>      Logfiler småjobs følger en standardprocedure for brug af logfiler. Disse      filer logger besøgende, når de besøger hjemmesider. Alle      hostingvirksomheder gør dette som en del af deres analyser af      hostingtjenester. De indsamlede oplysninger i logfilerne inkluderer      internetprotokol (IP)-adresser, browsertype, internetudbyder (ISP), dato      og tidspunkt for besøget, henvisnings-/afgangssider og muligvis antallet      af klik. Disse oplysninger er ikke knyttet til nogen personligt      identificerbare oplysninger. Formålet med informationen er at analysere      tendenser, administrere hjemmesiden, spore brugernes bevægelser på      hjemmesiden og indsamle demografiske oplysninger. Reklamepartnere og      privatlivspolitikker Du kan konsultere denne liste for at finde      privatlivspolitikken for hver af reklamepartnerne på småjobs. Tredjeparts      annonceringsservere eller annoncenetværk bruger teknologier som cookies,      JavaScript eller webbeacons, der bruges i deres respektive annoncer og      links, der vises på småjobs og sendes direkte til brugernes browser. De      modtager automatisk din IP-adresse, når dette sker. Disse teknologier      bruges til at måle effektiviteten af deres reklamekampagner og/eller til      at personalisere indholdet af reklamer, som du ser på de hjemmesider, du      besøger. Bemærk, at småjobs ikke har adgang til eller kontrol over disse      cookies, der bruges af tredjeparts annoncører. Privatlivspolitikker for      tredjepart småjobs\' privatlivspolitik gælder ikke for andre annoncører      eller hjemmesider. Derfor råder vi dig til at konsultere de respektive      privatlivspolitikker for disse tredjeparts annonceringsservere for mere      detaljeret information. Dette kan omfatte deres praksis og instruktioner      om, hvordan du fravælger visse muligheder. Du kan vælge at deaktivere      cookies gennem dine individuelle browserindstillinger. For at få mere      detaljeret information om håndtering af cookies med specifikke webbrowsere      kan det findes på de respektive browseres hjemmesider.      CCPA-privatlivsrettigheder (Sælg ikke mine personlige oplysninger) Under      CCPA har californiske forbrugere blandt andre rettigheder ret til at:    </p>    <ul>      <li>        Anmode om, at en virksomhed, der indsamler en forbrugers persondata,        afslører kategorierne og specifikke dele af persondata, som virksomheden        har indsamlet om forbrugere.      </li>      <li>        Anmode om, at en virksomhed sletter eventuelle persondata om        forbrugeren, som virksomheden har indsamlet.      </li>      <li>        Anmode om, at en virksomhed, der sælger en forbrugers persondata, ikke        sælger forbrugerens persondata. Hvis du fremsætter en anmodning, har vi        en måned til at svare dig. Hvis du ønsker at udøve nogen af disse        rettigheder, bedes du kontakte os. GDPR-databeskyttelsesrettigheder Vi        vil gerne sikre, at du er fuldt ud klar over alle dine        databeskyttelsesrettigheder. Hver bruger har følgende rettigheder:      </li>      <li>        Retten til adgang - Du har ret til at anmode om kopier af dine        persondata. Vi kan opkræve et mindre gebyr for denne service.      </li>      <li>        Retten til berigtigelse - Du har ret til at anmode om, at vi retter        oplysninger, du mener er unøjagtige. Du har også ret til at anmode om,        at vi fuldfører de oplysninger, du mener      </li>    </ul>  </div></ion-content></div>'
+    var COMPONENTS = [{'name': 'ActiveChatPage', 'selector': 'app-active-chat'},{'name': 'AddNewJobPage', 'selector': 'app-add-new-job'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChatPage', 'selector': 'app-chat'},{'name': 'FiltermodalPage', 'selector': 'app-filtermodal'},{'name': 'ForgotPasswordModalPage', 'selector': 'app-forgot-password-modal'},{'name': 'ForgotPasswordPage', 'selector': 'app-forgot-password'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'IntroPage', 'selector': 'app-intro'},{'name': 'JobDetailsPage', 'selector': 'app-job-details'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'LogoutModalPage', 'selector': 'app-logout-modal'},{'name': 'NotFoundPage', 'selector': 'app-not-found'},{'name': 'OnAuthPage', 'selector': 'app-on-auth'},{'name': 'PrivacyPolicyPage', 'selector': 'app-privacy-policy'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'StartPage', 'selector': 'app-start'},{'name': 'UpdateJobPage', 'selector': 'app-update-job'},{'name': 'UpdateProfilePage', 'selector': 'app-update-profile'},{'name': 'ViewProfilePage', 'selector': 'app-view-profile'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'PrivacyPolicyPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PrivacyPolicyPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
