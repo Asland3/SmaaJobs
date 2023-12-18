@@ -160,3 +160,12 @@ ion-row {
   }
 }
 
+ion-searchbar {
+  ::ng-deep {
+    .searchbar-clear-icon {
+      display: none !important;
+    }
+  }
+}
+
+
