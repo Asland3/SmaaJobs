@@ -30,7 +30,6 @@ export class JobDetailsPage implements OnInit {
     this.jobService.getJob(jobId).then((jobData) => {
       if (jobData) {
         this.job = jobData;
-        console.log("🚀 ~ file: job-details.page.ts:29 ~ JobDetailsPage ~ this.jobService.getJob ~ this.job:", this.job)
       }
     });
 

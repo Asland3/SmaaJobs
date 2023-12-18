@@ -53,7 +53,6 @@ export class RegisterPage implements OnInit {
 
     const slideGroups = ['slide1', 'slide2', 'slide3', 'slide4'];
     const currentGroup = this.credentials.get(slideGroups[currentSlideIndex]);
-    console.log(currentGroup);
 
     if (currentSlideIndex === 1 && !this.profilePicBlob) {
       this.alertController.create({
@@ -109,8 +108,6 @@ export class RegisterPage implements OnInit {
   checkPasswords(control: AbstractControl): ValidationErrors | null {
     let pass = control.get('password')?.value || '';
     let confirmPass = control.get('rePassword')?.value || '';
-
-    console.log(pass, confirmPass);
   
     return pass === confirmPass ? null : { notSame: true };
   }

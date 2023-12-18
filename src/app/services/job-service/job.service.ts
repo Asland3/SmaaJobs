@@ -168,7 +168,6 @@ export class JobService {
     if (docSnapshot.exists()) {
       return { id: docSnapshot.id, ...(docSnapshot.data() as Jobs) };
     } else {
-      // handle the case where the document does not exist
       console.log('No such document!');
       return null;
     }

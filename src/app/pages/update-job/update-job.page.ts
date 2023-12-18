@@ -64,7 +64,6 @@ export class UpdateJobPage implements OnInit {
       // Convert the Data URL to a Blob and store in imageBlobs for upload
       const response = await fetch(image.dataUrl);
       this.imageBlobs[cardIndex] = await response.blob();
-      console.log(this.imageBlobs);
   
       // Mark this image as updated
       this.imageUpdated[cardIndex] = true;

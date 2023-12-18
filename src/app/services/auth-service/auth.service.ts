@@ -32,7 +32,6 @@ export class AuthService {
       if (user) {
         this.getUser(user.uid).then((userData) => {
           this.currentUser.next(userData);
-          console.log(userData)
         });
       } else {
         this.currentUser.next(null);
