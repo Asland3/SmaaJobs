@@ -27,19 +27,11 @@ export class ViewProfilePage implements OnInit {
     this.authService.getSpecificUser(this.userId).then((userData) => {
       if (userData) {
         this.user = userData;
-        console.log(
-          '🚀 ~ file: view-profile.page.ts:28 ~ ViewProfilePage ~ this.authService.getUser ~ userData:',
-          userData
-        );
       }
     });
     this.jobSerivce.getJobsfromSpecificUser(this.userId).then((jobsData) => {
       if (jobsData) {
         this.userJobs = jobsData;
-        console.log(
-          '🚀 ~ file: view-profile.page.ts:33 ~ ViewProfilePage ~ this.jobSerivce.getJobsfromSpecificUser ~ jobsData:',
-          jobsData
-        );
       }
     });
   }

@@ -46,7 +46,6 @@ export class UpdateProfilePage implements OnInit {
         this.user.profilePic = image.dataUrl;
         const response = await fetch(image.dataUrl);
         this.newProfileImageBlob = await response.blob();
-        console.log(this.newProfileImageBlob);
       }
     } catch (error) {
       console.error('Error opening camera:', error);

@@ -33,15 +33,11 @@ export class ActiveChatPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    // debugger
     this.currentUser = this.auth.currentUser;
 
     const params = this.route.snapshot.queryParams;
     this.chatId = params['chatId'];
-    console.log(
-      '🚀 ~ file: active-chat.page.ts:30 ~ ActiveChatPage ~ ngOnInit ~ this.chatId:',
-      this.chatId
-    );
+
 
     // Check if userId parameter is available
     const recipientUserId = params['userId'];
@@ -50,10 +46,6 @@ export class ActiveChatPage implements OnInit {
         .getSpecificUser(recipientUserId)
         .then((recipientData) => {
           this.recipient = recipientData;
-          console.log(
-            '🚀 ~ file: active-chat.page.ts:32 ~ ActiveChatPage ~ ngOnInit ~ this.recipient:',
-            this.recipient
-          );
         });
 
       this.messages$ = this.chatService.getMessages(this.chatId).pipe(
