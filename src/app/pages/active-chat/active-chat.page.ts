@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
-import { NavController, ScrollDetail } from '@ionic/angular';
+import { NavController, ScrollDetail, IonContent, IonCard } from '@ionic/angular';
 import { Observable, Subscription, map } from 'rxjs';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { ChatService } from 'src/app/services/chat-service/chat.service';
@@ -13,6 +13,7 @@ import { ChatService } from 'src/app/services/chat-service/chat.service';
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ActiveChatPage implements OnInit {
+  // @ViewChild('scrollElement') scrollElement!: ElementRef;
   // messages: any[] = [];
   private messagesSubscription!: Subscription;
   showDetails = false;
@@ -65,11 +66,25 @@ export class ActiveChatPage implements OnInit {
     }
   }
 
+  // scrollToBottom() {
+  //   const scrollElement = this.scrollElement.nativeElement;
+  //   scrollElement.scrollTop = scrollElement.scrollHeight;
+  // }
+
+  // ionViewDidEnter() {
+  //   this.scrollToBottom();
+  // }
+
+  // ngAfterViewInit() {
+  //   this.scrollToBottom();
+  // }
+
   sendMessage(text: any) {
     const userId = this.currentUser.uid;
     if (userId && text) {
       this.chatService.sendMessage(this.chatId, text, userId).then(() => {
         // Clear the input field, handle UI updates, etc.
+        // this.scrollToBottom();
       });
     }
   }

@@ -4,15 +4,17 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ChatPageRoutingModule } from './chat-routing.module';
 import { ChatPage } from './chat.page';
+import { WordLimitPipe } from '../../util/pipe';
 
 
 @NgModule({
-    declarations: [ChatPage],
+    declarations: [ChatPage, WordLimitPipe],
     imports: [
         CommonModule,
         FormsModule,
         IonicModule,
-        ChatPageRoutingModule
+        ChatPageRoutingModule,
+        
     ]
 })
 export class ChatPageModule {}
