@@ -1,291 +1,314 @@
 ion-input[fill="outline"] {
-    --border-radius: 10px;
-    border-radius: 10px;
-    --border-color: black;
-    --border-style: solid;
-    --border-width: 1px;
-    --highlight-color-focused: rgba(0, 0, 0, 0.70);
-    --placeholder-color: black;
-    width: 285px;
+  --border-radius: 10px;
+  border-radius: 10px;
+  --border-color: black;
+  --border-style: solid;
+  --border-width: 1px;
+  --highlight-color-focused: rgba(0, 0, 0, 0.7);
+  --placeholder-color: black;
+  width: 285px;
 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 ion-textarea[fill="outline"] {
-    --border-radius: 10px;
-    border-radius: 10px;
-    --border-color: black;
-    --border-style: solid;
-    --border-width: 1px;
-    --highlight-color-focused: rgba(0, 0, 0, 0.7);
-    --placeholder-color: black;
-    width: 285px;
+  --border-radius: 10px;
+  border-radius: 10px;
+  --border-color: black;
+  --border-style: solid;
+  --border-width: 1px;
+  --highlight-color-focused: rgba(0, 0, 0, 0.7);
+  --placeholder-color: black;
+  width: 285px;
 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .slide-one {
-    .background {
-        background: url("../../../assets/svg/backgrounds/start.svg") no-repeat center center / cover;
-        min-height: 100vh;
-    }
+  .background {
+    background: url("../../../assets/svg/backgrounds/start.svg") no-repeat
+      center center / cover;
+    min-height: 100vh;
+  }
 
-    .container {
-        padding-right: 50px;
-        padding-left: 50px;
-    }
+  .container {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
 
-    .cancel {
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+  .cancel {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 
-    .back-arrow {
-        flex-shrink: 0;
-        width: 30px;
-        height: 30px;
-    }
+  .back-arrow {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+  }
 
+  h1 {
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+  }
 
+  .spacer {
+    padding: 20px;
+  }
 
-    h1 {
-        font-size: 35px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        text-align: center;
-    }
+  .next-button {
+    --background: var(--ion-color-secondary);
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
 
-    .spacer {
-        padding: 20px;
-    }
-
-    .next-button {
-        --background: var(--ion-color-secondary);
-        border-radius: 10px;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-
-    .text {
-        text-align: center;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+  .text {
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 }
 
 .slide-two {
-    .background {
-        background: url("../../../assets/svg/backgrounds/start.svg") no-repeat center center / cover;
-        min-height: 100vh;
-    }
+  .background {
+    background: url("../../../assets/svg/backgrounds/start.svg") no-repeat
+      center center / cover;
+    min-height: 100vh;
+  }
 
-    .container {
-        padding-right: 50px;
-        padding-left: 50px;
-        margin: 0;
-    }
+  .container {
+    padding-right: 50px;
+    padding-left: 50px;
+    margin: 0;
+  }
 
-    .cancel {
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+  .cancel {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 
-    .back-arrow {
-        flex-shrink: 0;
-        width: 30px;
-        height: 30px;
-    }
+  .back-arrow {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+  }
 
-    ion-grid {
-        padding-top: 50px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+  ion-grid {
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
-    h1 {
-        font-size: 35px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        text-align: center;
-    }
+  h1 {
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+  }
 
-    .spacer {
-        padding: 20px;
-    }
+  .spacer {
+    padding: 20px;
+  }
 
-    .next-button {
-        --background: var(--ion-color-secondary);
-        border-radius: 10px;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    }
+  .next-button {
+    --background: var(--ion-color-secondary);
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
 
-    .text {
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+  .text {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 
-    .img-grid {
-        padding: 10px 10px 40px;
-    }
+  .img-grid {
+    padding: 10px 10px 40px;
+  }
 
-    .avatarImage {
-      scale: 0.7;
-    }
+  .avatarImage {
+    scale: 0.7;
+  }
 
-
-    .selectedAvatar {
-        border: 2px solid black;
-        border-radius: 60px;
-    }
+  .selectedAvatar {
+    border: 2px solid black;
+    border-radius: 60px;
+  }
 }
 
 .slide-three {
-    .background {
-        background: url("../../../assets/svg/backgrounds/start.svg") no-repeat center center / cover;
-        min-height: 100vh;
-    }
+  .background {
+    background: url("../../../assets/svg/backgrounds/start.svg") no-repeat
+      center center / cover;
+    min-height: 100vh;
+  }
 
-    .container {
-        padding-right: 50px;
-        padding-left: 50px;
-        margin: 0;
-    }
+  .container {
+    padding-right: 50px;
+    padding-left: 50px;
+    margin: 0;
+  }
 
-    .cancel {
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+  .cancel {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 
-    .back-arrow {
-        flex-shrink: 0;
-        width: 30px;
-        height: 30px;
-    }
+  .back-arrow {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+  }
 
-    ion-grid {
-        padding-top: 50px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+  ion-grid {
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
-    h1 {
-        font-size: 35px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        text-align: center;
-    }
+  h1 {
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+  }
 
+  .description-text {
+    height: 250px;
+    text-align: left;
+    padding: 0;
+  }
 
+  .spacer {
+    padding: 20px;
+  }
 
-    .description-text {
-        height: 250px;
-        text-align: left;
-        padding: 0;
-    }
+  .next-button {
+    --background: var(--ion-color-secondary);
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
 
-    .spacer {
-        padding: 20px;
-    }
-
-    .next-button {
-        --background: var(--ion-color-secondary);
-        border-radius: 10px;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-
-    .text {
-        text-align: center;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
-
+  .text {
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 }
 
 .slide-four {
-    .background {
-        background: url("../../../assets/svg/backgrounds/start.svg") no-repeat center center / cover;
-        min-height: 100vh;
+  .background {
+    background: url("../../../assets/svg/backgrounds/start.svg") no-repeat
+      center center / cover;
+    min-height: 100vh;
+  }
+
+  .container {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+
+  .move-right {
+    margin-left: 14vw;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .cancel {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .back-arrow {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+  }
+
+  ion-grid {
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  h1 {
+    color: #000;
+    font-family: Stylish;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+  }
+
+  .spacer {
+    padding: 20px;
+  }
+
+  .next-button {
+    --background: var(--ion-color-secondary);
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .text {
+    color: #000;
+    text-align: center;
+    font-family: Stylish;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .privacyPolicy {
+    padding-right: 50px;
+    padding-left: 50px;
+    display: flex;
+
+    .checkbox-text {
+      font-size: 15px;
+      font-style: italic;
+      color: #3385FF;
     }
 
-    .container {
-        padding-right: 50px;
-        padding-left: 50px;
+    ion-checkbox {
+      --size: 30px;
+      --checkbox-background-checked: #fd7406;
+      display: flex;
+      align-items: center;
+      justify-items: center;
     }
 
-    .move-right {
-        margin-left: 14vw;
-        margin-bottom: 5px;
-        font-weight: bold;
+    ion-checkbox::part(container) {
+      border-radius: 6px;
+      border: 2px solid #fd7406;
     }
-
-    .cancel {
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
-
-    .back-arrow {
-        flex-shrink: 0;
-        width: 30px;
-        height: 30px;
-    }
-
-    ion-grid {
-        padding-top: 50px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    h1 {
-        color: #000;
-        font-family: Stylish;
-        font-size: 35px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        text-align: center;
-    }
-
-    .spacer {
-        padding: 20px;
-    }
-
-    .next-button {
-        --background: var(--ion-color-secondary);
-        border-radius: 10px;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-
-    .text {
-        color: #000;
-        text-align: center;
-        font-family: Stylish;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+  }
 }

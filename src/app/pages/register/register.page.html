@@ -1,5 +1,9 @@
 <ion-content>
-  <swiper-container #swiper (afterinit)="swiperReady()" [allowTouchMove]="false">
+  <swiper-container
+    #swiper
+    (afterinit)="swiperReady()"
+    [allowTouchMove]="true"
+  >
     <swiper-slide class="slide-one">
       <div class="background">
         <ion-row class="top-row">
@@ -320,7 +324,12 @@
             formControlName="email"
           ></ion-input> -->
         </form>
-
+        <div class="privacyPolicy">
+          <p class="checkbox-text" (click)="privacyPolicy()">
+            Jeg accepterer fortrolighedspolitkken og vilkår
+          </p>
+          <ion-checkbox> </ion-checkbox>
+        </div>
         <div class="spacer"></div>
 
         <ion-button (click)="register()" class="main-button next-button"

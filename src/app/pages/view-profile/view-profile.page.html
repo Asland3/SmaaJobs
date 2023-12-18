@@ -1,3 +1,63 @@
 <ion-content>
-  <h1>View profile</h1>
+  <div class="top-container">
+    <ion-row>
+      <ion-col size-s="2" class="left">
+        <ion-button fill="clear" (click)="navigateBack()">
+          <ion-img
+            src="../../../assets/svg/icons/back-arrow.svg"
+            alt="back-arrow"
+          ></ion-img> </ion-button
+      ></ion-col>
+
+      <ion-col size-s="8"> </ion-col>
+
+      <ion-col size-s="2" class="right">
+        <ion-menu-button></ion-menu-button>
+      </ion-col>
+    </ion-row>
+    <ion-img class="profile-pic" [src]="user?.profilePic" alt="Profile Pic" />
+    <ion-card class="profile-card">
+      <div class="text-padding">
+        <h1>{{ user?.firstName }} {{ user?.lastName }}</h1>
+        <h3 class="ion-no-margin">{{ user?.postalCode}} {{ user?.town}}</h3>
+        <h3 class="ion-no-margin">{{ user?.phone }}</h3>
+        <h3 class="ion-no-margin">{{ user?.email }}</h3>
+        <h3 class="ion-no-margin">{{ user?.age }} år</h3>
+      </div>
+    </ion-card>
+  </div>
+
+  <ion-card class="description-card">
+    <h2>Om dig</h2>
+    <h4>{{ user?.description }}</h4>
+  </ion-card>
+
+  <h1 class="all-jobs">Oprettet jobs</h1>
+  <div *ngIf="userJobs.length > 0; else noJobsTemplate">
+    <ion-card
+      class="job-card"
+      *ngFor="let job of userJobs"
+      (click)="openJob(job.id)"
+    >
+      <div class="card-content">
+        <div class="text-content">
+          <h2 class="ion-no-margin">{{ job.title }}</h2>
+          <h4 class="ion-no-margin">{{ job.subline }}</h4>
+          <h5 class="ion-no-margin">{{ job.payment }} kr.</h5>
+        </div>
+      </div>
+    </ion-card>
+  </div>
+  <ng-template #noJobsTemplate>
+    <div class="no-jobs-container">
+      <img
+        src="../../../assets/svg/goggle-lady.svg"
+        alt="Ingen jobs tilgængelige"
+      />
+      <h2 class="ion-text-center ion-padding-bottom">
+        Uh-oh! Det ser ud til, at {{user?.firstName}} ikke har aktive job i
+        øjeblikket.
+      </h2>
+    </div>
+  </ng-template>
 </ion-content>

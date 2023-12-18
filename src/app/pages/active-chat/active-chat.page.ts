@@ -3,6 +3,7 @@ import { Auth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Observable, Subscription, map } from 'rxjs';
+import { Jobs } from 'src/app/models/jobs.model';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { ChatService } from 'src/app/services/chat-service/chat.service';
 
@@ -75,5 +76,9 @@ export class ActiveChatPage implements OnInit {
 
   navigateToChat() {
     this.navCtrl.navigateBack('/chat');
+  }
+
+  openProfile() {
+    this.navCtrl.navigateForward(`/view-profile/${this.recipient.uid}`);
   }
 }

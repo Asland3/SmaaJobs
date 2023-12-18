@@ -24,6 +24,7 @@ export class RegisterPage implements OnInit {
   credentials: FormGroup | any;
   profilePicBlob!: Blob;
   selectedProfileImage!: string;
+  privacyPolicyAccepted = false;
 
   @ViewChild('swiper')
   swiperRef: ElementRef | undefined;
@@ -252,5 +253,9 @@ export class RegisterPage implements OnInit {
 
   get phone() {
     return this.credentials?.get('phone');
+  }
+
+  privacyPolicy() {
+    this.navCtrl.navigateForward('/privacy-policy');
   }
 }

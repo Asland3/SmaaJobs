@@ -20,7 +20,7 @@
     <div style="padding-top: 10vh"></div>
 
     <div class="active-chat">
-      <ion-img src="{{ recipient?.profilePic }}"> </ion-img>
+      <ion-img src="{{ recipient?.profilePic }}" (click)="openProfile()"> </ion-img>
       <h2 class="header-name">
         {{recipient?.firstName}} {{recipient?.lastName}}
       </h2>
