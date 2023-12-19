@@ -1,23 +1,29 @@
-<ion-content>
+<ion-content >
   <div class="top-container">
-    <ion-row>
-      <ion-col size-s="2" class="left">
-        <ion-button fill="clear" (click)="navigateToChat()">
-          <ion-img
-            src="../../../assets/svg/icons/back-arrow.svg"
-            alt="back-arrow"
-          ></ion-img> </ion-button
-      ></ion-col>
+    <div class="header">
+      <ion-row>
+        <ion-col size-s="2" class="left">
+          <ion-button fill="clear" (click)="navigateToChat()">
+            <ion-img
+              src="../../../assets/svg/icons/back-arrow.svg"
+              alt="back-arrow"
+            ></ion-img> </ion-button
+        ></ion-col>
 
-      <ion-col size-s="8"> </ion-col>
+        <ion-col size-s="8"> </ion-col>
 
-      <ion-col size-s="2" class="right">
-        <ion-menu-button></ion-menu-button>
-      </ion-col>
-    </ion-row>
+        <ion-col size-s="2" class="right">
+          <ion-menu-button></ion-menu-button>
+        </ion-col>
+      </ion-row>
+    </div>
 
     <div class="active-chat">
-      <img class="profile-pic" src="{{ recipient?.profilePic }}" (click)="openProfile()"> 
+      <img
+        class="profile-pic"
+        src="{{ recipient?.profilePic }}"
+        (click)="openProfile()"
+      />
       <div>
         <h2 class="header-name">
           {{recipient?.firstName}} {{recipient?.lastName}}
@@ -27,45 +33,45 @@
         </ion-text>
       </div>
     </div>
+  </div>
 
-    <div class="scroll-element">
-      <div *ngFor="let message of messages$ | async">
-        <div
-          [ngClass]="{'chat-window-outgoing': message.userId === currentUser.uid, 'chat-window-incomming': message.userId !== currentUser.uid}"
-        >
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title class="card-title"
-                >{{ message.userId === currentUser.uid ? 'You' :
-                recipient?.firstName }}</ion-card-title
-              >
-            </ion-card-header>
-            <ion-card-content>
-              <h2 class="message-content">{{ message.text }}</h2>
-              <ion-card-subtitle class="message-time"
-                >{{ message.createdAt | date: 'HH:mm' }}</ion-card-subtitle
-              >
-            </ion-card-content>
-          </ion-card>
-        </div>
+  <div class="chat-messages">
+    <div *ngFor="let message of messages$ | async">
+      <div
+        [ngClass]="{'chat-window-outgoing': message.userId === currentUser.uid, 'chat-window-incomming': message.userId !== currentUser.uid}"
+      >
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="card-title"
+              >{{ message.userId === currentUser.uid ? 'You' :
+              recipient?.firstName }}</ion-card-title
+            >
+          </ion-card-header>
+          <ion-card-content>
+            <h2 class="message-content">{{ message.text }}</h2>
+            <ion-card-subtitle class="message-time"
+              >{{ message.createdAt | date: 'HH:mm' }}</ion-card-subtitle
+            >
+          </ion-card-content>
+        </ion-card>
       </div>
     </div>
-
-    <ion-footer>
-      <ion-toolbar>
-        <ion-input
-          #messageInput
-          type="text"
-          placeholder="Skriv besked her"
-        ></ion-input>
-        <ion-button
-          style="font-size: 15px"
-          slot="end"
-          (click)="sendMessage(messageInput.value); messageInput.value=''"
-        >
-          <ion-icon name="arrow-up"></ion-icon>
-        </ion-button>
-      </ion-toolbar>
-    </ion-footer>
   </div>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-input
+        #messageInput
+        type="text"
+        placeholder="Skriv besked her"
+      ></ion-input>
+      <ion-button
+        style="font-size: 15px"
+        slot="end"
+        (click)="sendMessage(messageInput.value); messageInput.value=''"
+      >
+        <ion-icon name="arrow-up"></ion-icon>
+      </ion-button>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>

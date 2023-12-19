@@ -2,13 +2,9 @@ ion-content {
   --background: #e6e6e6;
 }
 
-.top-container {
-  background: url("../../../assets/svg/backgrounds/chat-top.svg") no-repeat
+.header {
+  background: url("../../../assets/svg/backgrounds/chat.svg") no-repeat
     center center / cover;
-  min-height: 10vh;
-  max-height: 15vh;
-  margin-bottom: 20px;
-  position: relative;
 }
 
 .profile-pic {
@@ -72,24 +68,6 @@ ion-row {
   }
 }
 
-.active-chat .more-details {
-  cursor: pointer;
-  /* Add styles for the default state */
-}
-
-.active-chat .more-details.active {
-  /* Add styles for the active state */
-  color: #000000; /* Change color or add any desired style */
-  font-weight: bolder; /* For example, bold the text */
-}
-
-.more-details {
-  padding-top: 10px; /* Adjust as needed */
-}
-.details-text {
-  margin-top: 2px;
-}
-
 .chat-window-incomming {
   ion-card {
     border-radius: 20px;
@@ -110,12 +88,6 @@ ion-row {
     float: right;
     color: black;
   }
-}
-
-.scroll-element {
-  height: 560px;
-  width: 100%;
-  overflow-y: auto;
 }
 
 .chat-window-outgoing {
@@ -153,3 +125,9 @@ ion-footer {
   width: 100%;
   box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.2);
 }
+
+.chat-messages {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+

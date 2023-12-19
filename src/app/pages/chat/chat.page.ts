@@ -1,12 +1,10 @@
-import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { Subscription, first, firstValueFrom, take } from 'rxjs';
+import { Subscription, firstValueFrom,  } from 'rxjs';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { ChatService } from 'src/app/services/chat-service/chat.service';
-import { Pipe, PipeTransform } from '@angular/core';
 
 @Component({
   selector: 'app-chat',
@@ -66,7 +64,7 @@ export class ChatPage implements OnInit {
             })
           );
 
-          this.conversations = conversationsWithDetails;
+          this.conversations = conversationsWithDetails.reverse();
           this.loading = false;
         });
     } else {

@@ -15,7 +15,8 @@
         <ion-menu-button></ion-menu-button>
       </ion-col>
     </ion-row>
-    <ion-img class="profile-pic" [src]="user?.profilePic" alt="Profile Pic" />
+
+    <ion-img class="profile-pic" [src]="user.profilePic" alt="Profile Pic" />
     <ion-card class="profile-card">
       <ion-icon
         class="edit-profile"
@@ -23,18 +24,20 @@
         (click)="editProfile();$event.stopPropagation();"
       ></ion-icon>
       <div class="ion-text-center text-padding">
-        <h1>{{ user?.firstName }} {{ user?.lastName }}</h1>
-        <h3 class="ion-no-margin">{{ user?.postalCode}} {{ user?.town}}</h3>
-        <h3 class="ion-no-margin">{{ user?.phone }}</h3>
-        <h3 class="ion-no-margin">{{ user?.email }}</h3>
-        <h3 class="ion-no-margin">{{ user?.age }} år</h3>
+        <h1>{{ user.firstName }} {{ user.lastName }}</h1>
+        <h3 class="ion-no-margin">{{ user.postalCode}} {{ user.town}}</h3>
+        <h3 class="ion-no-margin">{{ user.phone }}</h3>
+        <h3 class="ion-no-margin">{{ user.email }}</h3>
+        <h3 class="ion-no-margin">{{ user.age }} år</h3>
       </div>
     </ion-card>
+
+    
   </div>
 
   <ion-card class="description-card">
     <h2>Om dig</h2>
-    <h4>{{ user?.description }}</h4>
+    <h4>{{ user.description }}</h4>
   </ion-card>
 
   <div *ngIf="user && user.age !== undefined && user.age >= 18">
