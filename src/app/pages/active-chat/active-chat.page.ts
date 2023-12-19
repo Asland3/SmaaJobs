@@ -12,7 +12,6 @@ import { ChatService } from 'src/app/services/chat-service/chat.service';
   styleUrls: ['./active-chat.page.scss'],
 })
 export class ActiveChatPage {
-  // @ViewChild(IonContent) content!: IonContent;
 
   showDetails = false;
 
@@ -54,13 +53,15 @@ export class ActiveChatPage {
           }))
         )
       );
-    }
-  }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.scrollToBottom();
-    }, 500); // Adjust the timeout duration as needed
+      // Subscribe to messages$ and call scrollToBottom
+    this.messages$.subscribe(() => {
+      setTimeout(() => {
+        this.scrollToBottom();
+      }, 500);
+    });
+    
+    }
   }
 
   scrollToBottom() {
@@ -75,7 +76,10 @@ export class ActiveChatPage {
   sendMessage(text: any) {
     const userId = this.currentUser.uid;
     if (userId && text) {
-      this.chatService.sendMessage(this.chatId, text, userId).then(() => {});
+      this.chatService.sendMessage(this.chatId, text, userId).then(() => {
+        // this.scrollToBottom();
+      });
+      
     }
   }
 
